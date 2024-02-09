@@ -175,8 +175,8 @@ INSERT INTO Customers (customerID, firstName, lastName, email, phoneNumber) VALU
 CREATE OR REPLACE TABLE LiftPassTransactions (
     transactionID INT NOT NULL AUTO_INCREMENT,
     customerID INT NOT NULL,
-    liftPassID INT NOT NULL,
     seasonDatesID int NOT NULL,
+    liftPassID INT NOT NULL,
     saleDate DATETIME NOT NULL,
 
     PRIMARY KEY (transactionID),
