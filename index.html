@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People Management</title>
+<link href="style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="navigation">
+      <nav>
+        <a href="#" class="nav-link">Customers</a> |
+        <a href="#" class="nav-link">Transactions</a> |
+        <a href="#" class="nav-link">Prices</a> |
+        <a href="#" class="nav-link">Inventory</a>
+      </nav>
+    </div>
+
+    <table class="styled-table">
+        <thead>
+          <tr>
+            <td><button class="button button-new">New</button></td>
+            <td><button class="button button-reset">Reset</button></td>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Sample data rows with "Edit" and "Delete" buttons -->
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>1</td>
+            <td>John</td>
+            <td>Smith</td>
+            <td>john@gmail.com</td>
+            <td>NULL</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Doe</td>
+            <td>jayjay23@gmail.com</td>
+            <td>1234567890</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>3</td>
+            <td>Jesse</td>
+            <td>Takens</td>
+            <td>jesse@takens.com</td>
+            <td>NULL</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>4</td>
+            <td>Adam</td>
+            <td>Green</td>
+            <td>adamgreen@icloud.com</td>
+            <td>9255295757</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <div class="form-container">
+      <h3>Add Person</h3>
+      <form class="form">
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+        <select>
+          <option>Dropdown</option>
+          <!-- Options go here -->
+        </select>
+        <input type="number" placeholder="Phone Number (Optional)">
+        <button class="button button-green">Add Person</button>
+        <button class="button button-red">Cancel</button>
+      </form>
+    </div>
+
+    <div class="form-container">
+      <h3>Update Person</h3>
+      <form class="form">
+        <label>Customer ID: 2</label>
+        <input type="text" value="Jane">
+        <input type="text" value="Doe">
+        <select>
+          <option selected>Dropdown</option>
+          <!-- Options go here -->
+        </select>
+        <input type="number" value="1234567891">
+        <button class="button button-edit">Update</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
