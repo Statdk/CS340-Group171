@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>People Management</title>
+<title>Customer Management</title>
 <link href="style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
 </head>
@@ -14,15 +14,17 @@
         <a href="#" class="nav-link">Customers</a> |
         <a href="#" class="nav-link">Transactions</a> |
         <a href="#" class="nav-link">Prices</a> |
-        <a href="#" class="nav-link">Inventory</a>
+        <a href="#" class="nav-link">Inventory</a> |
+        <a href="#" class="nav-link">Season Dates</a>
       </nav>
     </div>
 
     <table class="styled-table">
+      <a class="table-title">Customers</a>
         <thead>
           <tr>
-            <td><button class="button button-new">New</button></td>
-            <td><button class="button button-reset">Reset</button></td>
+            <td class="button-column-width"><button class="button button-new">New</button></td>
+            <td class="button-column-width"><button class="button button-reset">Reset</button></td>
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -88,8 +90,8 @@
 
     <div class="form-container">
       <h3>Update Person</h3>
+      <h3>[Customer ID: 2]</h3>
       <form class="form">
-        <label>Customer ID: 2</label>
         <input type="text" value="Jane">
         <input type="text" value="Doe">
         <select>
@@ -98,6 +100,7 @@
         </select>
         <input type="number" value="1234567891">
         <button class="button button-edit">Update</button>
+        <button class="button button-red">Cancel</button>
       </form>
     </div>
   </div>
