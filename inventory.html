@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inventory Table</title>
+<link rel="icon" type="image/png" href="person-skiing-solid.svg">
 <link href="style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
 </head>
@@ -23,8 +24,8 @@
     <table class="styled-table">
       <thead>
         <tr>
-          <td><button class="button button-new">New</button></td>
-          <td><button class="button button-reset">Reset</button></td>
+          <td class="button-column-width"><button class="button button-new">New</button></td>
+          <td class="button-column-width"><button class="button button-reset">Reset</button></td>
           <th>Item Quantity ID</th>
           <th>Item ID (FK)</th>
           <th>Quantity Owned</th>
@@ -132,11 +133,42 @@
         </tr>
         <!-- The above pattern should be repeated for each row of data provided in the image -->
       </tbody>
-  </table>
+    </table>
   
+
+    <!-- Rental Items Types Table -->
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <td>[TODO]combine itemName^</td>
+          <td></td>
+          <th>Item ID</th>
+          <th>Item Name</th>
+          <th>List Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>2</td>
+          <td>snowboard</td>
+          <td>$60</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>3</td>
+          <td>skiBoots</td>
+          <td>$25</td>
+        </tr>
+        <!-- ... Additional rows ... -->
+      </tbody>
+    </table>
+
   
     <div class="form-container">
-      <h3>Add Transaction</h3>
+      <h3>Add [TODO]</h3>
       <form class="form">
         <input type="text" placeholder="First Name">
         <input type="text" placeholder="Last Name">
@@ -151,7 +183,7 @@
     </div>
 
     <div class="form-container">
-      <h3>Update Transaction</h3>
+      <h3>Update [TODO]</h3>
       <h3>[Customer ID: 2]</h3>
       <form class="form">
         <input type="text" value="Jane">

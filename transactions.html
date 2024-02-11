@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transactions Management</title>
+<link rel="icon" type="image/png" href="person-skiing-solid.svg"> <!-- Update the href with the path to your favicon -->
 <link href="style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="container">
     <div class="navigation">
@@ -86,8 +88,8 @@
         <a class="table-title">Rental Transactions</a>
         <thead>
           <tr>
-            <td><button class="button button-new">New</button></td>
-            <td><button class="button button-reset">Reset</button></td>
+            <td class="button-column-width"><button class="button button-new">New</button></td>
+            <td class="button-column-width"><button class="button button-reset">Reset</button></td>
             <th>Transaction ID</th>
             <th>Customer ID</th>
             <th>Discount ID</th>
@@ -129,9 +131,9 @@
     <table class="styled-table">
         <thead>
           <tr>
-            <td><button class="button button-new">New</button></td>
-            <td><button class="button button-reset">Reset</button></td>
-            <th>Transaction ID</th>
+            <th>combine iqID, QR^ [TODO]</th>
+            <th></th>
+            <th>Transaction ID (FK)</th>
             <th>Item Quantity ID</th>
             <th>Quantity Rented</th>
           </tr>
@@ -206,7 +208,7 @@
     
     
     <div class="form-container">
-      <h3>Add Transaction</h3>
+      <h3>Add Transaction [TODO]</h3>
       <form class="form">
         <input type="text" placeholder="First Name">
         <input type="text" placeholder="Last Name">
@@ -221,7 +223,7 @@
     </div>
 
     <div class="form-container">
-      <h3>Update Transaction</h3>
+      <h3>Update Transaction [TODO]</h3>
       <h3>[Customer ID: 2]</h3>
       <form class="form">
         <input type="text" value="Jane">
