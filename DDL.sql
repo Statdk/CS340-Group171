@@ -216,7 +216,6 @@ CREATE OR REPLACE TABLE RentalItems (
     transactionID INT NOT NULL,
     itemQuantityID INT NOT NULL,
     quantityRented INT NOT NULL,
-    sizeRented INT NOT NULL,
 
     PRIMARY KEY (rentalID),
     FOREIGN KEY (transactionID) REFERENCES RentalTransactions(transactionID),
