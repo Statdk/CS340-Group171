@@ -20,7 +20,7 @@
       </nav>
     </div>
 
-    
+
     <!-- Season Dates Table -->
     <table class="styled-table">
       <a class="table-title">Season Dates</a>
@@ -60,35 +60,24 @@
 
 
     <div class="form-container">
-      <h3>Add [TODO]</h3>
+      <h3>Add Season Dates</h3>
       <form class="form">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <select>
-          <option>Dropdown</option>
-          <!-- Options go here -->
-        </select>
-        <input type="number" placeholder="Phone Number (Optional)">
-        <button class="button button-green">Add Person</button>
+        <input type="date" id="start" name="trip-start" value="2000-01-01" min="2000-01-01" max="2100-12-31" />        
+        <input type="date" id="start" name="trip-start" value="2100-12-31" min="2000-01-01" max="2100-12-31" />        
+        <button class="button button-green">Add Season</button>
         <button class="button button-red">Cancel</button>
       </form>
     </div>
 
     <div class="form-container">
-      <h3>Update [TODO]</h3>
-      <h3>[Customer ID: 2]</h3>
-      <form class="form">
-        <input type="text" value="Jane">
-        <input type="text" value="Doe">
-        <select>
-          <option selected>Dropdown</option>
-          <!-- Options go here -->
-        </select>
-        <input type="number" value="1234567891">
-        <button class="button button-edit">Update</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
-  </div>
+        <h3>Update Season Dates</h3>
+        <h3>[seasonDateID: 2023]</h3>
+        <form class="form">
+          <input type="date" id="start" name="trip-start" value="2024-10-28" min="2000-01-01" max="2100-12-31" />        
+          <input type="date" id="start" name="trip-start" value="2025-05-25" min="2000-01-01" max="2100-12-31" />    
+          <button class="button button-edit">Update</button>
+          <button class="button button-red">Cancel</button>
+        </form>
+      </div>
 </body>
 </html>
