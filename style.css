@@ -157,7 +157,7 @@ font-size: 24px;
 }
 
 
-.form input[type="text"], .form select, .form input[type="number"] {
+.form input[type="text"], .form select, .form input[type="number"], .form input[type="date"] {
   background-color: #374151;
   color: #d1d5db;
   border: none;
@@ -167,7 +167,7 @@ font-size: 24px;
   margin-right: 8px;
 }
 
-.form input[type="text"]::placeholder, .form input[type="number"]::placeholder {
+.form input[type="text"]::placeholder, .form input[type="number"]::placeholder, .form input[type="date"] {
   color: #9ca3af;
 }
 
