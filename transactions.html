@@ -84,159 +84,289 @@
         </tbody>
     </table>
     
-    <table class="styled-table">
-        <a class="table-title">Rental Transactions</a>
-        <thead>
-          <tr>
-            <td class="button-column-width"><button class="button button-new">New</button></td>
-            <td class="button-column-width"><button class="button button-reset">Reset</button></td>
-            <th>Transaction ID</th>
-            <th>Customer ID</th>
-            <th>Discount ID</th>
-            <th>Sale Date</th>
-            <th>Rental Duration</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>2</td>
-            <td>2</td>
-            <td>3</td>
-            <td>2024-01-22</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>3</td>
-            <td>3</td>
-            <td>2</td>
-            <td>2024-01-25</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>4</td>
-            <td>3</td>
-            <td>NULL</td>
-            <td>2024-02-01</td>
-            <td>3</td>
-          </tr>
-        </tbody>
-    </table>
     
     <table class="styled-table">
-        <thead>
-          <tr>
-            <th>combine iqID, QR^ [TODO]</th>
-            <th></th>
-            <th>Transaction ID (FK)</th>
-            <th>Item Quantity ID</th>
-            <th>Quantity Rented</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>1</td>
-            <td>31</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>1</td>
-            <td>71</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>2</td>
-            <td>25</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>2</td>
-            <td>61</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>3</td>
-            <td>10</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>3</td>
-            <td>80</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>3</td>
-            <td>46</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>4</td>
-            <td>10</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>4</td>
-            <td>46</td>
-            <td>1</td>
-          </tr>
-        </tbody>
+      <a class="table-title">Rental Transactions Summary</a>
+      <thead>
+        <tr>
+          <td><button class="button button-new">New</button></td>
+          <td><button class="button button-reset">Reset</button></td>
+          <th>Transaction ID</th>
+          <th>Customer</th>
+          <th>Discount</th>
+          <th>Items Rented</th>
+          <th>Sale Date</th>
+          <th>Rental Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>1</td>
+          <td>1</td>
+          <td>4</td>
+          <td>2</td>
+          <td>2024-01-19</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>2</td>
+          <td>2</td>
+          <td>3</td>
+          <td>2</td>
+          <td>2024-01-22</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>3</td>
+          <td>3</td>
+          <td>2</td>
+          <td>5</td>
+          <td>2024-01-25</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>4</td>
+          <td>3</td>
+          <td>NULL</td>
+          <td>3</td>
+          <td>2024-02-01</td>
+          <td>3</td>
+        </tr>
+      </tbody>
     </table>
-    
-    
+
+
+    <table class="styled-table">
+      <a class="table-title">? Rental Transactions Detailed ?</a>
+      <thead>
+        <tr>
+          <td><button class="button button-new">New</button></td>
+          <td><button class="button button-reset">Reset</button></td>
+          <th>Rental Items ID</th>
+          <th>Transaction ID</th>
+          <th>Customer ID</th>
+          <th>Discount ID</th>
+          <th>Item Name</th>
+          <th>Item Size</th>
+          <th>Quantity Rented</th>
+          <th>Sale Date</th>
+          <th>Rental Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>4</td>
+          <td>snowboard</td>
+          <td>165</td>
+          <td>1</td>
+          <td>2024-01-19</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>2</td>
+          <td>1</td>
+          <td>1</td>
+          <td>4</td>
+          <td>snowboardBoots</td>
+          <td>30.5</td>
+          <td>1</td>
+          <td>2024-01-19</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>3</td>
+          <td>2</td>
+          <td>2</td>
+          <td>3</td>
+          <td>snowboard</td>
+          <td>147</td>
+          <td>1</td>
+          <td>2024-01-22</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>4</td>
+          <td>2</td>
+          <td>2</td>
+          <td>3</td>
+          <td>snowboardBoots</td>
+          <td>25.5</td>
+          <td>1</td>
+          <td>2024-01-22</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>5</td>
+          <td>3</td>
+          <td>3</td>
+          <td>2</td>
+          <td>ski</td>
+          <td>165</td>
+          <td>2</td>
+          <td>2024-01-25</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>6</td>
+          <td>3</td>
+          <td>3</td>
+          <td>2</td>
+          <td>skiPole</td>
+          <td>105</td>
+          <td>2</td>
+          <td>2024-01-25</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>7</td>
+          <td>3</td>
+          <td>3</td>
+          <td>2</td>
+          <td>skiBoots</td>
+          <td>28.5</td>
+          <td>1</td>
+          <td>2024-01-25</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>8</td>
+          <td>4</td>
+          <td>3</td>
+          <td>NULL</td>
+          <td>ski</td>
+          <td>165</td>
+          <td>2</td>
+          <td>2024-02-01</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>9</td>
+          <td>4</td>
+          <td>3</td>
+          <td>NULL</td>
+          <td>snowboardBoots</td>
+          <td>28.5</td>
+          <td>1</td>
+          <td>2024-02-01</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+
     
     <div class="form-container">
-      <h3>Add Transaction [TODO]</h3>
+      <h3>Add Lift Pass Transaction</h3>
       <form class="form">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <select>
-          <option>Dropdown</option>
-          <!-- Options go here -->
+        <input type="text" placeholder="customerID">
+        <input type="text" placeholder="seasonDateID">
+        <select name="Lift Pass Type" required>
+          <option value="" disabled selected>[Select Pass Type]</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
         </select>
-        <input type="number" placeholder="Phone Number (Optional)">
-        <button class="button button-green">Add Person</button>
+        <input type="date" id="start" name="trip-start" value="2000-01-01" min="2000-01-01" max="2100-12-31" />        
+        <button class="button button-green">Add Transaction</button>
         <button class="button button-red">Cancel</button>
       </form>
     </div>
 
     <div class="form-container">
-      <h3>Update Transaction [TODO]</h3>
-      <h3>[Customer ID: 2]</h3>
+      <h3>Update Lift Pass Transaction</h3>
+      <h3>[transactionID: 2]</h3>
       <form class="form">
-        <input type="text" value="Jane">
-        <input type="text" value="Doe">
-        <select>
-          <option selected>Dropdown</option>
-          <!-- Options go here -->
+        <input type="text" value=2>
+        <input type="text" value=2023>
+        <select name="Lift Pass Type" required>
+          <option value="" disabled selected>[Select Pass Type]</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+          <option value="5">5</option>
         </select>
-        <input type="number" value="1234567891">
+        <input type="date" id="start" name="trip-start" value="2024-01-22" min="2000-01-01" max="2100-12-31" />        
         <button class="button button-edit">Update</button>
         <button class="button button-red">Cancel</button>
       </form>
     </div>
-  </div>
+   
+
+    <div class="form-container">
+      <h3>Add Rental Transaction</h3>
+      <form class="form">
+        <input type="text" placeholder="transactionID, blank for new">
+        <input type="text" placeholder="customerID">
+        <select name="Discount Type" required>
+          <option value="" disabled selected>[Select Discount Type]</option>
+          <option value="1">student</option>
+          <option value="2">weekday</option>
+          <option value="3">allWeek</option>
+          <option value="4">seasonPass</option>
+        </select>
+        <input type="text" placeholder="itemID">
+        <input type="text" placeholder="size">
+        <input type="text" placeholder="quantityRented">
+        <input type="date" id="start" name="trip-start" value="2000-01-01" min="2000-01-01" max="2100-12-31" />        
+        <input type="text" placeholder="rentalDuration">    
+        <button class="button button-green">Add Transaction</button>
+        <button class="button button-red">Cancel</button>
+      </form>
+    </div>
+
+    <div class="form-container">
+      <h3>Update Rental Transaction</h3>
+      <h3>[rentalItemID: 4]</h3>
+      <form class="form">
+        <input type="text" value="2">
+        <input type="text" placeholder="2">
+        <select name="Discount Type" required>
+          <option value="" disabled selected>[Select Discount Type]</option>
+          <option value="1">student</option>
+          <option value="2">weekday</option>
+          <option value="3" selected>allWeek</option>
+          <option value="4">seasonPass</option>
+        </select>
+        <input type="text" value="4">
+        <input type="text" placeholder="25.5">
+        <input type="text" placeholder="1">
+        <input type="date" id="start" name="trip-start" value="2000-01-01" min="2024-01-22" max="2100-12-31" />        
+        <input type="text" placeholder="7">           
+        <button class="button button-edit">Update</button>
+        <button class="button button-red">Cancel</button>
+      </form>
+    </div>
+
 </body>
 </html>
