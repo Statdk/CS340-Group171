@@ -1,167 +1,173 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inventory Table</title>
-<link rel="icon" type="image/png" href="person-skiing-solid.svg">
-<link href="style.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
-    <div class="navigation">
-      <nav>
-        <a href="index.html" class="nav-link">Home</a> |
-        <a href="customers.html" class="nav-link">Customers</a> |
-        <a href="transactions.html" class="nav-link">Transactions</a> |
-        <a href="prices.html" class="nav-link">Prices</a> |
-        <a href="inventory.html" class="nav-link">Inventory</a> |
-        <a href="season-dates.html" class="nav-link">Season Dates</a>
-      </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Table</title>
+    <link rel="icon" type="image/png" href="person-skiing-solid.svg" />
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <nav>
+          <a href="index.html" class="nav-link">Home</a> |
+          <a href="customers.html" class="nav-link">Customers</a> |
+          <a href="transactions.html" class="nav-link">Transactions</a> |
+          <a href="prices.html" class="nav-link">Prices</a> |
+          <a href="inventory.html" class="nav-link">Inventory</a> |
+          <a href="season-dates.html" class="nav-link">Season Dates</a>
+        </nav>
+      </div>
+
+      <!-- Portion of itemQuantities Table -->
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <td class="button-column-width">
+              <button class="button button-new">New</button>
+            </td>
+            <td class="button-column-width">
+              <button class="button button-reset">Reset</button>
+            </td>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Quantity Owned</th>
+            <th>Size (cm)</th>
+            <th>List Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>1</td>
+            <td>ski</td>
+            <td>30</td>
+            <td>120</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>2</td>
+            <td>ski</td>
+            <td>30</td>
+            <td>125</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>3</td>
+            <td>ski</td>
+            <td>40</td>
+            <td>130</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>4</td>
+            <td>ski</td>
+            <td>50</td>
+            <td>135</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>5</td>
+            <td>ski</td>
+            <td>60</td>
+            <td>140</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>6</td>
+            <td>ski</td>
+            <td>70</td>
+            <td>145</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>7</td>
+            <td>ski</td>
+            <td>80</td>
+            <td>150</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>8</td>
+            <td>ski</td>
+            <td>90</td>
+            <td>155</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>9</td>
+            <td>ski</td>
+            <td>90</td>
+            <td>160</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>10</td>
+            <td>ski</td>
+            <td>90</td>
+            <td>165</td>
+            <td>$60</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">...</button></td>
+            <td><button class="button button-delete">...</button></td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+          </tr>
+          <tr>
+            <td><button class="button button-edit">Edit</button></td>
+            <td><button class="button button-delete">Delete</button></td>
+            <td>87</td>
+            <td>skiPole</td>
+            <td>40</td>
+            <td>140</td>
+            <td>$5</td>
+          </tr>
+          <!-- The above pattern should be repeated for each row of data provided in the image -->
+        </tbody>
+      </table>
+
+      <div class="form-container">
+        <h3>Update Inventory [Example: Item breaks; -1]</h3>
+        <form class="form">
+          <input type="text" placeholder="itemQuantityID" />
+          <select name="Inventory Adjustment" required>
+            <option value="" disabled selected>[Select Adjust Type]</option>
+            <option value="1">+</option>
+            <option value="2">-</option>
+          </select>
+          <input type="number" placeholder="quantity to adjust" />
+          <button class="button button-edit">Update</button>
+          <button class="button button-red">Cancel</button>
+        </form>
+      </div>
     </div>
-
-    <!-- Portion of itemQuantities Table -->
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <td class="button-column-width"><button class="button button-new"></button></td>
-          <td class="button-column-width"><button class="button button-reset">Reset</button></td>
-          <th>Item ID</th>
-          <th>Item Name</th>
-          <th>Quantity Owned</th>
-          <th>Size (cm)</th>
-          <th>List Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>1</td>
-          <td>ski</td>
-          <td>30</td>
-          <td>120</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>2</td>
-          <td>ski</td>
-          <td>30</td>
-          <td>125</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>3</td>
-          <td>ski</td>
-          <td>40</td>
-          <td>130</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>4</td>
-          <td>ski</td>
-          <td>50</td>
-          <td>135</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>5</td>
-          <td>ski</td>
-          <td>60</td>
-          <td>140</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>6</td>
-          <td>ski</td>
-          <td>70</td>
-          <td>145</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>7</td>
-          <td>ski</td>
-          <td>80</td>
-          <td>150</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>8</td>
-          <td>ski</td>
-          <td>90</td>
-          <td>155</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>9</td>
-          <td>ski</td>
-          <td>90</td>
-          <td>160</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>10</td>
-          <td>ski</td>
-          <td>90</td>
-          <td>165</td>
-          <td>$60</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">...</button></td>
-          <td><button class="button button-delete">...</button></td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-        </tr>
-        <tr>
-          <td><button class="button button-edit">Edit</button></td>
-          <td><button class="button button-delete"></button></td>
-          <td>87</td>
-          <td>skiPole</td>
-          <td>40</td>
-          <td>140</td>
-          <td>$5</td>
-        </tr>
-        <!-- The above pattern should be repeated for each row of data provided in the image -->
-      </tbody>
-    </table>
-
-
-    <div class="form-container">
-      <h3>Update Inventory [Example: Item breaks; -1]</h3>
-      <form class="form">
-        <input type="text" placeholder="itemQuantityID">
-        <select name="Inventory Adjustment" required>
-          <option value="" disabled selected>[Select Adjust Type]</option>
-          <option value="1">+</option>
-          <option value="2">-</option>
-        </select>
-        <input type="number" placeholder="quantity to adjust">
-        <button class="button button-edit">Update</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
