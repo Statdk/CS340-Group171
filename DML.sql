@@ -26,9 +26,9 @@ SELECT * FROM Items WHERE itemName = :name;                                     
 SELECT * FROM Items WHERE itemName = :name AND size = :size;                    -- Searching inventory by name and size
 
  -- Liftpass transactions merged with lift pass types
-SELECT * FROM LiftPassTransactions
-INNER JOIN LiftPassTypes ON LiftPassTransactions.liftPassID = LiftPassTypes.liftPassID;
-
+SELECT transactionID, customerID, seasonDatesID, category, listPrice, saleDate 
+FROM LiftPassTransactions 
+LEFT JOIN LiftPassTypes ON LiftPassTransactions.liftPassID = LiftPassTypes.liftPassID;
  -- Rental Transactions detailed
 SELECT * FROM RentalTransactions
 INNER JOIN RentalItems ON RentalTransactions.transactionID = RentalItems.transactionID;

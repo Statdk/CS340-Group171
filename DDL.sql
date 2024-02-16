@@ -175,11 +175,11 @@ CREATE OR REPLACE TABLE LiftPassTransactions (
 );
 
 INSERT INTO LiftPassTransactions (customerID, seasonDatesID, liftPassID, saleDate) VALUES
-(1, 5, 2023, '2024-01-18'),
-(2, 4, 2023, '2024-01-22'),
-(3, 3, 2023, '2024-01-25'),
-(4, 3, 2023, '2024-01-25'),
-(3, 3, 2023, '2024-02-01');
+(1, 2023, 5, '2024-01-18'),
+(2, 2023, 4, '2024-01-22'),
+(3, 2023, 3, '2024-01-25'),
+(4, 2023, 3, '2024-01-25'),
+(3, 2023, 3, '2024-02-01');
 
  -- Records transactions related to the rental of equipment
  -- Referenced by potentially many RentalItems rows
