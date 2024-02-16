@@ -38,6 +38,7 @@ body {
   text-align: center; /* Ensures text is centered in buttons */
   display: inline-block; /* Allows width and padding to be set */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
+  text-decoration: none; /* Removes underline from links */
 }
 
 /* Color variations */
@@ -95,6 +96,13 @@ body {
 }
 .button-delete:hover {
   background-color: #dc2626; /* Slightly darker red on hover */
+}
+.button-home {
+  padding: 6px 12px;
+  background-color: #b24ec8;
+}
+.button-home:hover {
+  background-color: #952fac; /* Slightly darker blue on hover */
 }
 
 .table-title {
