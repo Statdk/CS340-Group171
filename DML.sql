@@ -51,23 +51,6 @@ INSERT INTO SeasonDates (seasonDatesID, seasonStart, seasonEnd) VALUES
 INSERT INTO Items (itemName, quantityOwned, size, listPrice) VALUES
     (:name, :quantity, :size, :price);
 
- -- Common task of creating a new rental transaction
- -- 1: create transaction
-INSERT INTO RentalTransactions (customerID, discountID, saleDate, rentalDuration) VALUES
-    (
-        SELECT customerID FROM Customers WHERE firstName = :first and lastName = :last,
-        :discountID,
-        :date,
-        :duration
-    );
- -- 2: repeat for until all item(s) in the transaction are added
-INSERT INTO RentalItems (transactionID, itemID, quantityRented) VALUES
-    (
-        SELECT transactionID FROM RentalTransactions WHERE customerID = (SELECT customerID FROM Customers WHERE firstName = :first and lastName = :last),
-        SELECT itemID FROM Items WHERE itemName = :name AND size = :size,
-        :quantity
-    );
-
  -- Edit Entries by ID
 UPDATE Customers
 SET firstName = :first, lastName = :last, email = :email, phone = :phone
