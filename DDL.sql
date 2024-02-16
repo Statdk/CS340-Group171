@@ -182,6 +182,7 @@ INSERT INTO LiftPassTransactions (customerID, seasonDatesID, liftPassID, saleDat
 (3, 3, 2023, '2024-02-01');
 
  -- Records transactions related to the rental of equipment
+ -- Referenced by potentially many RentalItems rows
 CREATE OR REPLACE TABLE RentalTransactions (
     transactionID INT NOT NULL AUTO_INCREMENT,
     customerID INT NOT NULL,                -- Customer who performed the transaction
