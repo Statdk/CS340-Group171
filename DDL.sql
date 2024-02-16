@@ -232,3 +232,7 @@ INSERT INTO RentalItems (transactionID, itemQuantityID, quantityRented, sizeRent
 (3, 46, 1, 28.5),
 (4, 10, 2, 165),
 (4, 46, 1, 28.5);
+
+
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT; 
