@@ -1,13 +1,14 @@
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
 
-
+ -- Records the details of items available for rental
 CREATE OR REPLACE TABLE Items (
     itemID INT NOT NULL AUTO_INCREMENT,
     itemName CHAR(50) NOT NULL,
-    quantityOwned INT NOT NULL,
-    size INT NOT NULL,
-    listPrice FLOAT NOT NULL,
+    quantityOwned INT NOT NULL,         -- Quantity owned by the resort
+    size INT NOT NULL,                  -- Numberical size of the item by their standard units (e.g. snowboard/ski: cm, boot: size, etc) 
+    listPrice FLOAT NOT NULL,           -- Live pricing of the item for rent
+
     PRIMARY KEY (itemID)
 );
 
@@ -98,11 +99,11 @@ INSERT INTO Items (itemName, quantityOwned, size, listPrice) VALUES
 ('skiPole', 50, 135, 5),
 ('skiPole', 40, 140, 5);
 
-
+ -- Records the different types of discounts available that can be applied to transactions
 CREATE OR REPLACE TABLE Discounts (
     discountID INT NOT NULL AUTO_INCREMENT,
-    discountType VARCHAR(50) NOT NULL,
-    discountPercentage FLOAT NOT NULL,
+    discountType VARCHAR(50) NOT NULL,      -- Descriptive type or reasoning for the discount
+    discountPercentage FLOAT NOT NULL,      -- 0.XX discount to be applied at checkout
     PRIMARY KEY (discountID)
 );
 
@@ -112,11 +113,11 @@ INSERT INTO Discounts (discountType, discountPercentage) VALUES
 ('allWeek', 20.00),
 ('seasonPass', 50.00);
 
-
+ -- Records the start and end dates for tracking which season passes are associated with
 CREATE OR REPLACE TABLE SeasonDates (
   seasonDatesID int NOT NULL AUTO_INCREMENT,
-  seasonStart datetime NOT NULL,
-  seasonEnd datetime NOT NULL,
+  seasonStart datetime NOT NULL,            -- First day of the season
+  seasonEnd datetime NOT NULL,              -- Last dat of the season
 
   PRIMARY KEY (seasonDatesID)
 );
@@ -126,11 +127,11 @@ INSERT INTO SeasonDates (seasonDatesID, seasonStart, seasonEnd) VALUES
 (2023, '2023-10-28', '2024-05-04'),
 (2022, '2022-11-04', '2023-04-27');
 
-
+ -- Records the different types of lift passes available for purchase
 CREATE OR REPLACE TABLE LiftPassTypes (
   liftPassID int NOT NULL AUTO_INCREMENT,
-  category varchar(50) NOT NULL,
-  listPrice float NOT NULL,
+  category varchar(50) NOT NULL,            -- The The category of the lift pass (e.g., 1day, 2day, seasonPass)
+  listPrice float NOT NULL,                 -- Price of the ticket
 
   PRIMARY KEY (liftPassID)
 );
@@ -142,13 +143,14 @@ INSERT INTO LiftPassTypes (liftPassID, category, listPrice) VALUES
 (4, 'oneWeek', 500.00),
 (5, 'seasonPass', 700.00);
 
-
+ -- Records the details of individuals who may purchase lift passes and/or rent equipment
 CREATE OR REPLACE TABLE Customers (
     customerID INT NOT NULL AUTO_INCREMENT,
-    firstName VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    phoneNumber INT,
+    firstName VARCHAR(50) NOT NULL,         -- Customer first name
+    lastName VARCHAR(50) NOT NULL,          -- Customer last name
+    email VARCHAR(50) NOT NULL,             -- Customer email on file
+    phoneNumber INT,                        -- Customer phone number, if available
+
     PRIMARY KEY (customerID)
 );
 
@@ -158,16 +160,16 @@ INSERT INTO Customers (customerID, firstName, lastName, email, phoneNumber) VALU
 (3, 'Jesse', 'Takens', 'jesse@takens.cc', NULL),
 (4, 'Adam', 'Green', 'adamgreen@icl.com', '9255295757');
 
-
+ -- Records transactions related to the purchase of lift passes by customers
 CREATE OR REPLACE TABLE LiftPassTransactions (
     transactionID INT NOT NULL AUTO_INCREMENT,
-    customerID INT NOT NULL,
-    seasonDatesID int NOT NULL,
-    liftPassID INT NOT NULL,
-    saleDate DATETIME NOT NULL,
+    customerID INT NOT NULL,                -- Customer who performed the transaction
+    seasonDatesID int NOT NULL,             -- Season to assign the pass to
+    liftPassID INT NOT NULL,                -- Pass included in the transaction
+    saleDate DATETIME NOT NULL,             -- Date of the transaction
 
     PRIMARY KEY (transactionID),
-    FOREIGN KEY (customerID) REFERENCES Customers(customerID),
+    FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON DELETE CASCADE,
     FOREIGN KEY (SeasonDatesID) REFERENCES SeasonDates(SeasonDatesID),
     FOREIGN KEY (liftPassID) REFERENCES LiftPassTypes(liftPassID)
 );
@@ -179,16 +181,16 @@ INSERT INTO LiftPassTransactions (customerID, seasonDatesID, liftPassID, saleDat
 (4, 3, 2023, '2024-01-25'),
 (3, 3, 2023, '2024-02-01');
 
-
+ -- Records transactions related to the rental of equipment
 CREATE OR REPLACE TABLE RentalTransactions (
     transactionID INT NOT NULL AUTO_INCREMENT,
-    customerID INT NOT NULL,
-    discountID INT,
-    saleDate DATETIME NOT NULL,
-    rentalDuration INT NOT NULL,
+    customerID INT NOT NULL,                -- Customer who performed the transaction
+    discountID INT,                         -- Discount applied to the transaction
+    saleDate DATETIME NOT NULL,             -- Date of the transaction
+    rentalDuration INT NOT NULL,            -- Maximum duration of the rental agreement
 
     PRIMARY KEY (transactionID),
-    FOREIGN KEY (customerID) REFERENCES Customers(customerID),
+    FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON DELETE CASCADE,
     FOREIGN KEY (discountID) REFERENCES Discounts(discountID)
 );
 
@@ -198,15 +200,15 @@ INSERT INTO RentalTransactions (customerID, discountID, saleDate, rentalDuration
 (3, 2, '2024-01-25', 3),
 (3, NULL, '2024-02-01', 3);
 
-
+ -- Records each item that is part of a rental transaction
 CREATE OR REPLACE TABLE RentalItems (
     rentalID INT NOT NULL AUTO_INCREMENT,
-    transactionID INT NOT NULL,
-    itemID INT NOT NULL,
-    quantityRented INT NOT NULL,
+    transactionID INT NOT NULL,             -- Associated rental transaction
+    itemID INT NOT NULL,                    -- Item to include into transaction
+    quantityRented INT NOT NULL,            -- Amount of identical items rented in the transaction
 
     PRIMARY KEY (rentalID),
-    FOREIGN KEY (transactionID) REFERENCES RentalTransactions(transactionID),
+    FOREIGN KEY (transactionID) REFERENCES RentalTransactions(transactionID)  ON DELETE CASCADE,
     FOREIGN KEY (itemID) REFERENCES Items(itemID)
 );
 
