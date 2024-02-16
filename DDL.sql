@@ -202,24 +202,24 @@ INSERT INTO RentalTransactions (customerID, discountID, saleDate, rentalDuration
 CREATE OR REPLACE TABLE RentalItems (
     rentalID INT NOT NULL AUTO_INCREMENT,
     transactionID INT NOT NULL,
-    itemQuantityID INT NOT NULL,
+    itemID INT NOT NULL,
     quantityRented INT NOT NULL,
 
     PRIMARY KEY (rentalID),
     FOREIGN KEY (transactionID) REFERENCES RentalTransactions(transactionID),
-    FOREIGN KEY (itemQuantityID) REFERENCES ItemQuantities(itemQuantityID)
+    FOREIGN KEY (itemID) REFERENCES Items(itemID)
 );
 
-INSERT INTO RentalItems (transactionID, itemQuantityID, quantityRented, sizeRented) VALUES
-(1, 31, 1, 165),
-(1, 71, 1, 30.5),
-(2, 25, 1, 147),
-(2, 61, 1, 25.5),
-(3, 10, 2, 165),
-(3, 80, 1, 105),
-(3, 46, 1, 28.5),
-(4, 10, 2, 165),
-(4, 46, 1, 28.5);
+INSERT INTO RentalItems (transactionID, itemID, quantityRented) VALUES
+(1, 31, 1),
+(1, 71, 1),
+(2, 25, 1),
+(2, 61, 1),
+(3, 10, 2),
+(3, 80, 1),
+(3, 46, 1),
+(4, 10, 2),
+(4, 46, 1);
 
 
 
