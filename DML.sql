@@ -30,8 +30,22 @@ SELECT transactionID, customerID, seasonDatesID, category, listPrice, saleDate
 FROM LiftPassTransactions 
 LEFT JOIN LiftPassTypes ON LiftPassTransactions.liftPassID = LiftPassTypes.liftPassID;
  -- Rental Transactions detailed
-SELECT * FROM RentalTransactions
-INNER JOIN RentalItems ON RentalTransactions.transactionID = RentalItems.transactionID;
+SELECT RentalItems.rentalID, RentalTransactions.transactionID, RentalTransactions.customerID, 
+RentalTransactions.discountID, Items.itemName, Items.size, RentalItems.quantityRented, RentalTransactions.saleDate, 
+RentalTransactions.rentalDuration
+FROM RentalTransactions
+INNER JOIN RentalItems ON RentalTransactions.transactionID = RentalItems.transactionID
+INNER JOIN Items ON RentalItems.itemID = Items.itemID;
+ -- Rental Transactions detailed but looks nice
+SELECT Customers.firstName, Customers.lastName, Discounts.discountType, Discounts.discountPercentage,
+RentalTransactions.saleDate, Items.itemName, Items.size, RentalItems.quantityRented,
+Items.listPrice, RentalTransactions.rentalDuration
+FROM RentalTransactions
+LEFT JOIN RentalItems ON RentalTransactions.transactionID = RentalItems.transactionID
+INNER JOIN Items ON RentalItems.itemID = Items.itemID
+INNER JOIN Customers ON RentalTransactions.customerID = RentalTransactions.customerID
+INNER JOIN Discounts ON RentalTransactions.discountID = Discounts.discountID
+ORDER BY RentalTransactions.saleDate DESC, Customers.lastName ASC;
 
  -- Statements to create single entries if we have IDs
 INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
