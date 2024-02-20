@@ -13,12 +13,17 @@
   <div class="container">
     <div class="navigation">
       <nav>
-        <a href="index.html" class="nav-link">Home</a> |
+        <a href="index.html" class="nav-link">Home</a>
+      <nav>
+      <nav>
         <a href="customers.html" class="nav-link">Customers</a> |
-        <a href="transactions.html" class="nav-link">Transactions</a> |
-        <a href="prices.html" class="nav-link">Prices</a> |
-        <a href="inventory.html" class="nav-link">Inventory</a> |
-        <a href="season-dates.html" class="nav-link">Season Dates</a>
+        <a href="lift-pass-transactions.html" class="nav-link">Lift Pass Transactions</a> |
+        <a href="lift-pass-types.html" class="nav-link">Lift Pass Types</a> |
+        <a href="season-dates.html" class="nav-link">Season Dates</a> |
+        <a href="rental-items.html" class="nav-link">Rental Items</a> |
+        <a href="rental-transactions.html" class="nav-link">Rental Transactions</a> |
+        <a href="items.html" class="nav-link">Items</a>
+        <a href="discounts.html" class="nav-link">Discounts</a>
       </nav>
     </div>
 
@@ -84,7 +89,7 @@
         </tbody>
     </table> -->
     
-
+    <p>TODO figure this out</p>
     <table class="styled-table">
       <a class="table-title">Lift Pass Transactions Merged with Lift Pass Types</a>
       <thead>
@@ -219,7 +224,7 @@
 
 
     <table class="styled-table">
-      <a class="table-title">? Rental Transactions Detailed ?</a>
+      <a class="table-title">Rental Transactions Detailed</a>
       <thead>
         <tr>
           <td><button class="button button-new">New</button></td>
@@ -356,46 +361,6 @@
       </tbody>
     </table>
 
-    
-    <div class="form-container">
-      <h3>Add Lift Pass Transaction</h3>
-      <form class="form">
-        <input type="text" placeholder="customerID">
-        <input type="text" placeholder="seasonDateID">
-        <select name="Lift Pass Type" required>
-          <option value="" disabled selected>[Select Pass Type]</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <input type="date" id="start" name="trip-start" value="2020-01-01" min="2000-01-01" max="2100-12-31" />        
-        <button class="button button-green">Add Transaction</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
-
-    <div class="form-container">
-      <h3>Update Lift Pass Transaction</h3>
-      <h3>[transactionID: 2]</h3>
-      <form class="form">
-        <input type="text" value=2>
-        <input type="text" value=2023>
-        <select name="Lift Pass Type" required>
-          <option value="" disabled selected>[Select Pass Type]</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4" selected>4</option>
-          <option value="5">5</option>
-        </select>
-        <input type="date" id="start" name="trip-start" value="2024-01-22" min="2000-01-01" max="2100-12-31" />        
-        <button class="button button-edit">Update</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
-   
 
     <div class="form-container">
       <h3>Add Rental Transaction</h3>

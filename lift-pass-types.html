@@ -26,64 +26,56 @@
       </nav>
     </div>
 
-
-    <!-- Season Dates Table -->
+    <!-- Lift Pass Types Table -->
     <table class="styled-table">
-      <a class="table-title">Season Dates</a>
+      <a class="table-title">Lift Pass Types</a>
       <thead>
         <tr>
           <td class="button-column-width"><button class="button button-new">New</button></td>
           <td class="button-column-width"><button class="button button-reset">Reset</button></td>
-          <th>Season Date ID</th>
-          <th>Season Start</th>
-          <th>Season End</th>
+          <th>Lift Pass Type ID</th>
+          <th>Category</th>
+          <th>List Price</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><button class="button button-edit">Edit</button></td>
           <td><button class="button button-delete">Delete</button></td>
-          <td>2022</td>
-          <td>2022-11-04</td>
-          <td>2023-04-27</td>
+          <td>1</td>
+          <td>oneDay</td>
+          <td>$80</td>
         </tr>
         <tr>
           <td><button class="button button-edit">Edit</button></td>
           <td><button class="button button-delete">Delete</button></td>
-          <td>2023</td>
-          <td>2023-10-28</td>
-          <td>2024-05-04</td>
+          <td>2</td>
+          <td>twoDay</td>
+          <td>$150</td>
         </tr>
         <tr>
           <td><button class="button button-edit">Edit</button></td>
           <td><button class="button button-delete">Delete</button></td>
-          <td>2024</td>
-          <td>2024-10-28</td>
-          <td>2025-05-04</td>
+          <td>3</td>
+          <td>threeDay</td>
+          <td>$220</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>4</td>
+          <td>oneWeek</td>
+          <td>$500</td>
+        </tr>
+        <tr>
+          <td><button class="button button-edit">Edit</button></td>
+          <td><button class="button button-delete">Delete</button></td>
+          <td>5</td>
+          <td>seasonPass</td>
+          <td>$700</td>
         </tr>
       </tbody>
     </table>
-
-
-    <div class="form-container">
-      <h3>Add Season Dates</h3>
-      <form class="form">
-        <input type="date" id="start" name="trip-start" value="2020-01-01" min="2000-01-01" max="2100-12-31" />        
-        <input type="date" id="start" name="trip-start" value="2030-12-31" min="2000-01-01" max="2100-12-31" />        
-        <button class="button button-green">Add Season</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
-
-    <div class="form-container">
-        <h3>Update Season Dates</h3>
-        <h3>[seasonDateID: 2024]</h3>
-        <form class="form">
-          <input type="date" id="start" name="trip-start" value="2024-10-28" min="2000-01-01" max="2100-12-31" />        
-          <input type="date" id="start" name="trip-start" value="2025-05-25" min="2000-01-01" max="2100-12-31" />    
-          <button class="button button-edit">Update</button>
-          <button class="button button-red">Cancel</button>
-        </form>
-      </div>
+    
 </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory Table</title>
+    <title>Items Table</title>
     <link rel="icon" type="image/png" href="person-skiing-solid.svg" />
     <link href="style.css" rel="stylesheet" />
     <link
@@ -15,17 +15,23 @@
     <div class="container">
       <div class="navigation">
         <nav>
-          <a href="index.html" class="nav-link">Home</a> |
+          <a href="index.html" class="nav-link">Home</a>
+        <nav>
+        <nav>
           <a href="customers.html" class="nav-link">Customers</a> |
-          <a href="transactions.html" class="nav-link">Transactions</a> |
-          <a href="prices.html" class="nav-link">Prices</a> |
-          <a href="inventory.html" class="nav-link">Inventory</a> |
-          <a href="season-dates.html" class="nav-link">Season Dates</a>
+          <a href="lift-pass-transactions.html" class="nav-link">Lift Pass Transactions</a> |
+          <a href="lift-pass-types.html" class="nav-link">Lift Pass Types</a> |
+          <a href="season-dates.html" class="nav-link">Season Dates</a> |
+          <a href="rental-items.html" class="nav-link">Rental Items</a> |
+          <a href="rental-transactions.html" class="nav-link">Rental Transactions</a> |
+          <a href="items.html" class="nav-link">Items</a>
+          <a href="discounts.html" class="nav-link">Discounts</a>
         </nav>
       </div>
 
       <!-- Portion of itemQuantities Table -->
       <table class="styled-table">
+        <a class="table-title">Items</a>
         <thead>
           <tr>
             <td class="button-column-width">
@@ -155,10 +161,10 @@
       </table>
 
       <div class="form-container">
-        <h3>Update Inventory [Example: Item breaks; -1]</h3>
+        <h3>Update Items [Example: Item breaks; -1]</h3>
         <form class="form">
           <input type="text" placeholder="itemQuantityID" />
-          <select name="Inventory Adjustment" required>
+          <select name="Items Adjustment" required>
             <option value="" disabled selected>[Select Adjust Type]</option>
             <option value="1">+</option>
             <option value="2">-</option>
