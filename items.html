@@ -146,9 +146,10 @@
       </table>
 
       <div class="form-container">
-        <h3>Update Items [Example: Item breaks; -1]</h3>
+        <h3>Update Items</h3>
         <form class="form">
-          <input type="text" placeholder="itemQuantityID" />
+          <input type="text" placeholder="Item Name" />
+          <input type="text" placeholder="Size (cm)" />
           <select name="Items Adjustment" required>
             <option value="" disabled selected>[Select Adjust Type]</option>
             <option value="1">+</option>
@@ -159,6 +160,23 @@
           <button class="button button-red">Cancel</button>
         </form>
       </div>
+
+      <!-- <div class="form-container">
+        <h3>Update Items *EXAMPLE DATA [Example when a size 135 pole breaks it would be -1]*</h3>
+        <form class="form">
+          <input type="text" value="skiPole" />
+          <input type="text" value="135" />
+          <select name="Items Adjustment" required>
+            <option value="" disabled selected>[Select Adjust Type]</option>
+            <option value="1">+</option>
+            <option value="2" selected>-</option>
+          </select>
+          <input type="number" value="1" />
+          <button class="button button-edit">Update</button>
+          <button class="button button-red">Cancel</button>
+        </form>
+      </div> -->
+
     </div>
   </body>
 </html>
