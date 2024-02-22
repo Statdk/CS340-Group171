@@ -1,8 +1,84 @@
 @media (prefers-color-scheme: dark) {
 }
 
+.header {
+  background-color: #16202a; /* Lighter than #111827 */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  position: fixed; /* Keep header fixed at the top of the viewport */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure the header spans the entire width */
+  z-index: 1000; /* Ensure the header stays on top of other content */
+}
+
+.home-button {
+  /* Allows the Home button to sit on the left */
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start; /* Aligns Home button to the left */
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.navigation nav {
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1000px
+}
+
+/* Styling for the Home button to match other buttons */
+.nav-link {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block; /* Allows width and padding to be set */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+.nav-link-home {
+  margin-right: auto;
+}
+.nav-link:hover, .nav-link:hover {
+  background-color: #dbdbdb; /* Slightly darker green on hover */
+}
+
+/* Adjust navigation link appearance to be more button-like */
+.navigation a.nav-link {
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.navigation a.nav-link:hover {
+  background-color: #2563eb; /* Slightly darker blue on hover */
+}
+
+.navigation a {
+  color: #60a5fa; /* Lighter blue for links */
+  padding: 4px;
+}
+.navigation a:hover {
+    color: #3b82f6; /* Darker blue on hover */
+}
+
+
+
 body {
-  background-color: #111827; /* Updated to match the darker background */
+  padding-top: 60px; /* Adjust based on the actual height of your header */
+  background-color: #111827;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
 }
@@ -13,19 +89,7 @@ body {
   padding: 16px;
 }
 
-.navigation {
-  margin-bottom: 16px;
-}
 
-.navigation a {
-  color: #60a5fa; /* Lighter blue for links */
-  margin-bottom: 10px;
-  padding: 4px;
-}
-
-.navigation a:hover {
-    color: #3b82f6; /* Darker blue on hover */
-}
 
 /* Base button styles */
 .button {
