@@ -15,68 +15,6 @@
   <div id="header-placeholder"></div>
 
   <div class="container">
-    <!-- <table class="styled-table">
-        <a class="table-title">Lift Pass Transactions</a>
-        <thead>
-          <tr>
-            <td class="button-column-width"><button class="button button-new">New</button></td>
-            <td class="button-column-width"><button class="button button-reset">Reset</button></td>
-            <th>Transaction ID</th>
-            <th>Customer ID</th>
-            <th>Season Date ID</th>
-            <th>Lift Pass Type ID</th>
-            <th>Sale Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>1</td>
-            <td>1</td>
-            <td>2023</td>
-            <td>5</td>
-            <td>2024-01-18</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>2</td>
-            <td>2</td>
-            <td>2023</td>
-            <td>4</td>
-            <td>2024-01-22</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>3</td>
-            <td>3</td>
-            <td>2023</td>
-            <td>3</td>
-            <td>2024-01-25</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>4</td>
-            <td>4</td>
-            <td>2023</td>
-            <td>3</td>
-            <td>2024-01-25</td>
-          </tr>
-          <tr>
-            <td><button class="button button-edit">Edit</button></td>
-            <td><button class="button button-delete">Delete</button></td>
-            <td>5</td>
-            <td>3</td>
-            <td>2023</td>
-            <td>3</td>
-            <td>2024-02-01</td>
-          </tr>
-        </tbody>
-    </table> -->
-    
 
     <table class="styled-table">
       <a class="table-title">Lift Pass Transactions (Merged with Lift Pass Types)</a>
@@ -146,45 +84,80 @@
       </tbody>
   </table>
   
-    
-    <div class="form-container">
-      <h3>Add Lift Pass Transaction</h3>
-      <form class="form">
-        <input type="text" placeholder="customerID">
-        <input type="text" placeholder="seasonDateID">
-        <select name="Lift Pass Type" required>
-          <option value="" disabled selected>[Select Pass Type]</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <input type="date" id="start" name="trip-start" value="2020-01-01" min="2000-01-01" max="2100-12-31" />        
-        <button class="button button-green">Add Transaction</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
+     
+  <div class="form-container">
+    <h3>Add Lift Pass Transaction</h3>
+    <form class="form">
+      <input type="text" placeholder="customerID">
+      <select name="Season Date ID" required>
+        <option value="" disabled selected>[Select Season]</option>
+        <option value="1">2022</option>
+        <option value="2">2023</option>
+        <option value="3">2034</option>
+      </select>
+      <select name="Lift Pass Type" required>
+        <option value="" disabled selected>[Select Pass Type]</option>
+        <option value="1">One Day</option>
+        <option value="2">Two Days</option>
+        <option value="3">Three Days</option>
+        <option value="4">One Week</option>
+        <option value="5">Season Pass</option>
+      </select>
+      <input type="date" id="start" name="trip-start" value="2020-01-01" min="2000-01-01" max="2100-12-31" />        
+      <button class="button button-green">Add Lift Pass Transaction</button>
+      <button class="button button-red">Cancel</button>
+    </form>
+  </div>
 
-    <div class="form-container">
-      <h3>Update Lift Pass Transaction</h3>
-      <h3>[transactionID: 2]</h3>
-      <form class="form">
-        <input type="text" value=2>
-        <input type="text" value=2023>
-        <select name="Lift Pass Type" required>
-          <option value="" disabled selected>[Select Pass Type]</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4" selected>4</option>
-          <option value="5">5</option>
-        </select>
-        <input type="date" id="start" name="trip-start" value="2024-01-22" min="2000-01-01" max="2100-12-31" />        
-        <button class="button button-edit">Update</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
+  <div class="form-container">
+    <h3>Update Lift Pass Transaction</h3>
+    <form class="form">
+      <input type="text" placeholder="customerID">
+      <select name="Season Date ID" required>
+        <option value="" disabled selected>[Select Season]</option>
+        <option value="1">2022</option>
+        <option value="2">2023</option>
+        <option value="3">2034</option>
+      </select>
+      <select name="Lift Pass Type" required>
+        <option value="" disabled selected>[Select Pass Type]</option>
+        <option value="1">One Day</option>
+        <option value="2">Two Days</option>
+        <option value="3">Three Days</option>
+        <option value="4">One Week</option>
+        <option value="5">Season Pass</option>
+      </select>
+      <input type="date" id="start" name="trip-start" value="2020-01-01" min="2000-01-01" max="2100-12-31" />        
+      <button class="button button-edit">Update Lift Pass Transaction</button>
+      <button class="button button-red">Cancel</button>
+    </form>
+  </div>
+
+  <!-- <div class="form-container">
+    <h3>Update Lift Pass Transaction *EXAMPLE DATA*</h3>
+    <h3> for TransactionID: 2</h3>
+    <form class="form">
+      <input type="text" value=2>
+      <select name="Season Date ID" required>
+        <option value="" disabled selected>[Select Season]</option>
+        <option value="1">2022</option>
+        <option value="2" selected>2023</option>
+        <option value="3">2034</option>
+      </select>
+      <select name="Lift Pass Type" required>
+        <option value="" disabled selected>[Select Pass Type]</option>
+        <option value="1">One Day</option>
+        <option value="2">Two Days</option>
+        <option value="3">Three Days</option>
+        <option value="4" selected>One Week</option>
+        <option value="5">Season Pass</option>
+      </select>
+      <input type="date" id="start" name="trip-start" value="2024-01-22" min="2000-01-01" max="2100-12-31" />        
+      <button class="button button-edit">Update</button>
+      <button class="button button-red">Cancel</button>
+    </form>
+  </div> -->
+
 
 
 </body>
