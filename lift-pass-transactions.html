@@ -16,6 +16,43 @@
 
   <div class="container">
 
+
+    <div class="filterform-container">
+      <h3>Filter by</h3>
+      <div class="form">
+        <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterCustID" placeholder="Customer ID" />
+        <select class="filter" onchange="updateFilters()" id="filterType">
+          <option value="" disabled selected>[Select Season]</option>
+          <option value="1">2022</option>
+          <option value="2">2023</option>
+          <option value="3">2034</option>
+        </select>
+        <select class="filter" onchange="updateFilters()" id="filterType"> <!-- Probably replace these values with pass type ID's later... -->
+          <option value="" disabled selected>[Select Pass Type]</option>
+          <option value="1">One Day</option>
+          <option value="2">Two Days</option>
+          <option value="3">Three Days</option>
+          <option value="4">One Week</option>
+          <option value="5">Season Pass</option>
+        </select>
+        <input class="filter" type="date" onchange="updateFilters()" onkeypress="updateFilters()" onclick="updateFilters()" id="filterPhone" title="Sale Date" />
+        <button class="button button-red" onclick="clearFilters()">Clear</button>
+        <script>
+          function clearFilters() {
+            let inputs = document.getElementsByClassName('filter');
+            for (const input of inputs) {
+              input.value = '';
+            }
+            updateFilters();
+          }
+          function updateFilters() {
+            console.log("Faux update");
+          }
+        </script>
+      </div>
+    </div> 
+
+    
     <table class="styled-table">
       <a class="table-title">Lift Pass Transactions (Merged with Lift Pass Types)</a>
       <thead>
@@ -84,41 +121,6 @@
       </tbody>
     </table>
   
-
-    <div class="filterform-container">
-      <h3>Filter by</h3>
-      <div class="form">
-        <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterCustID" placeholder="Customer ID" />
-        <select class="filter" onchange="updateFilters()" id="filterType">
-          <option value="" disabled selected>[Select Season]</option>
-          <option value="1">2022</option>
-          <option value="2">2023</option>
-          <option value="3">2034</option>
-        </select>
-        <select class="filter" onchange="updateFilters()" id="filterType"> <!-- Probably replace these values with pass type ID's later... -->
-          <option value="" disabled selected>[Select Pass Type]</option>
-          <option value="1">One Day</option>
-          <option value="2">Two Days</option>
-          <option value="3">Three Days</option>
-          <option value="4">One Week</option>
-          <option value="5">Season Pass</option>
-        </select>
-        <input class="filter" type="date" onchange="updateFilters()" onkeypress="updateFilters()" onclick="updateFilters()" id="filterPhone" title="Sale Date" />
-        <button class="button button-red" onclick="clearFilters()">Clear</button>
-        <script>
-          function clearFilters() {
-            let inputs = document.getElementsByClassName('filter');
-            for (const input of inputs) {
-              input.value = '';
-            }
-            updateFilters();
-          }
-          function updateFilters() {
-            console.log("Faux update");
-          }
-        </script>
-      </div>
-    </div> 
 
     <div class="form-container">
       <h3>Add Lift Pass Transaction</h3>
