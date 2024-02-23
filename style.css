@@ -37,17 +37,20 @@
 }
 
 /* Styling for the Home button to match other buttons */
-.nav-link {
+.nav-link, .nav-link-home {
+  display: inline-flex; /* Changed from inline-block to inline-flex */
+  align-items: center; /* Vertically */
+  justify-content: center; /* Horizontally */
   background-color: #ffffff;
   color: #000000;
   padding: 8px 12px;
   border-radius: 6px;
   text-decoration: none;
-  display: inline-block; /* Allows width and padding to be set */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s;
+  height: 40px;
 }
 .nav-link-home {
-  margin-right: auto;
+  margin-right: 20px;
 }
 .nav-link:hover, .nav-link:hover {
   background-color: #dbdbdb; /* Slightly darker green on hover */
