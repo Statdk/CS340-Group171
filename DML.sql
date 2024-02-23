@@ -18,14 +18,35 @@ SELECT * FROM Discounts WHERE discountID = :ID;
 SELECT * FROM SeasonDates WHERE seasonDatesID = :ID;
 SELECT * FROM Items WHERE itemID = :ID;
 
-SELECT * FROM Customers WHERE firstName = :first AND lastName = :last;          -- Searching for customer by first and last name
-SELECT * FROM Customers WHERE email = :email;                                   -- Searching for customer by email
+-- Get a List of Pass Types and their ID's
+SELECT liftPassID, category FROM LiftPassTypes
 
- -- Item searching queries
-SELECT * FROM Items WHERE itemName = :name;                                     -- Searching inventory by name
-SELECT * FROM Items WHERE itemName = :name AND size = :size;                    -- Searching inventory by name and size
 
- -- Liftpass transactions merged with lift pass types
+ -- Customer Search/Filter Query
+SELECT * FROM Customers WHERE
+    (:first IS NULL OR firstName like :first)  AND
+    (:last IS NULL OR lastName like :last)     AND
+    (:email IS NULL OR email = :email)         AND
+    (:phone IS NULL OR phoneNumber = :phone)
+
+ -- Search for items by size and/or name
+SELECT * FROM Items WHERE
+    (:name IS NULL OR itemName = :name) AND
+    (:size IS NULL OR size = :size)
+
+ -- Filtered Lift Pass Transactions merged with liftpass Types
+SELECT transactionID, customerID, seasonDatesID, category, listPrice, saleDate 
+FROM LiftPassTransactions 
+WHERE
+    (:transactionID IS NULL OR transactionID = :transactionID)  AND
+    (:customerID IS NULL OR customerID = :customerID)           AND
+    (:seasonDatesID IS NULL OR seasonDatesID = :seasonDatesID)  AND
+    (:liftPassType IS NULL OR category = :liftPassType)         AND
+    (:date IS NULL OR saleDate = :date)
+LEFT JOIN LiftPassTypes ON LiftPassTransactions.liftPassID = LiftPassTypes.liftPassID;
+
+
+ -- Liftpass transactions merged with Liftpass types
 SELECT transactionID, customerID, seasonDatesID, category, listPrice, saleDate 
 FROM LiftPassTransactions 
 LEFT JOIN LiftPassTypes ON LiftPassTransactions.liftPassID = LiftPassTypes.liftPassID;
@@ -47,6 +68,7 @@ INNER JOIN Customers ON RentalTransactions.customerID = RentalTransactions.custo
 INNER JOIN Discounts ON RentalTransactions.discountID = Discounts.discountID
 ORDER BY RentalTransactions.saleDate DESC, Customers.lastName ASC;
 
+
  -- Statements to create single entries if we have IDs
 INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
     (:first, :last, :email, :phone);
@@ -64,6 +86,7 @@ INSERT INTO SeasonDates (seasonDatesID, seasonStart, seasonEnd) VALUES
     (:yearStart, :start, :end);
 INSERT INTO Items (itemName, quantityOwned, size, listPrice) VALUES
     (:name, :quantity, :size, :price);
+
 
  -- Edit Entries by ID
 UPDATE Customers
@@ -97,6 +120,7 @@ WHERE seasonDatesID = :ID;
 UPDATE Items
 SET itemName = :name, quantityOwned = :quantity, size = :size, listPrice = :price
 WHERE itemID = :ID;
+
 
  -- Delete Entries by ID
 DELETE FROM Customers WHERE customerID = :ID;
