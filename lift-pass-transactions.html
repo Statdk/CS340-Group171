@@ -16,6 +16,37 @@
 
   <div class="container">
 
+    <div class="filterform-container">
+      <h4>Filter by</h4>
+      
+      <div class="form">
+        <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterCustID" placeholder="Customer ID" />
+        <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterDateID" placeholder="Season Date ID" />
+        <select class="filter" onchange="updateFilters()" id="filterType"> <!-- Probably replace these values with pass type ID's later... -->
+          <option value=""> -- Pass Type -- </option>
+          <option value="oneDay">oneDay</option>
+          <option value="twoDay">twoDay</option>
+          <option value="threeDay">threeDay</option>
+          <option value="oneWeek">oneWeek</option>
+          <option value="seasonPass">seasonPass</option>
+        </select>
+        <input class="filter" type="date" onchange="updateFilters()" onkeypress="updateFilters()" onclick="updateFilters()" id="filterPhone" title="Sale Date" />
+        <button class="button button-red" onclick="clearFilters()">Clear</button>
+        <script>
+          function clearFilters() {
+            let inputs = document.getElementsByClassName('filter');
+            for (const input of inputs) {
+              input.value = '';
+            }
+            updateFilters();
+          }
+          function updateFilters() {
+            console.log("Faux update");
+          }
+        </script>
+      </div>
+    </div>
+
     <table class="styled-table">
       <a class="table-title">Lift Pass Transactions (Merged with Lift Pass Types)</a>
       <thead>

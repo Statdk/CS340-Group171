@@ -252,3 +252,70 @@ font-size: 24px;
   margin-bottom: 8px;
   margin-right: 8px;
 }
+
+
+
+
+.filterform-container {
+  position: absolute;
+  top: auto;
+  left: 5%;
+  width: min-content;
+
+  background-color: #1f2937;
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 8px; /* Rounded corners */
+  display: block;
+}
+.filterform-container .form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.filterform-container button,
+.filterform-container select,
+.filterform-container input {
+  margin: 4px;
+}
+.filterform-container button {
+  width: auto;
+}
+.filterform-container select {
+  width: 166px;
+}
+.filterform-container input {
+  width: 150px;
+}
+.filterform-container h4 {
+  margin: 16px;
+}
+@media screen and (max-width: 1600px) {
+  .filterform-container {
+    position: inherit;
+    width: auto;
+
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .filterform-container .form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+  }
+  .filterform-container input,
+  .filterform-container select,
+  .filterform-container button {
+    margin: none;
+    padding: 8px;
+    width: auto;
+  }
+  .filterform-container select {
+    height: 36px;
+  }
+  .filterform-container h4 {
+    margin: 8px 0px 0px 0px;
+  }
+}
