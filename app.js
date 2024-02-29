@@ -21,4 +21,8 @@ app.use("/customers", customers);
 // Set the server to listen
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
+    // pool.query("show tables", (err, result) => {
+    //     console.log(err);
+    //     console.log(result);
+    // });
 });
