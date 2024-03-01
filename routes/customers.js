@@ -7,9 +7,11 @@ const { pool } = require("../db-connector.js");
 router.use(bodyParser.json());
 
 router.get("/", (req, res) => {
-    // res.send()
+    res.sendFile("customers.html", { root: "./public" });
 });
 
-router.post("/table", (req, res) => {});
+router.get("/table", (req, res) => {
+    res.send()
+});
 
 module.exports = router;
