@@ -1,9 +1,7 @@
-<a class="table-title">Customers</a>
-
 <thead>
     <tr>
-    <td class="button-column-width"><button class="button button-new">New</button></td>
-    <td class="button-column-width"><button class="button button-reset">Reset</button></td>
+    <td class="button-column-width"><button class="button button-new" onclick="newLine()">New</button></td>
+    <td class="button-column-width"><button class="button button-reset" onclick="reset('Customers')">Reset</button></td>
     <th>ID</th>
     <th>First Name</th>
     <th>Last Name</th>
@@ -12,13 +10,15 @@
     </tr>
 </thead>
 <tbody>
+    <% for (const customer of customers) { %>
     <tr>
-    <td><button class="button button-edit">Edit</button></td>
-    <td><button class="button button-delete">Delete</button></td>
-    <td></td>
-    <td>John</td>
-    <td>Smith</td>
-    <td>john@gmail.com</td>
-    <td>NULL</td>
+    <td><button class="button button-edit" <%- `onclick="editLineSetup(event, ${customer.customerID})"` %>>Edit</button></td>
+    <td><button class="button button-delete" <%- `onclick="deleteLine(${customer.customerID})"` %>>Delete</button></td>
+    <td><%= customer.customerID %></td>
+    <td><%= customer.firstName %></td>
+    <td><%= customer.lastName %></td>
+    <td><%= customer.email %></td>
+    <td><%= customer.phoneNumber %></td>
     </tr>
+    <% } %>
 </tbody>

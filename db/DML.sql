@@ -90,7 +90,7 @@ INSERT INTO Items (itemName, quantityOwned, size, listPrice) VALUES
 
  -- Edit Entries by ID
 UPDATE Customers
-SET firstName = :first, lastName = :last, email = :email, phone = :phone
+SET firstName = :first, lastName = :last, email = :email, phoneNumber = :phone
 WHERE customerID = :ID;
 
 UPDATE LiftPassTransactions

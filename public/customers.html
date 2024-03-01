@@ -8,6 +8,9 @@
 <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
 <script src="load-header.js"></script>
 
+<script src="serverComm.js"></script>
+<script src="customers.js"></script>
+
 <title>Customers</title>
 </head>
 
@@ -40,8 +43,9 @@
     </div>
 
     
+    <a class="table-title">Customers</a>
     <table class="styled-table" id="table">
-      <a class="table-title">Customers</a>
+      <!-- <a class="table-title">Customers</a>
 
       <thead>
         <tr>
@@ -91,31 +95,31 @@
           <td>adamgreen@icloud.com</td>
           <td>9255295757</td>
         </tr>
-      </tbody>
+      </tbody> -->
     </table>
 
 
-    <div class="form-container">
+    <div class="form-container hidden" id="addForm">
       <h3>Add Customer</h3>
       <form class="form">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="text" placeholder="Email">
-        <input type="number" placeholder="Phone Number (Optional)">
-        <button class="button button-green">Add Customer</button>
-        <button class="button button-red">Cancel</button>
+        <input type="text" id="addFirst" placeholder="First Name">
+        <input type="text" id="addLast" placeholder="Last Name">
+        <input type="text" id="addEmail" placeholder="Email">
+        <input type="number" id="addPhone" placeholder="Phone Number (Optional)">
+        <button class="button button-green" id="addBtn">Add Customer</button>
+        <button class="button button-red" id="addCancelBtn">Cancel</button>
       </form>
     </div>
 
-    <div class="form-container">
+    <div class="form-container hidden" id="updateForm" onsubmit="return false;">
       <h3>Update Customer</h3>
-      <form class="form">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="text" placeholder="Email">
-        <input type="number" placeholder="Phone Number (Optional)">
-        <button class="button button-edit">Update Customer</button>
-        <button class="button button-red">Cancel</button>
+      <form class="form" action="none">
+        <input type="text" id="updateFirst" placeholder="First Name">
+        <input type="text" id="updateLast" placeholder="Last Name">
+        <input type="text" id="updateEmail" placeholder="Email">
+        <input type="number" id="updatePhone" placeholder="Phone Number (Optional)">
+        <button class="button button-edit" id="updateBtn">Update Customer</button>
+        <button class="button button-red" id="updateCancelBtn">Cancel</button>
       </form>
     </div>
 
@@ -134,5 +138,23 @@
     
   </div>
 
+  <script>
+    resetTable("Customers");
+
+    document.getElementById("addBtn").addEventListener("click", (event) => {
+      event.preventDefault();
+      let data = {};
+      data.first = document.getElementById("addFirst").value;
+      data.last = document.getElementById("addLast").value;
+      data.email = document.getElementById("addEmail").value;
+      data.phone = document.getElementById("addPhone").value;
+      create(data);
+    });
+
+    document.getElementById("addCancelBtn").addEventListener("click", (event) => {
+      event.preventDefault();
+      document.getElementById("addForm").classList.add("hidden");
+    });
+  </script>
 </body>
 </html>

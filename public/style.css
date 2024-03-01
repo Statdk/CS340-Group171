@@ -322,3 +322,8 @@ font-size: 24px;
     margin: 8px 0px 0px 0px;
   }
 }
+
+
+.hidden {
+  display: none;
+}
