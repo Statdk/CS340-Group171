@@ -104,5 +104,71 @@
       </tbody>
     </table>
 
+
+    <div class="form-container">
+      <h3>Add Rental Item</h3>
+      <form class="form">
+        <select name="Transaction ID" required>
+          <option value="" disabled selected>[Select Transaction ID]</option>
+          <option value="1">1 | John Smith</option>
+          <option value="2">2 | Jane Doe</option>
+          <option value="3">3 | Jesse Takens</option>
+          <option value="4">4 | Adam Green</option>
+        </select>
+        <select name="Category" required>
+          <option value="" disabled selected>[Select Item]</option>
+          <option value="1">1 | Ski (120cm)</option>
+          <option value="2">2 | Ski (125cm)</option>
+          <option value="3">3 | Ski (130cm)</option>
+          <option value="4">4 | Ski (135cm)</option>
+          <option value="4">5 | Ski (140cm)</option>
+          <option value="4">6 | Ski (145cm)</option>
+          <option value="4">7 | Ski (150cm)</option>
+          <option value="4">8 | Ski (155cm)</option>
+          <option value="4">9 | Ski (160cm)</option>
+          <option value="4">10 | Ski (165cm)</option>
+          <option value="4">...</option>
+          <option value="4">87 | Ski Pole (140cm)</option>
+        </select>
+        <input type="text" placeholder="Quantity Rented">
+        <button class="button button-green">Add Lift Pass Type</button>
+        <button class="button button-red">Cancel</button>
+      </form>
+    </div>
+
+    <div class="form-container">
+      <h3>Update Rental Item</h3>
+      <!-- <h3> for LiftPassID: #</h3> -->
+      <form class="form">
+        <select name="Transaction ID" required>
+          <option value="" disabled selected>[Select Transaction ID]</option>
+          <option value="1">1 | John Smith</option>
+          <option value="2">2 | Jane Doe</option>
+          <option value="3">3 | Jesse Takens</option>
+          <option value="4">4 | Adam Green</option>
+        </select>
+        <select name="Category" required>
+          <option value="" disabled selected>[Select Item]</option>
+          <option value="1">1 | Ski (120cm)</option>
+          <option value="2">2 | Ski (125cm)</option>
+          <option value="3">3 | Ski (130cm)</option>
+          <option value="4">4 | Ski (135cm)</option>
+          <option value="4">5 | Ski (140cm)</option>
+          <option value="4">6 | Ski (145cm)</option>
+          <option value="4">7 | Ski (150cm)</option>
+          <option value="4">8 | Ski (155cm)</option>
+          <option value="4">9 | Ski (160cm)</option>
+          <option value="4">10 | Ski (165cm)</option>
+          <option value="4">...</option>
+          <option value="4">87 | Ski Pole (140cm)</option>
+        </select>
+        <input type="text" placeholder="Quantity Rented">
+        <button class="button button-blue">Update Lift Pass Type</button>
+        <button class="button button-red">Cancel</button>
+      </form>
+    </div>
+
+  </div>
+
 </body>
 </html>
