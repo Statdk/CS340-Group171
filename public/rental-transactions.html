@@ -217,17 +217,23 @@
     <div class="form-container">
       <h3>Add Rental Transaction</h3>
       <form class="form">
-        <input type="text" placeholder="Transaction ID, blank for new">
-        <input type="text" placeholder="Customer ID">
+        <select name="Customer" required>
+          <option value="" disabled selected>[Select Customer]</option>
+          <option value="1">1 | John Smith</option>
+          <option value="2">2 | Jane Doe</option>
+          <option value="3">3 | Jesse Takens</option>
+          <option value="4">4 | Adam Green</option>
+        </select>
         <select name="Discount Type" required>
           <option value="" disabled selected>[Select Discount Type]</option>
+          <option value="0">None</option>
           <option value="1">Student</option>
           <option value="2">Weekday</option>
           <option value="3">All Week</option>
           <option value="4">Season Pass</option>
         </select>
         <input type="date" id="start" name="trip-start" min="2000-01-01" max="2100-12-31" />        
-        <input type="text" placeholder="Rental Duration">    
+        <input type="text" placeholder="Rental Duration (days)">    
         <button class="button button-green">Add Rental Transaction</button>
         <button class="button button-red">Cancel</button>
       </form>
@@ -235,26 +241,33 @@
 
     <div class="form-container">
       <h3>Update Rental Transaction</h3>
-      <form class="form">
-        <input type="text" placeholder="Transaction ID, blank for new">
-        <input type="text" placeholder="Customer ID">
-        <select name="Discount Type" required>
-          <option value="" disabled selected>[Select Discount Type]</option>
-          <option value="1">Student</option>
-          <option value="2">Weekday</option>
-          <option value="3">All Week</option>
-          <option value="4">Season Pass</option>
-        </select>
-        <input type="date" id="start" name="trip-start" min="2000-01-01" max="2100-12-31" />        
-        <input type="text" placeholder="Rental Duration">           
-        <button class="button button-edit">Update Rental Transaction</button>
-        <button class="button button-red">Cancel</button>
-      </form>
-    </div>
+      <!-- <h3>for TransactionID: #</h3> -->
+        <form class="form">
+          <select name="Customer" required>
+            <option value="" disabled selected>[Select Customer]</option>
+            <option value="1">1 | John Smith</option>
+            <option value="2">2 | Jane Doe</option>
+            <option value="3">3 | Jesse Takens</option>
+            <option value="4">4 | Adam Green</option>
+          </select>
+          <select name="Discount Type" required>
+            <option value="" disabled selected>[Select Discount Type]</option>
+            <option value="0">None</option>
+            <option value="1">Student</option>
+            <option value="2">Weekday</option>
+            <option value="3">All Week</option>
+            <option value="4">Season Pass</option>
+          </select>
+          <input type="date" id="start" name="trip-start" min="2000-01-01" max="2100-12-31" />        
+          <input type="text" placeholder="Rental Duration (days)">    
+          <button class="button button-blue">Update Rental Transaction</button>
+          <button class="button button-red">Cancel</button>
+        </form>
+      </div>
 
     <!-- <div class="form-container">
       <h3>Update Rental Transaction *EXAMPLE DATA*</h3>
-      <h3>for RentalItemID: 4</h3>
+      <h3>for RentalID: 4</h3>
       <form class="form">
         <input type="text" value="2">
         <input type="text" value="2">
