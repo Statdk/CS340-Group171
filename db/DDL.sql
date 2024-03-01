@@ -1,6 +1,8 @@
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
 
+DROP TABLE IF EXISTS RentalItems, LiftPassTransactions, RentalTransactions, Items, Customers, Discounts, LiftPassTypes, SeasonDates;        -- for debug to reset all tables, in a specific order to work
+
  -- Records the details of items available for rental
 CREATE OR REPLACE TABLE Items (
     itemID INT NOT NULL AUTO_INCREMENT,
@@ -115,17 +117,17 @@ INSERT INTO Discounts (discountType, discountPercentage) VALUES
 
  -- Records the start and end dates for tracking which season passes are associated with
 CREATE OR REPLACE TABLE SeasonDates (
-  seasonDatesID int NOT NULL AUTO_INCREMENT,
+  seasonDatesID int NOT NULL AUTO_INCREMENT,  -- starts at 2022 to align with the season starting date
   seasonStart datetime NOT NULL,            -- First day of the season
   seasonEnd datetime NOT NULL,              -- Last dat of the season
 
   PRIMARY KEY (seasonDatesID)
-);
+) AUTO_INCREMENT=2022;
 
-INSERT INTO SeasonDates (seasonDatesID, seasonStart, seasonEnd) VALUES
-(2024, '2024-10-28', '2025-05-04'),
-(2023, '2023-10-28', '2024-05-04'),
-(2022, '2022-11-04', '2023-04-27');
+INSERT INTO SeasonDates (seasonStart, seasonEnd) VALUES
+('2022-11-04', '2023-04-27'),
+('2023-10-28', '2024-05-04'),
+('2024-10-28', '2025-05-04');
 
  -- Records the different types of lift passes available for purchase
 CREATE OR REPLACE TABLE LiftPassTypes (
@@ -136,12 +138,12 @@ CREATE OR REPLACE TABLE LiftPassTypes (
   PRIMARY KEY (liftPassID)
 );
 
-INSERT INTO LiftPassTypes (liftPassID, category, listPrice) VALUES
-(1, 'oneDay', 80.00),
-(2, 'twoDay', 150.00),
-(3, 'threeDay', 220.00),
-(4, 'oneWeek', 500.00),
-(5, 'seasonPass', 700.00);
+INSERT INTO LiftPassTypes (category, listPrice) VALUES
+('oneDay', 80.00),
+('twoDay', 150.00),
+('threeDay', 220.00),
+('oneWeek', 500.00),
+('seasonPass', 700.00);
 
  -- Records the details of individuals who may purchase lift passes and/or rent equipment
 CREATE OR REPLACE TABLE Customers (
@@ -149,16 +151,16 @@ CREATE OR REPLACE TABLE Customers (
     firstName VARCHAR(50) NOT NULL,         -- Customer first name
     lastName VARCHAR(50) NOT NULL,          -- Customer last name
     email VARCHAR(50) NOT NULL,             -- Customer email on file
-    phoneNumber INT,                        -- Customer phone number, if available
+    phoneNumber VARCHAR(15),                -- Customer phone number, if available
 
     PRIMARY KEY (customerID)
 );
 
-INSERT INTO Customers (customerID, firstName, lastName, email, phoneNumber) VALUES
-(1, 'John', 'Smith', 'john@gmail.com', NULL),
-(2, 'Jane', 'Doe', 'jayjay23@gmail.com', '1234567890'),
-(3, 'Jesse', 'Takens', 'jesse@takens.cc', NULL),
-(4, 'Adam', 'Green', 'adamgreen@icl.com', '9255295757');
+INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
+('John', 'Smith', 'john@gmail.com', NULL),
+('Jane', 'Doe', 'jayjay23@gmail.com', '1234567890'),
+('Jesse', 'Takens', 'jesse@takens.cc', NULL),
+('Adam', 'Green', 'adamgreen@icl.com', '9255295757');
 
  -- Records transactions related to the purchase of lift passes by customers
 CREATE OR REPLACE TABLE LiftPassTransactions (
@@ -223,7 +225,6 @@ INSERT INTO RentalItems (transactionID, itemID, quantityRented) VALUES
 (3, 46, 1),
 (4, 10, 2),
 (4, 46, 1);
-
 
 
 SET FOREIGN_KEY_CHECKS=1;
