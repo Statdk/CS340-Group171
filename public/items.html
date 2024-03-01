@@ -145,20 +145,49 @@
         </tbody>
       </table>
 
+
+      <div class="form-container">
+        <h3><Address></Address> Items</h3>
+        <form class="form">
+          <select name="Item Type" required>
+            <option value="" disabled selected>[Select Item Type]</option>
+            <option value="1">1 | skis</option>
+            <option value="2">2 | snowboard/option>
+            <option value="3">3 | skiBoots</option>
+            <option value="4">4 | snowboardBoots</option>
+            <option value="5">5 | skiPole</option>
+          </select>
+          <input type="number" placeholder="Quantity Owned" />
+          <input type="number" placeholder="Size (cm)" />
+          <input type="number" placeholder="List Price" />
+          <button class="button button-green">Add Items</button>
+          <button class="button button-red">Cancel</button>
+        </form>
+      </div>
       <div class="form-container">
         <h3>Update Items</h3>
         <form class="form">
-          <input type="text" placeholder="Item Name" />
-          <input type="text" placeholder="Size (cm)" />
+          <select name="Item Type" required>
+            <option value="" disabled selected>[Select Item Type]</option>
+            <option value="1">1 | skis</option>
+            <option value="2">2 | snowboard/option>
+            <option value="3">3 | skiBoots</option>
+            <option value="4">4 | snowboardBoots</option>
+            <option value="5">5 | skiPole</option>
+          </select>
           <select name="Items Adjustment" required>
             <option value="" disabled selected>[Select Adjust Type]</option>
             <option value="1">+</option>
             <option value="2">-</option>
           </select>
-          <input type="number" placeholder="Quantity to Adjust" />
+          <input type="number" placeholder="Items Adjustment" />
+          <input type="number" placeholder="Size (cm)" />
+          <input type="number" placeholder="List Price" />
+          <input type="number" placeholder="Quantity Owned" />
           <button class="button button-edit">Update Items</button>
           <button class="button button-red">Cancel</button>
         </form>
+      
       </div>
 
       <!-- <div class="form-container">
