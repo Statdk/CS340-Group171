@@ -20,15 +20,21 @@
     <div class="filterform-container">
       <h3>Filter by</h3>
       <div class="form">
-        <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterCustID" placeholder="Customer ID" />
         <select class="filter" onchange="updateFilters()" id="filterType">
-          <option value="" disabled selected>[Select Season]</option>
+          <option value="" selected>[Select Customer]</option>
+          <option value="1">1 | John Smith</option>
+          <option value="2">2 | Jane Doe</option>
+          <option value="3">3 | Jesse Takens</option>
+          <option value="4">4 | Adam Green</option>
+        </select>
+        <select class="filter" onchange="updateFilters()" id="filterType">
+          <option value="" selected>[Select Season]</option>
           <option value="1">2022</option>
           <option value="2">2023</option>
           <option value="3">2034</option>
         </select>
         <select class="filter" onchange="updateFilters()" id="filterType"> <!-- Probably replace these values with pass type ID's later... -->
-          <option value="" disabled selected>[Select Pass Type]</option>
+          <option value="" selected>[Select Pass Type]</option>
           <option value="1">One Day</option>
           <option value="2">Two Days</option>
           <option value="3">Three Days</option>
