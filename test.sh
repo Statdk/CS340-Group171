@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# echo "Removing node_modules"
-# rm -rf node_modules
-
 echo "Moving files"
 rsync -r --exclude 'node_modules' * osu:~/tmp/
 
