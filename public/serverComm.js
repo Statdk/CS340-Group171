@@ -1,4 +1,4 @@
-function reset(tableName) {
+function reset() {
     fetch("/reset", {
         method: "post",
     })
@@ -7,7 +7,7 @@ function reset(tableName) {
                 if (res.status == 200) {
                     console.log("Successfully reset database");
                     setTimeout(() => {
-                        resetTable(tableName);
+                        resetTable();
                     }, 2000);
                 } else {
                     console.log("Could not reset DB code:", res.status);
