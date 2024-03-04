@@ -13,13 +13,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="person-skiing-solid.svg">
-<link href="style.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/person-skiing-solid.svg">
+<link href="/style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
-<script src="load-header.js"></script>
+<script src="/load-header.js"></script>
 
-<script src="serverComm.js"></script>
-<script src="customers.js"></script>
+<script src="/serverComm.js"></script>
 
 <title><%= data.title %></title>
 </head>
@@ -29,38 +28,18 @@
   
   <div class="container">
     
-    <%= data.html.filter != undefined ? data.html.filter : "" %>
+    <%- data.html.filter != undefined ? data.html.filter : "" %>
 
     
     <a class="table-title"><%= data.title %></a>
     <table class="styled-table" id="table">
-      
+      <%- data.html.table %>
     </table>
 
 
-    <div class="form-container hidden" id="addForm">
-      <h3>Add Customer</h3>
-      <form class="form">
-        <input type="text" id="addFirst" placeholder="First Name">
-        <input type="text" id="addLast" placeholder="Last Name">
-        <input type="text" id="addEmail" placeholder="Email">
-        <input type="number" id="addPhone" placeholder="Phone Number (Optional)">
-        <button class="button button-green" id="addBtn">Add Customer</button>
-        <button class="button button-red" id="addCancelBtn">Cancel</button>
-      </form>
-    </div>
+    <%- data.html.formAdd %>
 
-    <div class="form-container hidden" id="updateForm" onsubmit="return false;">
-      <h3>Update Customer</h3>
-      <form class="form" action="none">
-        <input type="text" id="updateFirst" placeholder="First Name">
-        <input type="text" id="updateLast" placeholder="Last Name">
-        <input type="text" id="updateEmail" placeholder="Email">
-        <input type="number" id="updatePhone" placeholder="Phone Number (Optional)">
-        <button class="button button-edit" id="updateBtn">Update Customer</button>
-        <button class="button button-red" id="updateCancelBtn">Cancel</button>
-      </form>
-    </div>
+    <div id="updateContainer" style="display: contents;"></div>
 
     <!-- <div class="form-container">
       <h3>Update Customer *EXAMPLE DATA*</h3>
@@ -78,22 +57,28 @@
   </div>
 
   <script>
-    resetTable("Customers");
+    // resetTable("Customers");
 
-    document.getElementById("addBtn").addEventListener("click", (event) => {
-      event.preventDefault();
-      let data = {};
-      data.first = document.getElementById("addFirst").value;
-      data.last = document.getElementById("addLast").value;
-      data.email = document.getElementById("addEmail").value;
-      data.phone = document.getElementById("addPhone").value;
-      create(data);
-    });
+    // document.getElementById("addBtn").addEventListener("click", (event) => {
+    //   event.preventDefault();
+    //   let data = {};
+    //   data.first = document.getElementById("addFirst").value;
+    //   data.last = document.getElementById("addLast").value;
+    //   data.email = document.getElementById("addEmail").value;
+    //   data.phone = document.getElementById("addPhone").value;
+    //   create(data);
+    // });
 
-    document.getElementById("addCancelBtn").addEventListener("click", (event) => {
-      event.preventDefault();
-      document.getElementById("addForm").classList.add("hidden");
-    });
+    // document.getElementById("addCancelBtn").addEventListener("click", (event) => {
+    //   event.preventDefault();
+    //   document.getElementById("addForm").classList.add("hidden");
+    // });
+    
+    // Slash at end breaks things, so fix it
+    if (document.URL.charAt(document.URL.length - 1) == "/") {
+      let newURL = document.URL.substring(0, document.URL.length - 1);
+      window.location.replace(newURL);
+    }
   </script>
 </body>
 </html>

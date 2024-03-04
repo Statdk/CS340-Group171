@@ -38,16 +38,16 @@ function reset() {
  * @brief Asks the server to render a new table, then replace the document's
  *  table (possesing the id "table") with the response.
  */
-function resetTable() {
-    let table = document.getElementById("table");
-    fetch(document.URL + "/table", {
-        method: "get",
-    })
-        .then((res) => res.text())
-        .then((html) => {
-            table.innerHTML = html;
-        });
-}
+// function resetTable() {
+//     let table = document.getElementById("table");
+//     fetch(document.URL + "/table", {
+//         method: "get",
+//     })
+//         .then((res) => res.text())
+//         .then((html) => {
+//             table.innerHTML = html;
+//         });
+// }
 
 /**
  * @brief Gets a specific record's data and calls callback on it.
@@ -136,7 +136,21 @@ function deleteLine(id) {
     }).then((res) => {
         if (res.status == 200) {
             console.log("Deleted", id);
-            resetTable();
+            window.location.reload();
+        } else {
+            console.log("Unable to delete", id);
+            alert(
+                `Unable to delete object with id ${id}, server code ${res.status}`
+            );
         }
     });
+}
+
+function showAdd() {
+    document.getElementById("addFormContainer").classList.remove("hidden");
+}
+
+function hideAdd(event) {
+    event.preventDefault();
+    document.getElementById("addFormContainer").classList.add("hidden");
 }

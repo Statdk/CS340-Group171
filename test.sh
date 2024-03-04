@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Moving files"
-rsync -r --exclude 'node_modules' * osu:~/tmp/
+rsync -r -v -u --exclude 'node_modules' * osu:~/tmp/
 
 echo "Forwarding Port"
 ssh -L 3805:127.0.0.1:3805 -N osu &

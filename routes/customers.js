@@ -5,16 +5,67 @@ const ejs = require("ejs");
 
 const { pool } = require("../db-connector.js");
 
-// Mapping of sql table columns to readable names
-const nameMap = {
-    customerID: "ID",
-    firstName: "First Name",
-    lastName: "Last Name",
-    email: "Email",
-    phoneNumber: "phone",
+const title = "Customers";
+
+// Object containing display and form data
+const obj = {
+    customerID: {
+        display: "ID",
+        form: false,
+    },
+    firstName: {
+        display: "First Name",
+        filter: true,
+        form: true,
+        input: {
+            type: "text",
+            required: "true",
+            placeholder: "First Name",
+        },
+        fromTable: undefined,
+    },
+    lastName: {
+        display: "Last Name",
+        filter: true,
+        form: true,
+        input: {
+            type: "text",
+            required: "true",
+            placeholder: "Last Name",
+        },
+        fromTable: undefined,
+    },
+    email: {
+        display: "Email",
+        filter: true,
+        form: true,
+        input: {
+            type: "text",
+            required: "true",
+            placeholder: "Email",
+        },
+        fromTable: undefined,
+    },
+    phoneNumber: {
+        display: "Last Name",
+        filter: true,
+        form: true,
+        input: {
+            type: "number",
+            required: "false",
+            placeholder: "Phone Number (Optional)",
+            min: "0",
+            max: "9999999999",
+        },
+        // input: "table"
+        fromTable: undefined,
+    },
 };
 
-// Order for columns to appear
+// Name of the table column containing the ID
+const idField = "customerID";
+
+// Order for columns to appear, must correlate to keys in obj
 const order = ["customerID", "firstName", "lastName", "email", "phoneNumber"];
 
 router.use(bodyParser.json());
@@ -22,55 +73,91 @@ router.use(bodyParser.json());
 router.get("/", async (req, res) => {
     // res.sendFile("customers.html", { root: "./public" });
 
-    // Get sql table data
-    let entries = [
-        {
-            // Sample entry data
-            customerID: 2,
-            firstName: "Foo",
-            lastName: "Bar",
-            email: "email@email.com",
-            phoneNumber: "1231231234",
-        },
-    ];
+    pool.query("select * from Customers", async (err, result) => {
+        if (err != null) {
+            console.log("Error:", err);
+            res.sendStatus(500);
+        } else {
+            console.log("Retrieved:", result);
 
-    let header = [];
-    for (const title of order) {
-        header.push(nameMap[title]);
-    }
+            // Get sql table data
+            // let entries = [
+            //     {
+            //         // Sample entry data
+            //         customerID: 2,
+            //         firstName: "Foo",
+            //         lastName: "Bar",
+            //         email: "email@email.com",
+            //         phoneNumber: "1231231234",
+            //     },
+            // ];
 
-    let table = await ejs.renderFile("views/table.ejs", {
-        data: {
-            header: header,
-            entries: entries, // Sql table data here
-            order: order,
-        },
+            let header = [];
+            for (const title of order) {
+                header.push(obj[title].display);
+            }
+
+            let table = await ejs.renderFile("views/table.ejs", {
+                data: {
+                    header: header,
+                    entries: result,
+                    order: order,
+                    idField: idField,
+                },
+            });
+
+            let filter = await ejs.renderFile("views/filter.ejs", {
+                data: {
+                    header: header,
+                    form: obj,
+                    order: order,
+                },
+            });
+
+            let formAdd = await ejs.renderFile("views/form-add.ejs", {
+                data: {
+                    title: title,
+                    header: header,
+                    form: obj,
+                    order: order,
+                },
+            });
+
+            let page = await ejs.renderFile("views/view-table.ejs", {
+                data: {
+                    title: title,
+                    html: {
+                        table: table,
+                        filter: filter,
+                        formAdd: formAdd,
+                    },
+                },
+            });
+
+            res.send(page);
+        }
     });
-
-    let filter = await ejs.renderFile("views/filter.ejs", {});
-    let formAdd = await ejs.renderFile("views/form-add.ejs", {});
-
-    let page = await ejs.renderFile("views/view-table.ejs", {});
 });
 
 // Get table
 // router.get("/table", (req, res) => {
-//     pool.query("select * from Customers", (err, result) => {
-//         if (err != null) {
-//             res.sendStatus(500);
-//             console.log("Error:", err);
-//         } else {
-//             console.log("Retrieved:", result);
-//             res.render("customers-table", { customers: result });
-//         }
-//     });
+// pool.query("select * from Customers", (err, result) => {
+//     if (err != null) {
+//         res.sendStatus(500);
+//         console.log("Error:", err);
+//     } else {
+//         console.log("Retrieved:", result);
+//         res.render("customers-table", { customers: result });
+//     }
+// });
 // });
 
 // Create
 router.post("/create", (req, res) => {
+    console.log("Received", req.body);
     pool.query(
         `INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
-    ("${req.body.first}", "${req.body.last}", "${req.body.email}", "${req.body.phone}");
+    ("${req.body.firstName}", "${req.body.lastName}", "${req.body.email}", "${req.body.phoneNumber}");
     `,
         (err, result) => {
             if (err != null) {
@@ -79,7 +166,7 @@ router.post("/create", (req, res) => {
                 res.sendStatus(500);
             } else {
                 console.log("Created entry:", result);
-                res.sendStatus(200);
+                res.redirect(".");
             }
         }
     );

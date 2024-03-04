@@ -25,20 +25,22 @@
 %>
 <thead>
     <tr>
-    <td class="button-column-width"><button class="button button-new" onclick="newLine()">New</button></td>
-    <td class="button-column-width"><button class="button button-reset" onclick="reset('Customers')">Reset</button></td>
-    <% for (const header of data.table) { %>
-        <th><%= header %></th>
+    <td class="button-column-width"><button class="button button-new" onclick="showAdd()">New</button></td>
+    <td class="button-column-width"><button class="button button-reset" onclick="reset()">Reset</button></td>
+    <% for (const heading of data.header) { %>
+        <th><%= heading %></th>
     <% } %>
     </tr>
 </thead>
 <tbody>
     <% for (const entry of data.entries) { %>
-        <td><button class="button button-edit" <%- `onclick="editLineSetup(event, ${customer.customerID})"` %>>Edit</button></td>
-        <td><button class="button button-delete" <%- `onclick="deleteLine(${customer.customerID})"` %>>Delete</button></td>
-        
-        <% order.forEach((key) => { %>
-            <td><%= entry[key] %></td>
-        <% }); %>
+        <tr>
+            <td><button class="button button-edit" <%- `onclick="editLineSetup(event, ${entry[data.idField]})"` %>>Edit</button></td>
+            <td><button class="button button-delete" <%- `onclick="deleteLine(${entry[data.idField]})"` %>>Delete</button></td>
+            
+            <% data.order.forEach((key) => { %>
+                <td><%= entry[key] %></td>
+            <% }); %>
+        </tr>
     <% } %>
 </tbody>
