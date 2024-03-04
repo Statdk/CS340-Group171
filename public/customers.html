@@ -20,10 +20,10 @@
   <div class="container">
     
     <div class="filterform-container">
-      <h3>Filter by</h3>
+      <h3>Filter by:</h3>
       <div class="form">
         <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterFirst" placeholder="First Name" />
-        <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterLast" placeholder="Last Name" />
+        <input class="filter" type="text" oninput="updateFilters()" onkeypress="updateFilters()" id="filterLast" placeholder="Last Name" />
         <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterEmail" placeholder="Email" />
         <input class="filter" type="number" onchange="updateFilters()" onkeypress="updateFilters()" onclick="updateFilters()" id="filterPhone" placeholder="Phone Number" />
         <button class="button button-red" onclick="clearFilters()">Clear</button>
