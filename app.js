@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
 
@@ -12,8 +11,10 @@ const PORT = 3805;
 
 const app = express();
 
-// Use bodyParser to parse json requests
-app.use(bodyParser.json());
+// Parse json post requests
+app.use(express.json());
+// Parse get data encoded in url
+app.use(express.urlencoded({ extended: false }));
 
 // Views set up
 app.set("views", path.join(__dirname, "views"));

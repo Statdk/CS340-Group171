@@ -1,0 +1,44 @@
+<%# 
+    Expects data: {
+        header: [
+            column1,
+            column2,
+            column3,
+            ...
+        ],
+        order: [
+            column1,
+            column2,
+            column3,
+            ...
+        ],
+        entries: [
+            {
+                column1,
+                column2,
+                column3,
+                ...
+            },
+            ...
+        ]
+    }
+%>
+<thead>
+    <tr>
+    <td class="button-column-width"><button class="button button-new" onclick="newLine()">New</button></td>
+    <td class="button-column-width"><button class="button button-reset" onclick="reset('Customers')">Reset</button></td>
+    <% for (const header of data.table) { %>
+        <th><%= header %></th>
+    <% } %>
+    </tr>
+</thead>
+<tbody>
+    <% for (const entry of data.entries) { %>
+        <td><button class="button button-edit" <%- `onclick="editLineSetup(event, ${customer.customerID})"` %>>Edit</button></td>
+        <td><button class="button button-delete" <%- `onclick="deleteLine(${customer.customerID})"` %>>Delete</button></td>
+        
+        <% order.forEach((key) => { %>
+            <td><%= entry[key] %></td>
+        <% }); %>
+    <% } %>
+</tbody>
