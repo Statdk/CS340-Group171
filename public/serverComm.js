@@ -1,3 +1,15 @@
+/**
+ * All of these functions use the browser's url to route properly.
+ * Page links will need to have the ".html" extension removed.
+ *  (e.g. "HOSTNAME/customers" instead of "HOSTNAME/customers.html")
+ */
+
+/**
+ * @brief Function to instruct server to reset the whole database.
+ *
+ * Use sparingly or we will get rate limited,
+ *  due mostly to how the DDL.sql is handled by the sql library.
+ */
 function reset() {
     fetch("/reset", {
         method: "post",
@@ -22,6 +34,10 @@ function reset() {
         });
 }
 
+/**
+ * @brief Asks the server to render a new table, then replace the document's
+ *  table (possesing the id "table") with the response.
+ */
 function resetTable() {
     let table = document.getElementById("table");
     fetch(document.URL + "/table", {
@@ -33,6 +49,13 @@ function resetTable() {
         });
 }
 
+/**
+ * @brief Gets a specific record's data and calls callback on it.
+ *
+ * @param {Number} id ID of record to get
+ * @param {function( [{}] )} callback Function to call.
+ *  arg0 is an array of len 1 containing an object
+ */
 function getByID(id, callback) {
     fetch(document.URL + `/get/${id}`, {
         method: "get",
@@ -46,6 +69,11 @@ function getByID(id, callback) {
         });
 }
 
+/**
+ * @brief Creates a record for the current table
+ *
+ * @param {{}} data data to use in record creation
+ */
 function create(data) {
     fetch(document.URL + "/create", {
         method: "post",
@@ -68,6 +96,11 @@ function create(data) {
         });
 }
 
+/**
+ * @brief Like create(), but takes an id to replace an entry instead of create one
+ * @param {Number} id ID of record to replace
+ * @param {{}} data Data to use in record
+ */
 function update(id, data) {
     console.log(id);
     console.log(data);
@@ -92,6 +125,11 @@ function update(id, data) {
         });
 }
 
+/**
+ * @brief Deletes a record by ID
+ *
+ * @param {Number} id Record ID to delete
+ */
 function deleteLine(id) {
     fetch(document.URL + `/delete/${id}`, {
         method: "post",
