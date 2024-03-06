@@ -35,7 +35,8 @@
 <tbody>
     <% for (const entry of data.entries) { %>
         <tr>
-            <td><button class="button button-edit" <%- `onclick="editLineSetup(event, ${entry[data.idField]})"` %>>Edit</button></td>
+            <!-- <td><button class="button button-update" <%- `onclick="editLineSetup(event, ${entry[data.idField]})"` %>>Update</button></td> -->
+            <td><button class="button button-update" onclick="showUpdate()">Update</button></td>
             <td><button class="button button-delete" <%- `onclick="deleteLine(${entry[data.idField]})"` %>>Delete</button></td>
             
             <% data.order.forEach((key) => { %>
