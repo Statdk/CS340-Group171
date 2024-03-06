@@ -123,6 +123,15 @@ router.get("/", async (req, res) => {
                 },
             });
 
+            let formUpdate = await ejs.renderFile("views/form-edit.ejs", {
+                data: {
+                    title: title,
+                    header: header,
+                    form: obj,
+                    order: order,
+                },
+            });
+            
             let page = await ejs.renderFile("views/view-table.ejs", {
                 data: {
                     title: title,
@@ -130,6 +139,7 @@ router.get("/", async (req, res) => {
                         table: table,
                         filter: filter,
                         formAdd: formAdd,
+                        formUpdate: formUpdate,
                     },
                 },
             });
