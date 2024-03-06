@@ -155,7 +155,8 @@ function hideAdd(event) {
     document.getElementById("addFormContainer").classList.add("hidden");
 }
 
-function showUpdate() {
+function showUpdate(id) {
+    document.getElementById("updateFormID").value = id;
     document.getElementById("updateFormContainer").classList.remove("hidden");
 }
 function hideUpdate(event) {
