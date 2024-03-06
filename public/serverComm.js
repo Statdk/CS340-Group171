@@ -116,6 +116,7 @@ function update(id, data) {
             if (res.status == 200) {
                 console.log("Updated entry", id);
                 resetTable();
+                document.getElementById("updateForm").classList.add("hidden");
             } else {
                 console.error(`Could not update entry ${id} with:`, data);
             }
@@ -149,8 +150,15 @@ function deleteLine(id) {
 function showAdd() {
     document.getElementById("addFormContainer").classList.remove("hidden");
 }
-
 function hideAdd(event) {
     event.preventDefault();
     document.getElementById("addFormContainer").classList.add("hidden");
+}
+
+function showUpdate() {
+    document.getElementById("updateFormContainer").classList.remove("hidden");
+}
+function hideUpdate(event) {
+    event.preventDefault();
+    document.getElementById("updateFormContainer").classList.add("hidden");
 }
