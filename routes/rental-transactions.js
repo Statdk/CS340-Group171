@@ -117,7 +117,7 @@ router.get("/", async (req, res) => {
                 },
             });
 
-            let formUpdate = await ejs.renderFile("views/form-edit.ejs", {
+            let formUpdate = await ejs.renderFile("views/form-update.ejs", {
                 data: {
                     title: title,
                     header: header,
@@ -155,6 +155,7 @@ router.get("/", async (req, res) => {
 //     }
 // });
 // });
+            <td><button class="button button-edit" onclick="editLineSetup(event, 12)">Edit</button></td>
 
 // CREATE
 router.post("/create", (req, res) => {

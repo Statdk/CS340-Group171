@@ -123,7 +123,7 @@ router.get("/", async (req, res) => {
                 },
             });
 
-            let formUpdate = await ejs.renderFile("views/form-edit.ejs", {
+            let formUpdate = await ejs.renderFile("views/form-update.ejs", {
                 data: {
                     title: title,
                     header: header,
