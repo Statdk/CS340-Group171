@@ -6,6 +6,7 @@ const { pool } = require("./db-connector.js");
 
 // Import routers
 const customers = require("./routes/customers.js");
+const rentalTransactions = require("./routes/rental-transactions.js");
 
 const PORT = 3805;
 
@@ -31,6 +32,7 @@ app.use(express.static("public"));
 
 // Use imported routers
 app.use("/customers", customers);
+app.use("/rental-transactions", rentalTransactions);
 
 // Reset the database
 app.post("/reset", (req, res) => {
