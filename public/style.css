@@ -150,11 +150,11 @@ body {
 .button-reset:hover {
   background-color: #eab308; /* Slightly darker yellow on hover */
 }
-.button-edit {
+.button-update {
   padding: 6px 12px;
   background-color: #3b82f6;
 }
-.button-edit:hover {
+.button-update:hover {
   background-color: #2563eb; /* Slightly darker blue on hover */
 }
 .button-delete {
