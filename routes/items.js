@@ -90,7 +90,7 @@ router.post("/create", (req, res) => {
                 ${req.body.size},
                 ${req.body.listPrice});
         `,
-        (err, result) => handleCreate(err, result, res)
+        (err, result) => handleCreate(err, result, req, res)
     );
 });
 

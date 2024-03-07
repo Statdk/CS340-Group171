@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-  fetch('header.html')
+  fetch('/header.html')
     .then(response => response.text())
     .then(htmlString => {
       const parser = new DOMParser();

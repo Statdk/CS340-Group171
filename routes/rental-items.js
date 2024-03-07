@@ -84,10 +84,14 @@ router.get("/", async (req, res) => {
 router.post("/create", (req, res) => {
     console.log("Received", req.body);
     pool.query(
-        `INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
-    ("${req.body.firstName}", "${req.body.lastName}", "${req.body.email}", "${req.body.phoneNumber}");
-    `,
-        (err, result) => handleCreate(err, result, res)
+        `
+        INSERT INTO RentalItems (transactionID, itemID, quantityRented) VALUES
+            (
+                ${req.body.transactionID},
+                ${req.body.itemID},
+                ${req.body.quantityRented});
+        `,
+        (err, result) => handleCreate(err, result, req, res)
     );
 });
 
@@ -97,15 +101,13 @@ router.post("/update/:id", (req, res) => {
 
     pool.query(
         `
-        UPDATE Customers
-        SET
-            firstName = "${req.body.firstName}",
-            lastName = "${req.body.lastName}",
-            email = "${req.body.email}",
-            phoneNumber = "${
-                req.body.phoneNumber != "0" ? req.body.phoneNumber : ""
-            }"
-        WHERE customerID = ${req.params.id};`,
+        UPDATE RentalItems
+            SET 
+                transactionID = ${req.body.transactionID},
+                itemID = ${req.body.itemID},
+                quantityRented = ${req.body.quantityRented}
+        WHERE rentalID = ${req.params.id};
+        `,
         (err, result) => handleUpdate(err, result, req, res)
     );
 });
@@ -113,7 +115,7 @@ router.post("/update/:id", (req, res) => {
 // Delete
 router.post("/delete/:id", (req, res) => {
     pool.query(
-        `DELETE FROM Customers WHERE customerID = ${req.params.id};`,
+        `DELETE FROM RentalItems WHERE rentalID = ${req.params.id};`,
         (err, result) => handleDelete(err, result, req, res)
     );
 });

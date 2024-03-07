@@ -118,7 +118,7 @@ router.post("/create", (req, res) => {
         `INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
     ("${req.body.firstName}", "${req.body.lastName}", "${req.body.email}", "${req.body.phoneNumber}");
     `,
-        (err, result) => handleCreate(err, result, res)
+        (err, result) => handleCreate(err, result, req, res)
     );
 });
 

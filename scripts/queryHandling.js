@@ -1,4 +1,4 @@
-function handleCreate(err, result, res) {
+function handleCreate(err, result, req, res) {
     if (err != null) {
         console.log("Could not create entry with:", req.body);
         console.log(err);

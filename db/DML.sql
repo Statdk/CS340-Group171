@@ -76,8 +76,8 @@ INSERT INTO LiftPassTransactions (customerID, seasonDatesID, liftPassID, saleDat
     (:customerID, :seasonID, :passID, :date);
 INSERT INTO RentalTransactions (customerID, discountID, saleDate, rentalDuration) VALUES
     (:customerID, :discountID, :date, :duration);
-INSERT INTO RentalItems (transactionID, itemQuantityID, quantityRented, sizeRented) VALUES
-    (:transactionID, :quantityID, :quantity, :size);
+INSERT INTO RentalItems (transactionID, itemID, quantityRented) VALUES
+    (:transactionID, :itemID :quantity);
 INSERT INTO LiftPassTypes (category, listPrice) VALUES
     (:category, :price);
 INSERT INTO Discounts (discountType, discountPercentage) VALUES
