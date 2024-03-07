@@ -76,8 +76,6 @@ const order = ["customerID", "firstName", "lastName", "email", "phoneNumber"];
 router.use(express.json());
 
 router.get("/", async (req, res) => {
-    console.log(req.query);
-
     const filterEnabled = true;
 
     // const query = "select * from Customers";
@@ -114,7 +112,7 @@ router.get("/", async (req, res) => {
 });
 
 // Create
-router.post("*/create", (req, res) => {
+router.post("/create", (req, res) => {
     console.log("Received", req.body);
     pool.query(
         `INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
@@ -131,12 +129,13 @@ router.post("/update/:id", (req, res) => {
     pool.query(
         `
         UPDATE Customers
-        SET firstName = "${req.body.firstName}",
-        lastName = "${req.body.lastName}",
-        email = "${req.body.email}",
-        phoneNumber = "${
-            req.body.phoneNumber != "0" ? req.body.phoneNumber : ""
-        }"
+        SET
+            firstName = "${req.body.firstName}",
+            lastName = "${req.body.lastName}",
+            email = "${req.body.email}",
+            phoneNumber = "${
+                req.body.phoneNumber != "0" ? req.body.phoneNumber : ""
+            }"
         WHERE customerID = ${req.params.id};`,
         (err, result) => handleUpdate(err, result, req, res)
     );

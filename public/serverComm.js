@@ -47,21 +47,6 @@ function reset() {
 }
 
 /**
- * @brief Asks the server to render a new table, then replace the document's
- *  table (possesing the id "table") with the response.
- */
-// function resetTable() {
-//     let table = document.getElementById("table");
-//     fetch(document.URL + "/table", {
-//         method: "get",
-//     })
-//         .then((res) => res.text())
-//         .then((html) => {
-//             table.innerHTML = html;
-//         });
-// }
-
-/**
  * @brief Gets a specific record's data and calls callback on it.
  *
  * @param {Number} id ID of record to get
@@ -80,63 +65,6 @@ function getByID(id, callback) {
             console.error("Fetch err:", err);
         });
 }
-
-/**
- * @brief Creates a record for the current table
- *
- * @param {{}} data data to use in record creation
- */
-// function create(data) {
-//     fetch(document.URL + "/create", {
-//         method: "post",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data),
-//     })
-//         .then((res) => {
-//             if (res.status == 200) {
-//                 console.log("Created entry");
-//                 resetTable();
-//                 document.getElementById("addForm").classList.add("hidden");
-//             } else {
-//                 console.log("Could not add entry:", res.status);
-//             }
-//         })
-//         .catch((err) => {
-//             console.error("Fetch error:", err);
-//         });
-// }
-
-/**
- * @brief Like create(), but takes an id to replace an entry instead of create one
- * @param {Number} id ID of record to replace
- * @param {{}} data Data to use in record
- */
-// function update(id, data) {
-//     console.log(id);
-//     console.log(data);
-
-//     fetch(document.URL + `/update/${id}`, {
-//         method: "post",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data),
-//     })
-//         .then((res) => {
-//             if (res.status == 200) {
-//                 console.log("Updated entry", id);
-//                 resetTable();
-//                 document.getElementById("updateForm").classList.add("hidden");
-//             } else {
-//                 console.error(`Could not update entry ${id} with:`, data);
-//             }
-//         })
-//         .catch((err) => {
-//             console.error("Fetch error:", err);
-//         });
-// }
 
 /**
  * @brief Deletes a record by ID
@@ -160,7 +88,9 @@ function deleteLine(id) {
 }
 
 function showAdd() {
-    document.getElementById("addFormContainer").classList.remove("hidden");
+    let addFormContainer = document.getElementById("addFormContainer");
+    addFormContainer.classList.remove("hidden");
+    addFormContainer.scrollIntoView({ block: "end", behavior: "smooth" });
 }
 function hideAdd(event) {
     event.preventDefault();
@@ -184,7 +114,9 @@ function showUpdate(id, entry) {
 
     document.getElementById("updateFormID").value = id;
 
-    document.getElementById("updateFormContainer").classList.remove("hidden");
+    let updateFormContainer = document.getElementById("updateFormContainer");
+    updateFormContainer.classList.remove("hidden");
+    updateFormContainer.scrollIntoView({ block: "end", behavior: "smooth" });
 }
 function hideUpdate(event) {
     event.preventDefault();

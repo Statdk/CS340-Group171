@@ -7,8 +7,9 @@ const { pool } = require("./db-connector.js");
 // Import routers
 const customers = require("./routes/customers.js");
 const rentalTransactions = require("./routes/rental-transactions.js");
+const items = require("./routes/items.js");
 
-const PORT = 3805;
+const PORT = 3806;
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static("public"));
 // Use imported routers
 app.use("/customers", customers);
 app.use("/rental-transactions", rentalTransactions);
+app.use("/items", items);
 
 // Reset the database
 app.post("/reset", (req, res) => {
@@ -68,6 +70,7 @@ app.post("/reset", (req, res) => {
 
 // No responses sent; not found
 app.use((req, res) => {
+    console.log("[Not Found]:", req.url);
     res.sendStatus(404);
 });
 

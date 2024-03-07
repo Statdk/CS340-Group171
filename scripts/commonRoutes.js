@@ -7,7 +7,7 @@ function root(res, query, title, obj, idField, order, filterEnabled) {
             console.log("Error:", err);
             res.sendStatus(500);
         } else {
-            console.log("Retrieved:", result);
+            console.log(`Retrieved ${result.length} entries`);
 
             // Assemble the table header
             let header = [];
