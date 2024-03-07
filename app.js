@@ -10,7 +10,7 @@ const rentalTransactions = require("./routes/rental-transactions.js");
 const items = require("./routes/items.js");
 const rentalItems = require("./routes/rental-items.js");
 
-const PORT = 3806;
+const PORT = 3805;
 
 const app = express();
 
