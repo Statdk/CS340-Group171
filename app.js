@@ -36,24 +36,32 @@ app.use("/rental-transactions", rentalTransactions);
 
 // Reset the database
 app.post("/reset", (req, res) => {
-    fs.readFile("./db/DDL.sql", (err, data) => {
+    fs.readFile("./db/DDL.sql", async (err, data) => {
         let query = data.toString();
+        let promises = [];
 
-        // this needs CHANGED, I *HATE* this
-        // Sending the .sql file line by line so it
-        // doesn't take thirty years is aweful
-        query.split(";").forEach((line) => {
+        query.split(";").forEach((line, i) => {
             // console.log("line:", line);
-            pool.query(line, (err, result) => {
-                if (err == null) {
-                    // res.sendStatus(500);
-                    console.log("Error resetting DB:", err);
-                } else {
-                    // res.sendStatus(200);
-                    console.log("Reset DB:", result);
-                }
-            });
+            let promise = new Promise((resolve) =>
+                setTimeout(() => {
+                    console.log("Sent line", i);
+                    pool.query(line, (err, result) => {
+                        if (err != null) {
+                            // res.sendStatus(500);
+                            console.log("Error resetting DB:", err);
+                            resolve();
+                        } else {
+                            // res.sendStatus(200);
+                            console.log("Reset DB:", result);
+                            resolve();
+                        }
+                    });
+                }, 100 * i)
+            );
+            promises.push(promise);
         });
+
+        await Promise.allSettled(promises);
         res.sendStatus(200);
     });
 });

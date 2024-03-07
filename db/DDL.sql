@@ -228,4 +228,4 @@ INSERT INTO RentalItems (transactionID, itemID, quantityRented) VALUES
 
 
 SET FOREIGN_KEY_CHECKS=1;
-COMMIT; 
+COMMIT;
