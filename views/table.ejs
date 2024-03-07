@@ -36,7 +36,7 @@
     <% for (const entry of data.entries) { %>
         <tr>
             <!-- <td><button class="button button-update" <%- `onclick="editLineSetup(event, ${entry[data.idField]})"` %>>Update</button></td> -->
-            <td><button class="button button-update" <%- `onclick="showUpdate(${entry[data.idField]})"` %>>Update</button></td>
+            <td><button class="button button-update" <%- `onclick='showUpdate(${entry[data.idField]}, ${JSON.stringify(entry)})'` %>>Update</button></td>
             <td><button class="button button-delete" <%- `onclick="deleteLine(${entry[data.idField]})"` %>>Delete</button></td>
             
             <% data.order.forEach((key) => { %>
@@ -45,3 +45,4 @@
         </tr>
     <% } %>
 </tbody>
+<input type="hidden" id="orderBin" value="<%= JSON.stringify(data.order) %>" />

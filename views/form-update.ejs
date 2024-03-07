@@ -52,6 +52,7 @@ const obj = {
               value=""
             <% } %>
             name="<%= key %>"
+            id="<%= `update${key}`  %>"
           />
         <% }
       } %>
@@ -61,9 +62,9 @@ const obj = {
     </form>
   </div>
   <script>
-    document.getElementById('updateFormID').value = id;
-    console.log("ID HERE",)
-    let updateForm = document.getElementById("updateForm");
-    updateForm.action = document.URL + `/update/${id}`;
+    // document.getElementById('updateFormID').value = id;
+    // console.log("ID HERE",)
+    // let updateForm = document.getElementById("updateForm");
+    // updateForm.action = document.URL + `/update/${id}`;
   </script>
   

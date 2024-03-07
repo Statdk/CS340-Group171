@@ -4,6 +4,11 @@
  *  (e.g. "HOSTNAME/customers" instead of "HOSTNAME/customers.html")
  */
 
+function getURL() {
+    let url = document.URL.split("?")[0];
+    return url;
+}
+
 /**
  * @brief Function to instruct server to reset the whole database.
  *
@@ -26,9 +31,7 @@ function reset() {
                 if (res.status == 200) {
                     console.log("Successfully reset database");
                     alert("Successfully reset database");
-                    setTimeout(() => {
-                        resetTable();
-                    }, 2000);
+                    window.location.reload();
                 } else {
                     console.log("Could not reset DB code:", res.status);
                     alert(`Could not reset DB with server code: ${res.status}`);
@@ -66,7 +69,7 @@ function reset() {
  *  arg0 is an array of len 1 containing an object
  */
 function getByID(id, callback) {
-    fetch(document.URL + `/get/${id}`, {
+    fetch(getURL() + `/get/${id}`, {
         method: "get",
     })
         .then((res) => res.json())
@@ -83,57 +86,57 @@ function getByID(id, callback) {
  *
  * @param {{}} data data to use in record creation
  */
-function create(data) {
-    fetch(document.URL + "/create", {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    })
-        .then((res) => {
-            if (res.status == 200) {
-                console.log("Created entry");
-                resetTable();
-                document.getElementById("addForm").classList.add("hidden");
-            } else {
-                console.log("Could not add entry:", res.status);
-            }
-        })
-        .catch((err) => {
-            console.error("Fetch error:", err);
-        });
-}
+// function create(data) {
+//     fetch(document.URL + "/create", {
+//         method: "post",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data),
+//     })
+//         .then((res) => {
+//             if (res.status == 200) {
+//                 console.log("Created entry");
+//                 resetTable();
+//                 document.getElementById("addForm").classList.add("hidden");
+//             } else {
+//                 console.log("Could not add entry:", res.status);
+//             }
+//         })
+//         .catch((err) => {
+//             console.error("Fetch error:", err);
+//         });
+// }
 
 /**
  * @brief Like create(), but takes an id to replace an entry instead of create one
  * @param {Number} id ID of record to replace
  * @param {{}} data Data to use in record
  */
-function update(id, data) {
-    console.log(id);
-    console.log(data);
+// function update(id, data) {
+//     console.log(id);
+//     console.log(data);
 
-    fetch(document.URL + `/update/${id}`, {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    })
-        .then((res) => {
-            if (res.status == 200) {
-                console.log("Updated entry", id);
-                resetTable();
-                document.getElementById("updateForm").classList.add("hidden");
-            } else {
-                console.error(`Could not update entry ${id} with:`, data);
-            }
-        })
-        .catch((err) => {
-            console.error("Fetch error:", err);
-        });
-}
+//     fetch(document.URL + `/update/${id}`, {
+//         method: "post",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data),
+//     })
+//         .then((res) => {
+//             if (res.status == 200) {
+//                 console.log("Updated entry", id);
+//                 resetTable();
+//                 document.getElementById("updateForm").classList.add("hidden");
+//             } else {
+//                 console.error(`Could not update entry ${id} with:`, data);
+//             }
+//         })
+//         .catch((err) => {
+//             console.error("Fetch error:", err);
+//         });
+// }
 
 /**
  * @brief Deletes a record by ID
@@ -141,7 +144,7 @@ function update(id, data) {
  * @param {Number} id Record ID to delete
  */
 function deleteLine(id) {
-    fetch(document.URL + `/delete/${id}`, {
+    fetch(getURL() + `/delete/${id}`, {
         method: "post",
     }).then((res) => {
         if (res.status == 200) {
@@ -164,8 +167,23 @@ function hideAdd(event) {
     document.getElementById("addFormContainer").classList.add("hidden");
 }
 
-function showUpdate(id) {
+function showUpdate(id, entry) {
+    let order = JSON.parse(document.getElementById("orderBin").value);
+
+    order.forEach((key) => {
+        try {
+            let input = document.getElementById(`update${key}`);
+            input.value = entry[key];
+        } catch (err) {
+            console.error(err);
+        }
+    });
+
+    let updateForm = document.getElementById("updateForm");
+    updateForm.action = getURL() + `/update/${id}`;
+
     document.getElementById("updateFormID").value = id;
+
     document.getElementById("updateFormContainer").classList.remove("hidden");
 }
 function hideUpdate(event) {

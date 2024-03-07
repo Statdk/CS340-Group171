@@ -33,7 +33,7 @@ const obj = {
 %>
 <div class="form-container hidden" id="addFormContainer">
     <h3>Add <%= data.title %></h3>
-    <form class="form" action="create" method="post" autocomplete="off" id="addForm" >
+    <form class="form" action="/foo" method="post" autocomplete="off" id="addForm" >
       <% for (const key of data.order) { 
           let entry = data.form[key];
           if (entry.form != false) { %>
@@ -60,5 +60,5 @@ const obj = {
   </div>
   <script>
       let form = document.getElementById("addForm");
-      form.action = document.URL + "/create";
+      form.action = getURL() + "/create";
   </script>
