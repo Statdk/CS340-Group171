@@ -8,8 +8,9 @@ const { pool } = require("./db-connector.js");
 const customers = require("./routes/customers.js");
 const rentalTransactions = require("./routes/rental-transactions.js");
 const items = require("./routes/items.js");
+const rentalItems = require("./routes/rental-items.js");
 
-const PORT = 3806;
+const PORT = 3805;
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(express.static("public"));
 app.use("/customers", customers);
 app.use("/rental-transactions", rentalTransactions);
 app.use("/items", items);
+app.use("/rental-items", rentalItems);
 
 // Reset the database
 app.post("/reset", (req, res) => {
