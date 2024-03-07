@@ -11,6 +11,13 @@
  *  due mostly to how the DDL.sql is handled by the sql library.
  */
 function reset() {
+    let choice = confirm(`
+    Please use this sparingly, uploading the DDL.sql through javascript is a rough process that gets rate limited quickly.\n\n
+    Are you sure?
+    `);
+
+    if (choice == false) return;
+
     fetch("/reset", {
         method: "post",
     })
@@ -18,11 +25,13 @@ function reset() {
             (res) => {
                 if (res.status == 200) {
                     console.log("Successfully reset database");
+                    alert("Successfully reset database");
                     setTimeout(() => {
                         resetTable();
                     }, 2000);
                 } else {
                     console.log("Could not reset DB code:", res.status);
+                    alert(`Could not reset DB with server code: ${res.status}`);
                 }
             },
             (err) => {
