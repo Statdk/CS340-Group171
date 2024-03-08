@@ -10,9 +10,9 @@ const rentalTransactions = require("./routes/rental-transactions.js");
 const items = require("./routes/items.js");
 const rentalItems = require("./routes/rental-items.js");
 const discounts = require("./routes/discounts.js");
-// LPT
-// LPT
-// SD
+const liftPassTransactions = require("./routes/lift-pass-transactions.js");
+const liftPassTypes = require("./routes/lift-pass-types.js");
+const seasonDates = require("./routes/season-dates.js");
 
 
 const PORT = 3805;
@@ -43,9 +43,9 @@ app.use("/rental-transactions", rentalTransactions);
 app.use("/items", items);
 app.use("/rental-items", rentalItems);
 app.use("/discounts", discounts);
-// LPT
-// LPT
-// SD
+app.use("/lift-pass-transactions", liftPassTransactions);
+app.use("/lift-pass-types", liftPassTypes);
+app.use("/season-dates", seasonDates);
 
 // Reset the database
 app.post("/reset", (req, res) => {
