@@ -110,10 +110,10 @@ CREATE OR REPLACE TABLE Discounts (
 );
 
 INSERT INTO Discounts (discountType, discountPercentage) VALUES
-('student', 10.00),
-('weekday', 5.00),
-('allWeek', 20.00),
-('seasonPass', 50.00);
+('student', 0.10),
+('weekday', 0.05),
+('allWeek', 0.20),
+('seasonPass', 0.50);
 
  -- Records the start and end dates for tracking which season passes are associated with
 CREATE OR REPLACE TABLE SeasonDates (
