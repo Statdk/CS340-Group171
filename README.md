@@ -10,13 +10,14 @@ Port is configurable by a constant in `app.js`.
 # Todo List (for Step 5)
 
 -   ### Git changes:
-    -   
+    -   Replace master with test branch
 -   ### UI/routes changes:
-    -   Add Discounts table
-    -   Add Lift Pass tables (3x)
+    -   ~~Add Discounts table~~
+    -   ~~Add Lift Pass tables (3x)~~
+    -   Fix date formatting to YYYY-MM-DD
 -   ### CRUD changes:
-    -   Adding to rental-items: create new rental-transaction if added transactionID is new
+    -   Adding to rental-items: create a new rental-transaction if the added transactionID is new
 -   ### site/connection changes:
-    -  
+    -   
 -   ### PDF changes:
     -   ~~List fixes in response to feedback~~
