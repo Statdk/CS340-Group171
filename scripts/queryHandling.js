@@ -12,13 +12,13 @@ function handleCreate(err, result, req, res) {
 function handleUpdate(err, result, req, res) {
     if (err != null) {
         console.log(
-            `Could not update customer ${req.params.id} with:`,
+            `Could not update ID ${req.params.id} with:`,
             req.body
         );
         console.log(err);
         res.sendStatus(500);
     } else {
-        console.log("Updated Customer:", req.params.id);
+        console.log("Updated ID:", req.params.id);
         console.log(result);
         res.redirect(req.baseUrl);
     }
