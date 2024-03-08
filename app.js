@@ -9,6 +9,11 @@ const customers = require("./routes/customers.js");
 const rentalTransactions = require("./routes/rental-transactions.js");
 const items = require("./routes/items.js");
 const rentalItems = require("./routes/rental-items.js");
+const discounts = require("./routes/discounts.js");
+// LPT
+// LPT
+// SD
+
 
 const PORT = 3805;
 
@@ -37,6 +42,10 @@ app.use("/customers", customers);
 app.use("/rental-transactions", rentalTransactions);
 app.use("/items", items);
 app.use("/rental-items", rentalItems);
+app.use("/discounts", discounts);
+// LPT
+// LPT
+// SD
 
 // Reset the database
 app.post("/reset", (req, res) => {
