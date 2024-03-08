@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const bodyParser = require("body-parser");
-const ejs = require("ejs");
+
+const { root } = require("../scripts/commonRoutes.js");
+const {
+    handleCreate,
+    handleUpdate,
+    handleDelete,
+} = require("../scripts/queryHandling.js");
+const { pool } = require("../db-connector.js");
 
 // helper func to format saleDate to YYYY-MM-DD
 function formatDateToYYYYMMDD(date) { return date.toISOString().split('T')[0]; }
-
-const { pool } = require("../db-connector.js");
 
 const title = "Rental Transactions";
 
@@ -68,93 +72,25 @@ const idField = "transactionID";
 // Order for columns to appear, must correlate to keys in obj
 const order = ["transactionID", "customerID", "discountID", "saleDate", "rentalDuration"];
 
-router.use(bodyParser.json());
+router.use(express.json());
 
 router.get("/", async (req, res) => {
     console.log("Accessing /rental-transactions");
+    const filterEnabled = true;
 
-    pool.query("select * from RentalTransactions", async (err, result) => {
-        if (err != null) {
-            console.log("Error:", err);
-            res.sendStatus(500);
-        } else {
-            console.log("Retrieved:", result);
-
-            // Format saleDate for each entry in result
-            const formattedResult = result.map(entry => ({
-                ...entry,
-                saleDate: formatDateToYYYYMMDD(new Date(entry.saleDate)) // format saleDate to YYYY-MM-DD
-            }));
-            
-            let header = [];
-            for (const title of order) {
-                header.push(obj[title].display);
-            }
-
-            let table = await ejs.renderFile("views/table.ejs", {
-                data: {
-                    header: header,
-                    entries: formattedResult, // formattedResult here for datetime formatting
-                    order: order,
-                    idField: idField,
-                },
-            });
-
-            let filter = await ejs.renderFile("views/filter.ejs", {
-                data: {
-                    header: header,
-                    form: obj,
-                    order: order,
-                },
-            });
-
-            let formAdd = await ejs.renderFile("views/form-add.ejs", {
-                data: {
-                    title: title,
-                    header: header,
-                    form: obj,
-                    order: order,
-                },
-            });
-
-            let formUpdate = await ejs.renderFile("views/form-update.ejs", {
-                data: {
-                    title: title,
-                    header: header,
-                    form: obj,
-                    order: order,
-                },
-            });
-
-            let page = await ejs.renderFile("views/view-table.ejs", {
-                data: {
-                    title: title,
-                    html: {
-                        table: table,
-                        filter: filter,
-                        formAdd: formAdd,
-                        formUpdate: formUpdate,
-                    },
-                },
-            });
-
-            res.send(page);
-        }
+    const query = "SELECT * FROM RentalTransactions";
+    pool.query(query, async (err, results) => {
+        // if (err) {
+        //     console.log("Error:", err);
+        //     return res.sendStatus(500);
+        // }
+        const formattedResults = results.map(result => ({
+            ...result,
+            saleDate: formatDateToYYYYMMDD(new Date(result.saleDate)),
+        }));
+        root(res, query, title, obj, idField, order, filterEnabled);
     });
 });
-
-// Get table
-// router.get("/table", (req, res) => {
-// pool.query("select * from Customers", (err, result) => {
-//     if (err != null) {
-//         res.sendStatus(500);
-//         console.log("Error:", err);
-//     } else {
-//         console.log("Retrieved:", result);
-//         res.render("customers-table", { customers: result });
-//     }
-// });
-// });
 
 // CREATE
 router.post("/create", (req, res) => {
