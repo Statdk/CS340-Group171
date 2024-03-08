@@ -1,0 +1,61 @@
+<%#
+<div class="filterform-container">
+    <h3>Filter by:</h3>
+    <form class="form" method="get" id="filterForm">
+      <input name="firstName" class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterFirst" placeholder="First Name" />
+      <input class="filter" type="text" oninput="updateFilters()" onkeypress="updateFilters()" id="filterLast" placeholder="Last Name" />
+      <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterEmail" placeholder="Email" />
+      <input class="filter" type="number" onchange="updateFilters()" onkeypress="updateFilters()" onclick="updateFilters()" id="filterPhone" placeholder="Phone Number" />
+      <button class="button button-green">Submit</button>
+      <button class="button button-red" onclick="clearFilters(event)">Clear</button>
+      <script>
+        function clearFilters(event) {
+          // event.preventDefault();
+          let inputs = document.getElementsByClassName('filter');
+          for (const input of inputs) {
+            input.value = '';
+          }
+          updateFilters();
+        }
+        function updateFilters() {
+          console.log("Faux update");
+        }
+      </script>
+    </form>
+</div>
+%>
+
+<div class="filterform-container">
+  <h3>Filter by:</h3>
+  <form class="form" method="get" id="filterForm">
+    <% for (const key in data.form) {
+      let entry = data.form[key];
+      if (entry.form == true) {
+        if (entry.input == "table") {
+
+        } else { %>
+          <input
+            name="<%= key %>"
+            type="<%= entry.input.type %>"
+            placeholder="<%= entry.display %>"
+          />
+        <% }
+      }
+    } %>
+    <button class="button button-green">Submit</button>
+    <%# <button class="button button-red" onclick="clearFilters(event)">Clear</button> %>
+    <script>
+      function clearFilters(event) {
+        // event.preventDefault();
+        let inputs = document.getElementsByClassName('filter');
+        for (const input of inputs) {
+          input.value = '';
+        }
+        updateFilters();
+      }
+      function updateFilters() {
+        console.log("Faux update");
+      }
+    </script>
+  </form>
+</div>

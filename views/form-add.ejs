@@ -1,0 +1,64 @@
+<%#
+data: {
+    header: header,
+    form: obj,
+},
+const obj = {
+    customerID: {
+        display: "ID",
+        form: false,
+    },
+    firstName: {
+        display: "First Name",
+        filter: true,
+        form: true,
+        input: {
+            type: "text",
+        },
+        // input: "table"
+        fromTable: undefined,
+    },
+
+<div class="form-container hidden" id="addForm">
+    <h3>Add Customer</h3>
+    <form class="form">
+      <input type="text" value="" id="addFirst" placeholder="First Name">
+      <input type="text" value="" id="addLast" placeholder="Last Name">
+      <input type="text" value="" id="addEmail" placeholder="Email">
+      <input type="number" value="" id="addPhone" placeholder="Phone Number (Optional)">
+      <button class="button button-green" id="addBtn">Add Customer</button>
+      <button class="button button-red" id="addCancelBtn">Cancel</button>
+    </form>
+  </div>
+%>
+<div class="form-container hidden" id="addFormContainer">
+    <h3>Add <%= data.title %></h3>
+    <form class="form" action="/foo" method="post" autocomplete="off" id="addForm" >
+      <% for (const key of data.order) { 
+          let entry = data.form[key];
+          if (entry.form != false) { %>
+            <input 
+              <% if (entry.input == "table" ) { %>
+              
+              <% } else { %>
+                type="<%= entry.input.type %>"
+                <% if (entry.input.type == "number") { %>
+                  <%= entry.input.min != undefined ? `min="${entry.input.min}"` : "" %>
+                  <%= entry.input.max != undefined ? `max="${entry.input.max}"` : "" %>
+                <% } %>
+                <%= entry.input.required == "true" ? "required" : "" %>
+                placeholder="<%= entry.input.placeholder %>"
+                value=""
+              <% } %>
+              name="<%= key %>"
+            />
+          <% }
+      } %>
+      <input type="submit" class="button button-green" id="addBtn" value="Add"></button>
+      <button class="button button-red" id="addCancelBtn" onclick="hideAdd(event)">Cancel</button>
+    </form>
+  </div>
+  <script>
+      let form = document.getElementById("addForm");
+      form.action = getURL() + "/create";
+  </script>

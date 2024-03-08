@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
 
@@ -7,13 +6,23 @@ const { pool } = require("./db-connector.js");
 
 // Import routers
 const customers = require("./routes/customers.js");
+const rentalTransactions = require("./routes/rental-transactions.js");
+const items = require("./routes/items.js");
+const rentalItems = require("./routes/rental-items.js");
+const discounts = require("./routes/discounts.js");
+const liftPassTransactions = require("./routes/lift-pass-transactions.js");
+const liftPassTypes = require("./routes/lift-pass-types.js");
+const seasonDates = require("./routes/season-dates.js");
+
 
 const PORT = 3805;
 
 const app = express();
 
-// Use bodyParser to parse json requests
-app.use(bodyParser.json());
+// Parse json post requests
+app.use(express.json());
+// Parse get data encoded in url
+app.use(express.urlencoded({ extended: false }));
 
 // Views set up
 app.set("views", path.join(__dirname, "views"));
@@ -30,33 +39,49 @@ app.use(express.static("public"));
 
 // Use imported routers
 app.use("/customers", customers);
+app.use("/rental-transactions", rentalTransactions);
+app.use("/items", items);
+app.use("/rental-items", rentalItems);
+app.use("/discounts", discounts);
+app.use("/lift-pass-transactions", liftPassTransactions);
+app.use("/lift-pass-types", liftPassTypes);
+app.use("/season-dates", seasonDates);
 
 // Reset the database
 app.post("/reset", (req, res) => {
-    fs.readFile("./db/DDL.sql", (err, data) => {
+    fs.readFile("./db/DDL.sql", async (err, data) => {
         let query = data.toString();
+        let promises = [];
 
-        // this needs CHANGED, I *HATE* this
-        // Sending the .sql file line by line so it
-        // doesn't take thirty years is aweful
-        query.split(";").forEach((line) => {
+        query.split(";").forEach((line, i) => {
             // console.log("line:", line);
-            pool.query(line, (err, result) => {
-                if (err == null) {
-                    // res.sendStatus(500);
-                    console.log("Error resetting DB:", err);
-                } else {
-                    // res.sendStatus(200);
-                    console.log("Reset DB:", result);
-                }
-            });
+            let promise = new Promise((resolve) =>
+                setTimeout(() => {
+                    console.log("Sent line", i);
+                    pool.query(line, (err, result) => {
+                        if (err != null) {
+                            // res.sendStatus(500);
+                            console.log("Error resetting DB:", err);
+                            resolve();
+                        } else {
+                            // res.sendStatus(200);
+                            console.log("Reset DB:", result);
+                            resolve();
+                        }
+                    });
+                }, 100 * i)
+            );
+            promises.push(promise);
         });
+
+        await Promise.allSettled(promises);
         res.sendStatus(200);
     });
 });
 
 // No responses sent; not found
 app.use((req, res) => {
+    console.log("[Not Found]:", req.url);
     res.sendStatus(404);
 });
 

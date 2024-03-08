@@ -1,0 +1,70 @@
+<%#
+data: {
+    header: header,
+    form: obj,
+},
+const obj = {
+    customerID: {
+        display: "ID",
+        form: false,
+    },
+    firstName: {
+        display: "First Name",
+        filter: true,
+        form: true,
+        input: {
+            type: "text",
+        },
+        // input: "table"
+        fromTable: undefined,
+    },
+
+    <div class="form-container hidden" id="updateForm" onsubmit="return false;">
+    <h3>Update Customer</h3>
+    <form class="form" action="none">
+      <input type="text" id="updateFirst" placeholder="First Name">
+      <input type="text" id="updateLast" placeholder="Last Name">
+      <input type="text" id="updateEmail" placeholder="Email">
+      <input type="number" id="updatePhone" placeholder="Phone Number (Optional)">
+      <button class="button button-update" id="updateBtn">Update Customer</button>
+      <button class="button button-red" id="updateCancelBtn">Cancel</button>
+    </form>
+  </div>
+%>
+  <div class="form-container hidden" id="updateFormContainer">
+    <h3>Update <%= data.title %> ID: <span id="updateFormIDDisplay"></span></h3>
+    <form class="form" action="update" method="post" autocomplete="off" id="updateForm">
+      <input type="hidden" id="updateFormID" name="id" value="">
+      <% for (const key of data.order) { 
+        let entry = data.form[key];
+        if (entry.form != false) { %>
+          <input 
+            <% if (entry.input == "table" ) { %>
+            
+            <% } else { %>
+              type="<%= entry.input.type %>"
+              <% if (entry.input.type == "number") { %>
+                <%= entry.input.min != undefined ? `min="${entry.input.min}"` : "" %>
+                <%= entry.input.max != undefined ? `max="${entry.input.max}"` : "" %>
+              <% } %>
+              <%= entry.input.required == "true" ? "required" : "" %>
+              placeholder="<%= entry.input.placeholder %>"
+              value=""
+            <% } %>
+            name="<%= key %>"
+            id="<%= `update${key}`  %>"
+          />
+        <% }
+      } %>
+
+      <input type="submit" class="button button-blue" id="addBtn" value="Update"></button>
+      <button class="button button-red" id="addCancelBtn" onclick="hideUpdate(event)">Cancel</button>
+    </form>
+  </div>
+  <script>
+    // document.getElementById('updateFormID').value = id;
+    // console.log("ID HERE",)
+    // let updateForm = document.getElementById("updateForm");
+    // updateForm.action = document.URL + `/update/${id}`;
+  </script>
+  

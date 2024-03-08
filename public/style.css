@@ -150,11 +150,11 @@ body {
 .button-reset:hover {
   background-color: #eab308; /* Slightly darker yellow on hover */
 }
-.button-edit {
+.button-update {
   padding: 6px 12px;
   background-color: #3b82f6;
 }
-.button-edit:hover {
+.button-update:hover {
   background-color: #2563eb; /* Slightly darker blue on hover */
 }
 .button-delete {
@@ -232,7 +232,7 @@ font-size: 24px;
 }
 
 
-.form input[type="text"], .form select, .form input[type="number"], .form input[type="date"] {
+.form input[type="text"], .form select, .form input[type="number"], .form input[type="float"], .form input[type="date"] {
   background-color: #374151;
   color: #d1d5db;
   border: none;
@@ -242,11 +242,12 @@ font-size: 24px;
   margin-right: 8px;
 }
 
-.form input[type="text"]::placeholder, .form input[type="number"]::placeholder, .form input[type="date"] {
+.form input[type="text"]::placeholder, .form input[type="number"]::placeholder, .form input[type="float"]::placeholder, .form input[type="date"] {
   color: #9ca3af;
 }
 
-.form button {
+.form button,
+.form input[type="submit"] {
   padding: 8px 16px;
   border: none;
   font-weight: 700;

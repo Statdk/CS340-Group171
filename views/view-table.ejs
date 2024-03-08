@@ -1,0 +1,87 @@
+<%# 
+  Expects data: {
+    title,
+    html: { // Rendered through other ejs templates
+      table,
+      filter,
+      formAdd,
+      formUpdate,
+    }
+  }
+%>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/person-skiing-solid.svg">
+<link href="/style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+<script src="/load-header.js"></script>
+
+<script src="/serverComm.js"></script>
+
+<title><%= data.title %></title>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  
+  <div class="container">
+    
+    <%- data.html.filter != undefined ? data.html.filter : "" %>
+
+    
+    <a class="table-title"><%= data.title %></a>
+    <table class="styled-table" id="table">
+      <%- data.html.table %>
+    </table>
+
+
+    <%- data.html.formAdd %>
+
+    <%- data.html.formUpdate %>
+
+    <div id="updateContainer" style="display: contents;"></div>
+
+    <!-- <div class="form-container">
+      <h3>Update Customer *EXAMPLE DATA*</h3>
+      <h3> for Customer ID: 2</h3>
+      <form class="form">
+        <input type="text" value="Jane">
+        <input type="text" value="Doe">
+        <input type="text" value="jayjay23@gmail.com">
+        <input type="number" value="1234567891">
+        <button class="button button-edit">Update Customer</button>
+        <button class="button button-red">Cancel</button>
+      </form>
+    </div> -->
+    
+  </div>
+
+  <script>
+    // resetTable("Customers");
+
+    // document.getElementById("addBtn").addEventListener("click", (event) => {
+    //   event.preventDefault();
+    //   let data = {};
+    //   data.first = document.getElementById("addFirst").value;
+    //   data.last = document.getElementById("addLast").value;
+    //   data.email = document.getElementById("addEmail").value;
+    //   data.phone = document.getElementById("addPhone").value;
+    //   create(data);
+    // });
+
+    // document.getElementById("addCancelBtn").addEventListener("click", (event) => {
+    //   event.preventDefault();
+    //   document.getElementById("addForm").classList.add("hidden");
+    // });
+    
+    // Slash at end breaks things, so fix it
+    if (document.URL.charAt(document.URL.length - 1) == "/") {
+      let newURL = document.URL.substring(0, document.URL.length - 1);
+      window.location.replace(newURL);
+    }
+  </script>
+</body>
+</html>
