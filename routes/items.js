@@ -53,7 +53,7 @@ const obj = {
         filter: true,
         form: true,
         input: {
-            type: "number",
+            type: "float",
             required: "true",
             placeholder: "List Price",
             min: "0",
