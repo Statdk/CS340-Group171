@@ -5,21 +5,28 @@
 
 Port is configurable by a constant in `app.js`.
 
-
 `npm test` will run with nodemon, rebooting the server on file changes.
 
 # Todo List (for Step 6)
 
 -   ### Git changes:
+    -   ~~this~~
+    -   ~~add library dependency to readme~~
     -   delete old master
 -   ### UI/CRUD changes:
     -   Fix date formatting to YYYY-MM-DD
-    -   Add all data validation
-        - - emails, phone numbers, prices, percentages, FK dropdowns, negatives
+        - - Fix update not populating date
     -   Add placeholder descriptions next to box aswell, maybe
     -   Adding to rental-items: create a new rental-transaction if the added transactionID is new
     -   Fix lift pass tables?
-    -   Handle duplicate rows
+    -   Fix filter in RT
+    -   Dropdowns on FKs for new / filter / update
+    -   Add all data validation
+        - - emails, phone numbers, prices, percentages, FK dropdowns, negatives
+    -   Join FK (like Customer ID and Discount ID in RT)
+    -   Handle duplicate rows?
+    -   Detil on home page (maybe just summary paste)
+        - - Intro for each table, sentance summary for clarity (can also point out which tables fulfill M:N req)
 -   ### files(to be submitted) changes: (https://canvas.oregonstate.edu/courses/1946034/assignments/9456223)
     -   backend code (file)
         - - no node_modules
