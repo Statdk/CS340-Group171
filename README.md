@@ -8,17 +8,36 @@ Port is configurable by a constant in `app.js`.
 
 `npm test` will run with nodemon, rebooting the server on file changes.
 
-# Todo List (for Step 5)
+# Todo List (for Step 6)
 
 -   ### Git changes:
-    -   Replace master with test branch
--   ### UI/routes changes:
-    -   ~~Add Discounts table~~
-    -   ~~Add Lift Pass tables (3x)~~
+    -   delete old master
+-   ### UI/CRUD changes:
     -   Fix date formatting to YYYY-MM-DD
--   ### CRUD changes:
+    -   Add all data validation
+        - - emails, phone numbers, prices, percentages, FK dropdowns, negatives
+    -   Add placeholder descriptions next to box aswell, maybe
     -   Adding to rental-items: create a new rental-transaction if the added transactionID is new
--   ### site/connection changes:
-    -   
+    -   Fix lift pass tables?
+    -   Handle duplicate rows
+-   ### files(to be submitted) changes: (https://canvas.oregonstate.edu/courses/1946034/assignments/9456223)
+    -   backend code (file)
+        - - no node_modules
+        - - remove user & pass from db-connector
+        - - Add citations to readme?
+    -   PDF
+        - - Executive Summary (max 1pg)
+        - - Project and Database Outlines
+        - - ER Diagram
+        - - Schema
+        - - Sample Data   
+        - - UI Screen Shots with Informative Titles     
+    -   DDL.sql
+    -   DML.sql
+    -   URL.txt (http://flip1.engr.oregonstate.edu:3805/index.html)
+    -   comment on submission with URL
 -   ### PDF changes:
-    -   ~~List fixes in response to feedback~~
+    -   Update for new Ed reviews
+    -   Update summary if needed
+    -   URL in headers
+    -   UI screenshots
