@@ -1,16 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const { root } = require("../scripts/commonRoutes.js");
+const { root, formatDateToYYYYMMDD } = require("../scripts/commonRoutes.js");
 const {
     handleCreate,
     handleUpdate,
     handleDelete,
 } = require("../scripts/queryHandling.js");
 const { pool } = require("../db-connector.js");
-
-// helper func to format saleDate to YYYY-MM-DD
-function formatDateToYYYYMMDD(date) { return date.toISOString().split('T')[0]; }
 
 const title = "Lift Pass Transactions";
 
@@ -78,17 +75,7 @@ router.get("/", async (req, res) => {
     const filterEnabled = true;
 
     const query = "SELECT * FROM LiftPassTransactions";
-    pool.query(query, async (err, results) => {
-        // if (err) {
-        //     console.log("Error:", err);
-        //     return res.sendStatus(500);
-        // }
-        const formattedResults = results.map(result => ({
-            ...result,
-            liftPassID: formatDateToYYYYMMDD(new Date(result.liftPassID)),
-        }));
-        root(res, query, title, obj, idField, order, filterEnabled);
-    });
+    root(res, query, title, obj, idField, order, filterEnabled);
 });
 
 // CREATE
@@ -131,18 +118,26 @@ router.get("/get/:id", (req, res) => {
 // Update
 router.post("/update/:id", (req, res) => {
     console.log("Received:", req.body);
-    pool.query(
-        `
-        UPDATE LiftPassTransactions 
-            SET 
-            customerID = "${req.body.customerID}",
-            seasonDatesID = "${req.body.seasonDatesID}",
-            liftPassID = "${req.body.liftPassID}",
-            saleDate = "${req.body.saleDate}"
-        WHERE transactionID = ${req.params.id};
-        `,
-        (err, result) => handleUpdate(err, result, req, res)
-    );
+
+    const formattedSaleDate = formatDateToYYYYMMDD(req.body.saleDate);
+
+    const updateQuery = `
+    UPDATE LiftPassTransactions 
+    SET 
+        customerID = ?,
+        seasonDatesID = ?,
+        liftPassID = ?,
+        saleDate = ?
+    WHERE transactionID = ?;
+    `;
+
+    pool.query(updateQuery, [req.body.customerID, req.body.seasonDatesID, req.body.liftPassID, formattedSaleDate, req.params.id], (err, result) => {
+        if (err) {
+            console.error("Error updating Lift Pass Transactions:", err);
+            return res.status(500).send("Error updating Lift Pass Transactions");
+        }
+        res.redirect("/lift-pass-transactions");  //refresh
+    });
 });
 
 // Delete

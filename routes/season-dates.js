@@ -89,8 +89,8 @@ router.post("/update/:id", (req, res) => {
 
     pool.query(updateQuery, [formattedSeasonStart, formattedSeasonEnd, req.params.id], (err, result) => {
         if (err) {
-            console.error("Error updating season dates:", err);
-            return res.status(500).send("Error updating season dates");
+            console.error("Error updating Season Dates:", err);
+            return res.status(500).send("Error updating Season Dates");
         }
         res.redirect("/season-dates");  //refresh
     });

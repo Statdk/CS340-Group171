@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { root } = require("../scripts/commonRoutes.js");
+const { root, formatDateToYYYYMMDD } = require("../scripts/commonRoutes.js");
 const {
     handleCreate,
     handleUpdate,
@@ -115,15 +115,24 @@ router.post("/update/:id", (req, res) => {
     const { customerID, discountID, saleDate, rentalDuration } = req.body;
     // discountID = discountID ? discountID : null;
 
-    const updateQuery = `UPDATE RentalTransactions SET customerID = ?, discountID = ?, saleDate = ?, rentalDuration = ? WHERE transactionID = ?`;
+    const formattedSaleDate = formatDateToYYYYMMDD(req.body.saleDate);
 
-    pool.query(updateQuery, [customerID, discountID || null, saleDate, rentalDuration, id], (err, result) => {
+    const updateQuery = `
+    UPDATE RentalTransactions 
+    SET 
+        customerID = ?,
+        discountID = ?,
+        saleDate = ?,
+        rentalDuration = ?
+    WHERE transactionID = ?;
+    `;
+
+    pool.query(updateQuery, [customerID, discountID || null, formattedSaleDate, rentalDuration, id], (err, result) => {
         if (err) {
-            console.error(`Could not update transaction ${id}:`, err);
-            return res.status(500).send("Error updating transaction");
+            console.error("Error updating Rental Transactions:", err);
+            return res.status(500).send("Error updating Rental Transactions");
         }
-        console.log("Updated transaction:", result);
-        res.redirect("/rental-transactions");
+        res.redirect("/rental-transactions");  //refresh
     });
 });
 
