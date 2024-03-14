@@ -38,6 +38,8 @@ const obj = {
       <% for (const key of data.order) { 
         let entry = data.form[key];
         if (entry.form != false) { %>
+        <div class="input-group">
+          <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
           <input 
             <% if (entry.input == "table" ) { %>
             
@@ -54,11 +56,11 @@ const obj = {
             name="<%= key %>"
             id="<%= `update${key}`  %>"
           />
+        </div>
         <% }
       } %>
-
       <input type="submit" class="button button-blue" id="addBtn" value="Update"></button>
-      <button class="button button-red" id="addCancelBtn" onclick="hideUpdate(event)">Cancel</button>
+      <button type="cancel" class="button button-red" id="addCancelBtn" onclick="hideUpdate(event)">Cancel</button>
     </form>
   </div>
   <script>

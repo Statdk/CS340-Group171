@@ -96,7 +96,7 @@ body {
 
 /* Base button styles */
 .button {
-  padding: 8px 12px;
+  padding: 8px;
   border: none;
   border-radius: 6px;
   font-weight: 700;
@@ -247,8 +247,9 @@ font-size: 24px;
 }
 
 .form button,
+.form input[type="cancel"],
 .form input[type="submit"] {
-  padding: 8px 16px;
+  /* padding: 8px 16px; */
   border: none;
   font-weight: 700;
   cursor: pointer;
@@ -257,7 +258,17 @@ font-size: 24px;
   margin-right: 8px;
 }
 
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px; /* Space between input groups */
+}
 
+.input-group label {
+  margin-bottom: 4px; /* Space between label and input field */
+  color: #d1d5db; /* Label color */
+  font-size: 0.9em; /* Smaller font size for labels */
+}
 
 
 .filterform-container {
@@ -323,6 +334,7 @@ font-size: 24px;
     margin: 8px 0px 0px 0px;
   }
 }
+
 
 
 .hidden {
