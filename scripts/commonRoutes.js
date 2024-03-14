@@ -1,7 +1,6 @@
 const ejs = require("ejs");
 const { pool } = require("../db-connector.js");
 
-// Assuming formatDateToYYYYMMDD is defined somewhere accessible
 function formatDateToYYYYMMDD(dateStr) {
     const date = new Date(dateStr);
     // Check if the date is valid
@@ -102,4 +101,4 @@ function root(res, query, title, obj, idField, order, filterEnabled) {
     });
 }
 
-module.exports = { root };
+module.exports = { root, formatDateToYYYYMMDD };
