@@ -23,7 +23,7 @@ Port is configurable by a constant in `app.js`.
     -   Fix filter in RT and LPTr
     -   Dropdowns on FKs for new / filter / update
     -   Add all data validation
-        - emails, phone numbers, prices, percentages, FK dropdowns, negatives
+        - ~~emails, phone numbers~~, prices, percentages, FK dropdowns, negatives
     -   Join FK (like Customer ID and Discount ID in RT)
     -   Handle duplicate rows?
     -   Detil on home page (maybe just summary paste)
