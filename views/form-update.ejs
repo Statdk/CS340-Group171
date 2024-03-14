@@ -51,6 +51,9 @@ const obj = {
               <% } %>
               <%= entry.input.required == "true" ? "required" : "" %>
               placeholder="<%= entry.input.placeholder %>"
+              <% if (entry.input.pattern) { %>
+                pattern="<%= entry.input.pattern %>"
+              <% } %>
               value=""
             <% } %>
             name="<%= key %>"
