@@ -232,7 +232,7 @@ font-size: 24px;
 }
 
 .form select,
-.form input[type="text"], .form input[type="number"], .form input[type="float"], .form input[type="date"], .form input[type="email"], .form input[type="phoneNumber"] {
+.form input[type="text"], .form input[type="number"], .form input[type="float"], .form input[type="date"], .form input[type="email"], .form input[type="tel"] {
   background-color: #374151;
   color: #d1d5db;
   border: none;
@@ -242,7 +242,7 @@ font-size: 24px;
   margin-right: 8px;
 }
 
-.form input[type="text"]::placeholder, .form input[type="number"]::placeholder, .form input[type="float"]::placeholder, .form input[type="date"], .form input[type="email"], .form input[type="phoneNumber"] {
+.form input[type="text"]::placeholder, .form input[type="number"]::placeholder, .form input[type="float"]::placeholder, .form input[type="date"], .form input[type="email"], .form input[type="tel"] {
   color: #9ca3af;
 }
 
