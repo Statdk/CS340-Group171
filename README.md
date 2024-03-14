@@ -15,15 +15,15 @@ Port is configurable by a constant in `app.js`.
     -   remove oldhtml
     -   remove customers.js in public
 -   ### UI/CRUD changes:
-    -   Fix date formatting to YYYY-MM-DD
-        - Fix update not populating date
+    -   ~~Fix date formatting to YYYY-MM-DD~~
+        - ~~Fix update not populating date~~
     -   ~~Add placeholder descriptions next to box aswell, maybe~~
     -   Adding to rental-items: create a new rental-transaction if the added transactionID is new
     -   ~~Fix lift pass tables add update some not required~~
     -   Fix filter in RT and LPTr
     -   Dropdowns on FKs for new / filter / update
     -   Add all data validation
-        - ~~emails, phone numbers~~, prices, percentages, FK dropdowns, negatives
+        - ~~emails, phone numbers, percentages~~, FK dropdowns, negatives
     -   Join FK (like Customer ID and Discount ID in RT)
     -   Handle duplicate rows?
     -   Detil on home page (maybe just summary paste)
