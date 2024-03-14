@@ -34,7 +34,7 @@ const obj = {
         form: true,
         input: {
             type: "float",
-            required: "false",
+            required: "true",
             placeholder: "List Price",
         },
         fromTable: undefined,

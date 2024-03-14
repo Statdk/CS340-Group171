@@ -37,7 +37,7 @@ const obj = {
         form: true,
         input: {
             type: "number",
-            required: "false",
+            required: "true",
             placeholder: "Season Dates ID",
         },
         fromTable: undefined,
