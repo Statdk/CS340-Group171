@@ -9,9 +9,6 @@ const {
 } = require("../scripts/queryHandling.js");
 const { pool } = require("../db-connector.js");
 
-// helper func to format saleDate to YYYY-MM-DD
-function formatDateToYYYYMMDD(date) { return date.toISOString().split('T')[0]; }
-
 const title = "Rental Transactions";
 
 // Object containing display and form data
@@ -77,19 +74,11 @@ router.use(express.json());
 router.get("/", async (req, res) => {
     console.log("Accessing /rental-transactions");
     const filterEnabled = true;
-
-    const query = "SELECT * FROM RentalTransactions";
-    pool.query(query, async (err, results) => {
-        // if (err) {
-        //     console.log("Error:", err);
-        //     return res.sendStatus(500);
-        // }
-        const formattedResults = results.map(result => ({
-            ...result,
-            saleDate: formatDateToYYYYMMDD(new Date(result.saleDate)),
-        }));
-        root(res, query, title, obj, idField, order, filterEnabled);
-    });
+    
+    const query = `
+        SELECT * FROM RentalTransactions;
+    `;
+    root(res, query, title, obj, idField, order, filterEnabled);    
 });
 
 // CREATE
