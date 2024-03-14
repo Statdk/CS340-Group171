@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { root } = require("../scripts/commonRoutes.js");
+const { root, formatDateToYYYYMMDD } = require("../scripts/commonRoutes.js");
 const {
     handleCreate,
     handleUpdate,
@@ -76,16 +76,24 @@ router.post("/create", (req, res) => {
 router.post("/update/:id", (req, res) => {
     console.log("Received:", req.body);
 
-    pool.query(
-        `
-        UPDATE SeasonDates 
-            SET 
-            seasonStart = "${req.body.seasonStart}",
-            seasonEnd = ${req.body.seasonEnd}
-        WHERE seasonDatesID = ${req.params.id};
-        `,
-        (err, result) => handleUpdate(err, result, req, res)
-    );
+    const formattedSeasonStart = formatDateToYYYYMMDD(req.body.seasonStart);
+    const formattedSeasonEnd = formatDateToYYYYMMDD(req.body.seasonEnd);
+
+    const updateQuery = `
+    UPDATE SeasonDates 
+    SET 
+        seasonStart = ?,
+        seasonEnd = ?
+    WHERE seasonDatesID = ?;
+    `;
+
+    pool.query(updateQuery, [formattedSeasonStart, formattedSeasonEnd, req.params.id], (err, result) => {
+        if (err) {
+            console.error("Error updating season dates:", err);
+            return res.status(500).send("Error updating season dates");
+        }
+        res.redirect("/season-dates");  //refresh
+    });
 });
 
 // Delete
