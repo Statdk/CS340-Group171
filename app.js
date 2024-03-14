@@ -4,6 +4,8 @@ const path = require("path");
 
 const { pool } = require("./db-connector.js");
 
+const CONFIG = require("./config.json");
+
 // Import routers
 const customers = require("./routes/customers.js");
 const rentalTransactions = require("./routes/rental-transactions.js");
@@ -13,9 +15,6 @@ const discounts = require("./routes/discounts.js");
 const liftPassTransactions = require("./routes/lift-pass-transactions.js");
 const liftPassTypes = require("./routes/lift-pass-types.js");
 const seasonDates = require("./routes/season-dates.js");
-
-
-const PORT = 3805;
 
 const app = express();
 
@@ -86,8 +85,8 @@ app.use((req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`Listening on port: ${PORT}`);
+app.listen(CONFIG.PORT, () => {
+    console.log(`Listening on port: ${CONFIG.PORT}`);
     pool.query("show tables", (err, result) => {
         console.log("err:", err);
         console.log("tables:", result);
