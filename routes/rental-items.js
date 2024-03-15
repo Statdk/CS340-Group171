@@ -26,12 +26,12 @@ const obj = {
             required: "true",
             placeholder: "Transaction ID",
         },
-        /**
-         * input: {
-         *  type: "option",
-         *  required: "true",
-         * }
-         */
+        join: {
+            fromTable: "RentalTransactions",
+            // joinWith: ["transactionID", "firstName", "lastName"],
+            joinWith: ["transactionID", "customerID"],
+            joinOn: "transactionID",
+        },
         fromTable: undefined,
         // fromTable should be a table name we can give a route to (e.g. /customers/option)
         //  but this is not implemented
@@ -44,6 +44,11 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Item ID",
+        },
+        join: {
+            fromTable: "Items",
+            joinWith: ["itemID", "itemName"],
+            joinOn: "itemID",
         },
         fromTable: undefined,
     },
