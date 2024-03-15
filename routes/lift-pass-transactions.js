@@ -26,6 +26,11 @@ const obj = {
             required: "true",
             placeholder: "Customer ID",
         },
+        join: {
+            fromTable: "Customers",
+            joinWith: ["customerID", "firstName", "lastName"],
+            joinOn: "customerID",
+        },
         fromTable: undefined,
     },
     seasonDatesID: {
@@ -37,6 +42,11 @@ const obj = {
             required: "true",
             placeholder: "Season Dates ID",
         },
+        join: {
+            fromTable: "SeasonDates",
+            joinWith: ["seasonDatesID"],
+            joinOn: "seasonDatesID",
+        },
         fromTable: undefined,
     },
     liftPassID: {
@@ -47,6 +57,11 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Lift Pass ID",
+        },
+        join: {
+            fromTable: "LiftPassTypes",
+            joinWith: ["liftPassID", "Category"],
+            joinOn: "liftPassID",
         },
         fromTable: undefined,
     },

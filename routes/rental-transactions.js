@@ -43,7 +43,7 @@ const obj = {
         },
         join: {
             fromTable: "Discounts",
-            joinWith: ["discountType"],
+            joinWith: ["discountID", "discountType"],
             joinOn: "discountID",
         },
     },
