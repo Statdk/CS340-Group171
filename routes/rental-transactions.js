@@ -26,7 +26,11 @@ const obj = {
             required: "true",
             placeholder: "Customer ID",
         },
-        fromTable: undefined,
+        join: {
+            fromTable: "Customers",
+            joinWith: ["customerID", "firstName", "lastName"],
+            joinOn: "customerID",
+        },
     },
     discountID: {
         display: "Discount ID",
@@ -37,7 +41,11 @@ const obj = {
             required: "false",
             placeholder: "Discount ID",
         },
-        fromTable: undefined,
+        join: {
+            fromTable: "Discounts",
+            joinWith: ["discountType"],
+            joinOn: "discountID",
+        },
     },
     saleDate: {
         display: "Sale Date",

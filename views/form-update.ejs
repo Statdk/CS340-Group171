@@ -31,41 +31,51 @@ const obj = {
     </form>
   </div>
 %>
-  <div class="form-container hidden" id="updateFormContainer">
-    <h3>Update <%= data.title %> ID: <span id="updateFormIDDisplay"></span></h3>
-    <form class="form" action="update" method="post" autocomplete="off" id="updateForm">
-      <input type="hidden" id="updateFormID" name="id" value="">
-      <% for (const key of data.order) { 
-        let entry = data.form[key];
-        if (entry.form != false) { %>
+
+<div class="form-container hidden" id="updateFormContainer">
+  <h3>Update <%= data.title %> ID: <span id="updateFormIDDisplay"></span></h3>
+  <form class="form" action="update" method="post" autocomplete="off" id="updateForm">
+    <input type="hidden" id="updateFormID" name="id" value="">
+    <% for (const key of data.order) { 
+      let entry = data.form[key];
+      if (entry.form !== false) { %>
         <div class="input-group">
-          <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
-          <input 
-            <% if (entry.input == "table" ) { %>
-            
-            <% } else { %>
+          <% if (entry.join) { %>
+            <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
+            <select name="<%= key %>" id="<%= `update${key}` %>">
+              <% data.additionalData[key].forEach(option => { %>
+                <option value="<%= option[entry.join.joinOn] %>" <%= option[entry.join.joinOn] == entry.currentValue ? 'selected' : '' %>>
+                  <%= entry.join.joinWith.map(field => option[field]).join(' ') %>
+                </option>
+              <% }); %>
+            </select>
+          <% } else { %>
+            <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
+            <input 
               type="<%= entry.input.type %>"
               <% if (entry.input.type == "number") { %>
-                <%= entry.input.min != undefined ? `min="${entry.input.min}"` : "" %>
-                <%= entry.input.max != undefined ? `max="${entry.input.max}"` : "" %>
+                min="<%= entry.input.min !== undefined ? entry.input.min : '' %>"
+                max="<%= entry.input.max !== undefined ? entry.input.max : '' %>"
               <% } %>
-              <%= entry.input.required == "true" ? "required" : "" %>
+              required="<%= entry.input.required === 'true' ? 'required' : '' %>"
               placeholder="<%= entry.input.placeholder %>"
               <% if (entry.input.pattern) { %>
                 pattern="<%= entry.input.pattern %>"
               <% } %>
-              value=""
-            <% } %>
-            name="<%= key %>"
-            id="<%= `update${key}`  %>"
-          />
+              name="<%= key %>"
+              id="<%= `update${key}` %>"
+              value="<%= entry.currentValue %>"
+            />
+          <% } %>
         </div>
-        <% }
-      } %>
-      <input type="submit" class="button button-blue" id="addBtn" value="Update"></button>
-      <button type="cancel" class="button button-red" id="addCancelBtn" onclick="hideUpdate(event)">Cancel</button>
-    </form>
-  </div>
+      <% }
+    } %>
+    <input type="submit" class="button button-blue" id="updateBtn" value="Update">
+    <button type="button" class="button button-red" id="updateCancelBtn" onclick="hideUpdate(event)">Cancel</button>
+  </form>
+</div>
+
+
   <script>
     // document.getElementById('updateFormID').value = id;
     // console.log("ID HERE",)
