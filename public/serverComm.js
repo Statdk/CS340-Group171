@@ -87,6 +87,12 @@ function deleteLine(id) {
     });
 }
 
+function clearFilters(event=undefined) {
+    if (event) event.preventDefault();
+    document.querySelectorAll('.filter').forEach(input => input.value = '');
+    document.getElementById('filterForm').submit(); // Submit the form to clear filters.
+}
+
 function showAdd() {
     hideUpdate()
     let addFormContainer = document.getElementById("addFormContainer");
