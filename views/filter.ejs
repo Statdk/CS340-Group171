@@ -1,31 +1,53 @@
-<%#
-<div class="filterform-container">
-    <h3>Filter by:</h3>
-    <form class="form" method="get" id="filterForm">
-      <input name="firstName" class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterFirst" placeholder="First Name" />
-      <input class="filter" type="text" oninput="updateFilters()" onkeypress="updateFilters()" id="filterLast" placeholder="Last Name" />
-      <input class="filter" type="text" onchange="updateFilters()" onkeypress="updateFilters()" id="filterEmail" placeholder="Email" />
-      <input class="filter" type="number" onchange="updateFilters()" onkeypress="updateFilters()" onclick="updateFilters()" id="filterPhone" placeholder="Phone Number" />
-      <button class="button button-green">Submit</button>
-      <button class="button button-red" onclick="clearFilters(event)">Clear</button>
-      <script>
-        function clearFilters(event) {
-          // event.preventDefault();
-          let inputs = document.getElementsByClassName('filter');
-          for (const input of inputs) {
-            input.value = '';
-          }
-          updateFilters();
-        }
-        function updateFilters() {
-          console.log("Faux update");
-        }
-      </script>
-    </form>
-</div>
-%>
 
-<div class="filterform-container">
+
+
+<div class="filterform-container" id="filterFormContainer">
+  <h3>Filter by:</h3>
+  <form class="form" method="get" id="filterForm">
+    <% for (const key of data.order) { 
+      const entry = data.form[key];
+      if (entry.filter) { 
+        if (entry.join) { %>
+          <!-- Dropdown filter for join fields -->
+          <div class="input-group">
+            <label for="filter<%= key %>"><%= entry.display %>:</label>
+            <select name="<%= key %>" id="<%= `filter${key}` %>">
+              <option value="" selected>All</option>
+              <% (data.additionalData[key] || []).forEach(option => {
+                const keys = Object.keys(option);
+                const value = option[keys[0]]; // The value to filter by.
+                let displayText = keys.slice(1).map(k => option[k]).join(' '); // Text to display.
+                if (entry.join.appendUnit) {
+                  displayText += ` ${entry.join.appendUnit}`; // Append unit if specified.
+                }
+              %>
+                <option value="<%= value %>"><%= `${value}: ${displayText}` %></option>
+              <% }); %>
+            </select>
+          </div>
+        <% } else { %>
+          <!-- Regular input field for filter -->
+          <div class="input-group">
+            <label for="filter<%= key %>"><%= entry.display %>:</label>
+            <input 
+              type="<%= entry.input.type %>" 
+              placeholder="<%= entry.display %>" 
+              name="<%= key %>" 
+              id="<%= `filter${key}` %>"
+              value="<%= entry.currentValue %>"
+            />
+          </div>
+        <% }
+      }
+    } %>
+    <button type="submit" class="button button-green" id="filterBtn">Filter</button>
+    <button class="button button-red" type="button" onclick="clearFilters(event)">Clear</button>
+  </form>
+</div>
+
+
+
+<!-- <div class="filterform-container">
   <h3>Filter by:</h3>
   <form class="form" method="get" id="filterForm">
     <% for (const key in data.form) {
@@ -44,18 +66,5 @@
     } %>
     <button class="button button-green">Submit</button>
     <%# <button class="button button-red" onclick="clearFilters(event)">Clear</button> %>
-    <script>
-      function clearFilters(event) {
-        // event.preventDefault();
-        let inputs = document.getElementsByClassName('filter');
-        for (const input of inputs) {
-          input.value = '';
-        }
-        updateFilters();
-      }
-      function updateFilters() {
-        console.log("Faux update");
-      }
-    </script>
   </form>
-</div>
+</div> -->

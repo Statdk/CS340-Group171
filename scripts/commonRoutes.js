@@ -99,6 +99,7 @@ function root(res, query, title, obj, idField, order, filterEnabled) {
                     header: header,
                     form: obj,
                     order: order,
+                    additionalData: additionalData,
                 },
             });
         } else {
