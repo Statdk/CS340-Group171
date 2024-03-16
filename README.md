@@ -11,7 +11,7 @@ Port is configurable by a constant in `app.js`.
 
 -   ### Git changes:
     -   ~~add library dependency to readme~~
-    -   delete old master
+    -   ~~delete old master~~
     -   remove oldhtml
     -   remove customers.js in public
 -   ### UI/CRUD changes:
@@ -20,12 +20,11 @@ Port is configurable by a constant in `app.js`.
     -   ~~Add placeholder descriptions next to box aswell, maybe~~
     -   Adding to rental-items: create a new rental-transaction if the added transactionID is new
     -   ~~Fix lift pass tables add update some not required~~
-    -   Fix filter in RT and LPTr
-    -   Dropdowns on FKs for new / filter / update
+    -   Fix filters fitlering
+    -   ~~Dropdowns on FKs for new / filter / update~~
     -   Add all data validation
         - ~~emails, phone numbers, percentages~~, FK dropdowns, negatives
-    -   Join FK (like Customer ID and Discount ID in RT)
-    -   Handle duplicate rows?
+    -   ~~Join FK (like Customer ID and Discount ID in RT)~~
     -   Detil on home page (maybe just summary paste)
         - Intro for each table, sentance summary for clarity (can also point out which tables fulfill M:N req)
 
