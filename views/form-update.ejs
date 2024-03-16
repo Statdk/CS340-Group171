@@ -47,8 +47,11 @@ const obj = {
               <% (data.additionalData[key] || []).forEach(option => {
                 const keys = Object.keys(option);
                 const value = option[keys[0]]; // Assuming the first property is the actual value.
-                const displayText = keys.slice(1).map(k => option[k]).join(' '); // Concatenate the rest of the properties.
-              %>
+                let displayText = keys.slice(1).map(k => option[k]).join(' '); // Concatenate the rest of the properties.
+                if (entry.join.appendUnit) {
+                  displayText += `${entry.join.appendUnit}`; // Append units to the display text
+                }
+                %>
                 <option value="<%= value %>"><%= `${value}: ${displayText}` %></option>
               <% }); %>
             </select>
