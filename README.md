@@ -12,23 +12,23 @@ Port is configurable by a constant in `app.js`.
 -   ### Git changes:
     -   remove oldhtml
     -   remove customers.js in public
-
+    -   .
     -   ~~add library dependency to readme~~
     -   ~~delete old master~~
 -   ### UI/CRUD changes:
     -   Adding to rental-items: create a new rental-transaction if the added transactionID is new
     -   Fix filters fitlering
-    -   Add all data validation
     -   Detil on home page (maybe just summary paste)
         - Intro for each table, sentance summary for clarity (can also point out which tables fulfill M:N req)
     -   Maybe: Fix add/update buttons height (w/o destroying filter button heights)
-
+    -   .
     -   ~~Fix date formatting to YYYY-MM-DD~~
         - ~~Fix update not populating date~~
     -   ~~Add placeholder descriptions next to box aswell, maybe~~
     -   ~~Fix lift pass tables add update some not required~~
     -   ~~Dropdowns on FKs for new / filter / update~~
-        - ~~emails, phone numbers, percentages~~, FK dropdowns, negatives
+    -   ~~Add all data validation~~
+        - ~~emails, phone numbers, percentages, FK dropdowns, negatives~~
     -   ~~Join FK (like Customer ID and Discount ID in RT)~~
 -   ### files(to be submitted) changes: (https://canvas.oregonstate.edu/courses/1946034/assignments/9456223)
     -   backend code (file)
