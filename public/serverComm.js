@@ -88,16 +88,18 @@ function deleteLine(id) {
 }
 
 function showAdd() {
+    hideUpdate()
     let addFormContainer = document.getElementById("addFormContainer");
     addFormContainer.classList.remove("hidden");
     addFormContainer.scrollIntoView({ block: "end", behavior: "smooth" });
 }
-function hideAdd(event) {
-    event.preventDefault();
+function hideAdd(event=undefined) {
+    if (event) event.preventDefault();
     document.getElementById("addFormContainer").classList.add("hidden");
 }
 
 function showUpdate(id, entry) {
+    hideAdd()
     let order = JSON.parse(document.getElementById("orderBin").value);
 
     order.forEach((key) => {
@@ -118,7 +120,7 @@ function showUpdate(id, entry) {
     updateFormContainer.classList.remove("hidden");
     updateFormContainer.scrollIntoView({ block: "end", behavior: "smooth" });
 }
-function hideUpdate(event) {
-    event.preventDefault();
+function hideUpdate(event=undefined) {
+    if (event) event.preventDefault();
     document.getElementById("updateFormContainer").classList.add("hidden");
 }
