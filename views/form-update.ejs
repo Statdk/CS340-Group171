@@ -41,20 +41,16 @@ const obj = {
       if (entry.form !== false) { %>
         <div class="input-group">
           <% if (entry.join) { %>
-            <!-- Handle dropdown rendering for both custom and standard joins -->
             <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
             <select name="<%= key %>" id="<%= `update${key}` %>">
-              <% if (data.additionalData[key]) { 
-                data.additionalData[key].forEach(option => { 
-                  // Check if joinWith is an array and adjust accordingly
-                  const displayText = Array.isArray(entry.join.joinWith) 
-                    ? entry.join.joinWith.map(field => option[field]).join(' ') 
-                    : option[entry.join.joinWith]; %>
-                  <option value="<%= option[entry.join.joinOn] %>" <%= option[entry.join.joinOn] == entry.currentValue ? 'selected' : '' %>>
-                    <%= displayText %>
-                  </option>
-                <% }); 
-              } %>
+              <option value="" disabled selected>[Select <%= entry.display %>]</option>
+              <% (data.additionalData[key] || []).forEach(option => {
+                const keys = Object.keys(option);
+                const value = option[keys[0]]; // Assuming the first property is the actual value.
+                const displayText = keys.slice(1).map(k => option[k]).join(' '); // Concatenate the rest of the properties.
+              %>
+                <option value="<%= value %>"><%= `${value}: ${displayText}` %></option>
+              <% }); %>
             </select>
           <% } else { %>
             <!-- Render regular input field -->

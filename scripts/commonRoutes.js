@@ -53,11 +53,10 @@ function root(res, query, title, obj, idField, order, filterEnabled) {
             if (obj[field].join && obj[field].join.fromTable) {
                 fs.appendFileSync(logFilePath, ' joining now...');
                 if (obj[field].join.joinCustom) {       // Handle custom join
-                    fs.appendFileSync(logFilePath, ' customResults: '+ '\n');
                     const customQuery = obj[field].join.joinCustom;
                     const customResults = await executeCustomQuery(customQuery);
                     additionalData[field] = customResults;
-                    fs.appendFileSync(logFilePath, ' (customResults): ' + JSON.stringify(customResults, null, 2) + '\n');
+                    fs.appendFileSync(logFilePath, ' (customResults): ' + JSON.stringify(additionalData[field], null, 2) + '\n');
                 } else {       // Handle easy-format custom join
                     const tableName = obj[field].join.fromTable;
                     const joinOn = obj[field].join.joinOn;
@@ -76,12 +75,10 @@ function root(res, query, title, obj, idField, order, filterEnabled) {
                         });
                     });
                     additionalData[field] = fetchData;
-                    fs.appendFileSync(logFilePath, ' (fetchData): ' + JSON.stringify(fetchData, null, 2) + '\n');
+                    fs.appendFileSync(logFilePath, ' (fetchData): ' + JSON.stringify(additionalData[field], null, 2) + '\n');
                 }
             }
         }
-
-        fs.appendFileSync(logFilePath, ' (fetchData): ' + JSON.stringify(additionalData, null, 2) + '\n');
 
         // Render the table
         let table = await ejs.renderFile("views/table.ejs", {

@@ -28,7 +28,7 @@ const obj = {
         },
         join: {
             fromTable: "Customers",
-            joinCustom: "SELECT rt.transactionID, c.firstName, c.lastName FROM RentalItems ri JOIN RentalTransactions rt ON ri.transactionID = rt.transactionID JOIN Customers c ON rt.customerID = c.customerID WHERE ri.transactionID = rt.transactionID;",
+            joinCustom: "SELECT rt.transactionID, c.firstName, c.lastName FROM RentalTransactions ri JOIN RentalTransactions rt ON ri.transactionID = rt.transactionID JOIN Customers c ON rt.customerID = c.customerID WHERE ri.transactionID = rt.transactionID;",
         },
     },
     itemID: {
@@ -44,6 +44,7 @@ const obj = {
             fromTable: "Items",
             joinWith: ["itemID", "itemName", "size"],
             joinOn: "itemID",
+            appendUnit: "cm",
         },
     },
     quantityRented: {

@@ -32,6 +32,11 @@ const obj = {
   </div>
 %>
 
+
+<script>
+    hideUpdate(event)
+</script>
+
 <div class="form-container hidden" id="addFormContainer">
   <h3>Add <%= data.title %></h3>
   <form class="form" action="/foo" method="post" autocomplete="off" id="addForm">
@@ -40,17 +45,18 @@ const obj = {
       if (entry.form !== false) { %>
         <div class="input-group">
           <% if (entry.join) { %>
-            <!-- Handle dropdown rendering -->
             <label for="<%= key %>"><%= entry.display %>:</label>
             <select name="<%= key %>" id="<%= key %>">
-              <% data.additionalData[key] && data.additionalData[key].forEach(option => { 
-                // Check if joinWith is an array and adjust accordingly
-                const displayText = Array.isArray(entry.join.joinWith) 
-                  ? entry.join.joinWith.map(field => option[field]).join(' ') 
-                  : option[entry.join.joinWith]; %>
-                <option value="<%= option[entry.join.joinOn] %>">
-                  <%= displayText %>
-                </option>
+              <option value="" disabled selected>[Select <%= entry.display %>]</option>
+              <% (data.additionalData[key] || []).forEach(option => {
+                const keys = Object.keys(option);
+                const value = option[keys[0]]; // Assuming the first property is the actual value.
+                let displayText = keys.slice(1).map(k => option[k]).join(' '); // Concatenate the rest of the properties.
+                if (entry.join.appendUnit) {
+                  displayText += `${entry.join.appendUnit}`; // Append units to the display text
+                }
+              %>
+                <option value="<%= value %>"><%= `${value}: ${displayText}` %></option>
               <% }); %>
             </select>
           <% } else { %>
@@ -74,6 +80,7 @@ const obj = {
     <button type="button" class="button button-red" id="addCancelBtn" onclick="hideAdd(event)">Cancel</button>
   </form>
 </div>
+
 
 
 
