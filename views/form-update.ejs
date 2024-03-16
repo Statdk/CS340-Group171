@@ -41,27 +41,31 @@ const obj = {
       if (entry.form !== false) { %>
         <div class="input-group">
           <% if (entry.join) { %>
+            <!-- Handle dropdown rendering for both custom and standard joins -->
             <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
             <select name="<%= key %>" id="<%= `update${key}` %>">
-              <% data.additionalData[key].forEach(option => { %>
-                <option value="<%= option[entry.join.joinOn] %>" <%= option[entry.join.joinOn] == entry.currentValue ? 'selected' : '' %>>
-                  <%= entry.join.joinWith.map(field => option[field]).join(' ') %>
-                </option>
-              <% }); %>
+              <% if (data.additionalData[key]) { 
+                data.additionalData[key].forEach(option => { 
+                  // Check if joinWith is an array and adjust accordingly
+                  const displayText = Array.isArray(entry.join.joinWith) 
+                    ? entry.join.joinWith.map(field => option[field]).join(' ') 
+                    : option[entry.join.joinWith]; %>
+                  <option value="<%= option[entry.join.joinOn] %>" <%= option[entry.join.joinOn] == entry.currentValue ? 'selected' : '' %>>
+                    <%= displayText %>
+                  </option>
+                <% }); 
+              } %>
             </select>
           <% } else { %>
+            <!-- Render regular input field -->
             <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
             <input 
               type="<%= entry.input.type %>"
-              <% if (entry.input.type == "number") { %>
-                min="<%= entry.input.min !== undefined ? entry.input.min : '' %>"
-                max="<%= entry.input.max !== undefined ? entry.input.max : '' %>"
-              <% } %>
+              min="<%= entry.input.min !== undefined ? entry.input.min : '' %>"
+              max="<%= entry.input.max !== undefined ? entry.input.max : '' %>"
               required="<%= entry.input.required === 'true' ? 'required' : '' %>"
               placeholder="<%= entry.input.placeholder %>"
-              <% if (entry.input.pattern) { %>
-                pattern="<%= entry.input.pattern %>"
-              <% } %>
+              pattern="<%= entry.input.pattern %>"
               name="<%= key %>"
               id="<%= `update${key}` %>"
               value="<%= entry.currentValue %>"
@@ -74,6 +78,8 @@ const obj = {
     <button type="button" class="button button-red" id="updateCancelBtn" onclick="hideUpdate(event)">Cancel</button>
   </form>
 </div>
+
+
 
 
   <script>

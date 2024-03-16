@@ -37,43 +37,45 @@ const obj = {
   <form class="form" action="/foo" method="post" autocomplete="off" id="addForm">
     <% for (const key of data.order) { 
       let entry = data.form[key];
-      if (entry.form !== false) {
-        if (entry.join) { %>
-          <div class="input-group">
+      if (entry.form !== false) { %>
+        <div class="input-group">
+          <% if (entry.join) { %>
+            <!-- Handle dropdown rendering -->
             <label for="<%= key %>"><%= entry.display %>:</label>
             <select name="<%= key %>" id="<%= key %>">
-              <% data.additionalData[key].forEach(option => { %>
+              <% data.additionalData[key] && data.additionalData[key].forEach(option => { 
+                // Check if joinWith is an array and adjust accordingly
+                const displayText = Array.isArray(entry.join.joinWith) 
+                  ? entry.join.joinWith.map(field => option[field]).join(' ') 
+                  : option[entry.join.joinWith]; %>
                 <option value="<%= option[entry.join.joinOn] %>">
-                  <%= entry.join.joinWith.map(field => option[field]).join(' ') %>
+                  <%= displayText %>
                 </option>
               <% }); %>
             </select>
-          </div>
-        <% } else { %>
-          <div class="input-group">
+          <% } else { %>
+            <!-- Render regular input field -->
             <label for="<%= key %>"><%= entry.display %>:</label>
             <input 
               type="<%= entry.input.type %>"
-              <% if (entry.input.type == "number") { %>
-                <%= entry.input.min !== undefined ? `min="${entry.input.min}"` : "" %>
-                <%= entry.input.max !== undefined ? `max="${entry.input.max}"` : "" %>
-              <% } %>
-              <%= entry.input.required === "true" ? "required" : "" %>
+              min="<%= entry.input.min !== undefined ? entry.input.min : '' %>"
+              max="<%= entry.input.max !== undefined ? entry.input.max : '' %>"
+              required="<%= entry.input.required === 'true' ? 'required' : '' %>"
               placeholder="<%= entry.input.placeholder %>"
-              <% if (entry.input.pattern) { %>
-                pattern="<%= entry.input.pattern %>"
-              <% } %>
+              pattern="<%= entry.input.pattern %>"
               name="<%= key %>"
               id="<%= key %>"
             />
-          </div>
-        <% }
-      }
+          <% } %>
+        </div>
+      <% }
     } %>
     <input type="submit" class="button button-green" id="addBtn" value="Add">
     <button type="button" class="button button-red" id="addCancelBtn" onclick="hideAdd(event)">Cancel</button>
   </form>
 </div>
+
+
 
 <script>
     let form = document.getElementById("addForm");

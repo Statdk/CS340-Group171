@@ -27,14 +27,9 @@ const obj = {
             placeholder: "Transaction ID",
         },
         join: {
-            fromTable: "RentalTransactions",
-            // joinWith: ["transactionID", "firstName", "lastName"],
-            joinWith: ["transactionID", "customerID"],
-            joinOn: "transactionID",
+            fromTable: "Customers",
+            joinCustom: "SELECT rt.transactionID, c.firstName, c.lastName FROM RentalItems ri JOIN RentalTransactions rt ON ri.transactionID = rt.transactionID JOIN Customers c ON rt.customerID = c.customerID WHERE ri.transactionID = rt.transactionID;",
         },
-        fromTable: undefined,
-        // fromTable should be a table name we can give a route to (e.g. /customers/option)
-        //  but this is not implemented
     },
     itemID: {
         display: "Item ID",
@@ -47,10 +42,9 @@ const obj = {
         },
         join: {
             fromTable: "Items",
-            joinWith: ["itemID", "itemName"],
+            joinWith: ["itemID", "itemName", "size"],
             joinOn: "itemID",
         },
-        fromTable: undefined,
     },
     quantityRented: {
         display: "Quantity Rented",

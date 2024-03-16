@@ -51,25 +51,33 @@ function root(res, query, title, obj, idField, order, filterEnabled) {
         for (const field of order) {
             fs.appendFileSync(logFilePath, '\n'+'-'+field);
             if (obj[field].join && obj[field].join.fromTable) {
-                // Accessing the new structure
-                const tableName = obj[field].join.fromTable;
-                const joinOn = obj[field].join.joinOn;
-                const joinWith = Array.isArray(obj[field].join.joinWith) ? obj[field].join.joinWith.join(", ") : obj[field].join.joinWith;
-        
-                const query = `SELECT ${joinOn}, ${joinWith} FROM ${tableName}`;
-        
-                // Fetch data synchronously within the async function
-                const fetchData = await new Promise((resolve, reject) => {
-                    pool.query(query, (error, data) => {
-                        if (error) {
-                            reject(error);
-                        } else {
-                            resolve(data);
-                        }
+                fs.appendFileSync(logFilePath, ' joining now...');
+                if (obj[field].join.joinCustom) {       // Handle custom join
+                    fs.appendFileSync(logFilePath, ' customResults: '+ '\n');
+                    const customQuery = obj[field].join.joinCustom;
+                    const customResults = await executeCustomQuery(customQuery);
+                    additionalData[field] = customResults;
+                    fs.appendFileSync(logFilePath, ' (customResults): ' + JSON.stringify(customResults, null, 2) + '\n');
+                } else {       // Handle easy-format custom join
+                    const tableName = obj[field].join.fromTable;
+                    const joinOn = obj[field].join.joinOn;
+                    const joinWith = Array.isArray(obj[field].join.joinWith) ? obj[field].join.joinWith.join(", ") : obj[field].join.joinWith;
+            
+                    const query = `SELECT ${joinOn}, ${joinWith} FROM ${tableName}`;
+            
+                    // Fetch data synchronously within the async function
+                    const fetchData = await new Promise((resolve, reject) => {
+                        pool.query(query, (error, data) => {
+                            if (error) {
+                                reject(error);
+                            } else {
+                                resolve(data);
+                            }
+                        });
                     });
-                });
-                additionalData[field] = fetchData;
-                fs.appendFileSync(logFilePath, ' (fetchData): ' + JSON.stringify(fetchData, null, 2) + '\n');
+                    additionalData[field] = fetchData;
+                    fs.appendFileSync(logFilePath, ' (fetchData): ' + JSON.stringify(fetchData, null, 2) + '\n');
+                }
             }
         }
 
@@ -137,6 +145,15 @@ function root(res, query, title, obj, idField, order, filterEnabled) {
 
         // Send it
         res.send(page);
+    });
+}
+
+async function executeCustomQuery(query) {
+    return new Promise((resolve, reject) => {
+        pool.query(query, (err, results) => {
+            if (err) return reject(err);
+            resolve(results);
+        });
     });
 }
 
