@@ -25,6 +25,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Customer ID",
+            min: "0",
         },
         join: {
             fromTable: "Customers",
@@ -66,6 +67,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Rental Duration (days)",
+            min: "0",
         },
         fromTable: undefined,
     },

@@ -36,6 +36,7 @@ const obj = {
             type: "float",
             required: "true",
             placeholder: "List Price",
+            min: "0",
         },
         fromTable: undefined,
     },

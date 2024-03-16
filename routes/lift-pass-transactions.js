@@ -25,6 +25,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Customer ID",
+            min: "0",
         },
         join: {
             fromTable: "Customers",
@@ -41,6 +42,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Season Dates ID",
+            min: "0",
         },
         join: {
             fromTable: "SeasonDates",
@@ -57,6 +59,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Lift Pass ID",
+            min: "0",
         },
         join: {
             fromTable: "LiftPassTypes",

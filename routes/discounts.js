@@ -40,6 +40,7 @@ const obj = {
             required: "true",
             placeholder: "Discount Percentage (0.XX)",
             pattern: "0+\.+[0-9]{2}",
+            max: "1",
         },
         fromTable: undefined,
     },

@@ -25,6 +25,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Transaction ID",
+            min: "0",
         },
         join: {
             fromTable: "Customers",
@@ -39,6 +40,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Item ID",
+            min: "0",
         },
         join: {
             fromTable: "Items",
@@ -55,6 +57,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Quantity Rented",
+            min: "0",
         },
         fromTable: undefined,
     },

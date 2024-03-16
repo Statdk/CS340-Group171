@@ -35,6 +35,7 @@ const obj = {
             type: "number",
             required: "true",
             placeholder: "Quantity Owned",
+            min: "0",
         },
     },
     size: {
