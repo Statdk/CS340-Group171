@@ -16,8 +16,9 @@ Port is configurable by a constant in `app.js`.
     -   ~~add library dependency to readme~~
     -   ~~delete old master~~
 -   ### UI/CRUD changes:
-    -   Adding to rental-items: create a new rental-transaction if the added transactionID is new
     -   Fix filters fitlering
+    -   "at least one UPDATE for a M:M relationship"
+        - does that mean: \*when dding to rental-items\*  create a new rental-transaction if the added transactionID is new
     -   Detil on home page (maybe just summary paste)
         - Intro for each table, sentance summary for clarity (can also point out which tables fulfill M:N req)
     -   Maybe: Fix add/update buttons height (w/o destroying filter button heights)
@@ -28,7 +29,7 @@ Port is configurable by a constant in `app.js`.
     -   ~~Fix lift pass tables add update some not required~~
     -   ~~Dropdowns on FKs for new / filter / update~~
     -   ~~Add all data validation~~
-        - ~~emails, phone numbers, percentages, FK dropdowns, negatives~~
+        - ~~emails, phone numbers, percentages, FK dropdowns,~~ negatives
     -   ~~Join FK (like Customer ID and Discount ID in RT)~~
 -   ### files(to be submitted) changes: (https://canvas.oregonstate.edu/courses/1946034/assignments/9456223)
     -   backend code (file)
@@ -49,5 +50,9 @@ Port is configurable by a constant in `app.js`.
 -   ### PDF changes:
     -   Update for new Ed reviews
     -   Update summary if needed
+    -   ERD 
+        - discounts relation
+        - datetimes
+        - sp auto inc
     -   URL in headers
     -   UI screenshots
