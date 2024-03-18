@@ -242,7 +242,7 @@ font-size: 24px;
   margin-right: 8px;
 }
 
-.form input[type="text"]::placeholder, .form input[type="number"]::placeholder, .form input[type="float"]::placeholder, .form input[type="date"], .form input[type="email"], .form input[type="tel"] {
+.form input[type="text"]::placeholder, .form input[type="number"]::placeholder, .form input[type="float"]::placeholder, .form input[type="date"]::placeholder, .form input[type="email"]::placeholder, .form input[type="tel"]::placeholder {
   color: #9ca3af;
 }
 
