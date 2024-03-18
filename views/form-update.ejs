@@ -60,11 +60,11 @@ const obj = {
             <label for="<%= `update${key}` %>"><%= entry.display %>:</label>
             <input 
               type="<%= entry.input.type %>"
-              min="<%= entry.input.min !== undefined ? entry.input.min : '' %>"
-              max="<%= entry.input.max !== undefined ? entry.input.max : '' %>"
-              required="<%= entry.input.required === 'true' ? 'required' : '' %>"
+              <% if (entry.input.min !== undefined) { %> min="<%= entry.input.min %>" <% } %>
+              <% if (entry.input.max !== undefined) { %> max="<%= entry.input.max %>" <% } %>
+              <% if (entry.input.required === 'true') { %>required<% } %>
               placeholder="<%= entry.input.placeholder %>"
-              pattern="<%= entry.input.pattern %>"
+              <% if (entry.input.pattern) { %> pattern="<%= entry.input.pattern %>" <% } %>
               name="<%= key %>"
               id="<%= `update${key}` %>"
               value="<%= entry.currentValue %>"
