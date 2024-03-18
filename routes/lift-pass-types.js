@@ -29,13 +29,13 @@ const obj = {
         fromTable: undefined,
     },
     listPrice: {
-        display: "List Price",
+        display: "List Price ($)",
         filter: true,
         form: true,
         input: {
             type: "float",
             required: "true",
-            placeholder: "List Price",
+            placeholder: "List Price ($)",
             min: "0",
         },
         fromTable: undefined,
