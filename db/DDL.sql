@@ -117,9 +117,9 @@ INSERT INTO Discounts (discountType, discountPercentage) VALUES
 
  -- Records the start and end dates for tracking which season passes are associated with
 CREATE OR REPLACE TABLE SeasonDates (
-  seasonDatesID int NOT NULL AUTO_INCREMENT,  -- starts at 2022 to align with the season starting date
-  seasonStart datetime NOT NULL,            -- First day of the season
-  seasonEnd datetime NOT NULL,              -- Last dat of the season
+  seasonDatesID INT NOT NULL AUTO_INCREMENT,  -- starts at 2022 to align with the season starting date
+  seasonStart DATE NOT NULL,            -- First day of the season
+  seasonEnd DATE NOT NULL,              -- Last dat of the season
 
   PRIMARY KEY (seasonDatesID)
 ) AUTO_INCREMENT=2022;
@@ -131,7 +131,7 @@ INSERT INTO SeasonDates (seasonStart, seasonEnd) VALUES
 
  -- Records the different types of lift passes available for purchase
 CREATE OR REPLACE TABLE LiftPassTypes (
-  liftPassID int NOT NULL AUTO_INCREMENT,
+  liftPassID INT NOT NULL AUTO_INCREMENT,
   category varchar(50) NOT NULL,            -- The The category of the lift pass (e.g., 1day, 2day, seasonPass)
   listPrice float NOT NULL,                 -- Price of the ticket
 
@@ -166,9 +166,9 @@ INSERT INTO Customers (firstName, lastName, email, phoneNumber) VALUES
 CREATE OR REPLACE TABLE LiftPassTransactions (
     transactionID INT NOT NULL AUTO_INCREMENT,
     customerID INT NOT NULL,                -- Customer who performed the transaction
-    seasonDatesID int NOT NULL,             -- Season to assign the pass to
+    seasonDatesID INT NOT NULL,             -- Season to assign the pass to
     liftPassID INT NOT NULL,                -- Pass included in the transaction
-    saleDate DATETIME NOT NULL,             -- Date of the transaction
+    saleDate DATE NOT NULL,             -- Date of the transaction
 
     PRIMARY KEY (transactionID),
     FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON DELETE CASCADE,
