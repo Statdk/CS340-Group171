@@ -44,7 +44,7 @@ const obj = {
         filter: true,
         form: true,
         input: {
-            type: "text",
+            type: "email",
             required: "true",
             placeholder: "Email",
             pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
