@@ -11,7 +11,7 @@ Port is configurable by a constant in `app.js`.
 
 -   ### Git changes:
     -   remove oldhtml
-    -   remove customers.js in public
+    -   ~~remove customers.js in public~~
     -   .
     -   ~~add library dependency to readme~~
     -   ~~delete old master~~
@@ -19,8 +19,6 @@ Port is configurable by a constant in `app.js`.
     -   Fix filters fitlering
     -   "at least one UPDATE for a M:M relationship"
         - does that mean: when dding to rental-items, create a new rental-transaction if the added transactionID is new?
-    -   Detil on home page (maybe just summary paste)
-        - Intro for each table, sentance summary for clarity (can also point out which tables fulfill M:N req)
     -   Maybe: Fix add/update buttons height (w/o destroying filter button heights)
     -   .
     -   ~~Fix date formatting to YYYY-MM-DD~~
@@ -31,27 +29,31 @@ Port is configurable by a constant in `app.js`.
     -   ~~Add all data validation~~
         - ~~emails, phone numbers, percentages, FK dropdowns,~~ ~~negatives~~
     -   ~~Join FK (like Customer ID and Discount ID in RT)~~
+    -   ~~Detil on home page (maybe just summary paste)~~
 -   ### files(to be submitted) changes: (https://canvas.oregonstate.edu/courses/1946034/assignments/9456223)
     -   backend code (file)
         - no node_modules
+        - no oldHTML
         - remove user & pass from db-connector
         - Add citations to readme?
     -   PDF
-        - ~~Executive Summary (max 1pg)
-        - ~~Project and Database Outlines~~
-        - ~~ER Diagram~~
-        - ~~Schema~~
-        - ~~Sample Data~~
-        - UI Screen Shots with Informative Titles     
+        - Executive Summary (max 1pg)
+        - Project and Database Outlines
+        - ER Diagram
+        - Schema
+        - Sample Data
+        - UI Screen Shots with Informative Titles    
     -   DDL.sql
     -   DML.sql
     -   URL.txt (http://flip1.engr.oregonstate.edu:3805/index.html)
     -   comment on submission with URL
 -   ### PDF changes:
+    -   Add (to UI ss) M:N update / delete label
+    -   .
     -   ~~Update for new Ed reviews (summary)~~
     -   ~~Update summary if needed~~
-    -   ~~ERD ~~
+    -   ~~ERD~~
         - ~~discounts relation~~
         - ~~datetimes to date~~
     -   ~~URL in headers~~
-    -   UI screenshots
+    -   ~~UI screenshots~~
