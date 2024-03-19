@@ -10,13 +10,13 @@ Port is configurable by a constant in `app.js`.
 # Todo List (for Step 6)
 
 -   ### Git changes:
-    -   remove oldhtml
+    -   ~~remove oldhtml~~
     -   ~~remove customers.js in public~~
     -   .
     -   ~~add library dependency to readme~~
     -   ~~delete old master~~
 -   ### UI/CRUD changes:
-    -   Fix filters fitlering
+    -   ~~Fix filters fitlering~~
     -   "at least one UPDATE for a M:M relationship"
         - does that mean: when dding to rental-items, create a new rental-transaction if the added transactionID is new?
     -   Maybe: Fix add/update buttons height (w/o destroying filter button heights)
