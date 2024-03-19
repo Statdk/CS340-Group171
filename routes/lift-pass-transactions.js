@@ -92,7 +92,36 @@ router.use(express.json());
 router.get("/", async (req, res) => {
     const filterEnabled = true;
 
-    const query = "SELECT * FROM LiftPassTransactions";
+    // const query = "SELECT * FROM LiftPassTransactions";
+    const query = `
+    SELECT * 
+    FROM LiftPassTransactions 
+    WHERE
+        (${
+            req.query.transactionID == undefined || req.query.transactionID == ""
+                ? "NULL IS NULL"
+                : `transactionID = ${req.query.transactionID}`
+        }
+            ) AND
+        (${
+            req.query.customerID == undefined || req.query.customerID == ""
+                ? "NULL IS NULL"
+                : `customerID = ${req.query.customerID}`
+        }
+            ) AND
+        (${
+            req.query.liftPassID == undefined || req.query.liftPassID == ""
+                ? "NULL IS NULL"
+                : `liftPassID = ${req.query.liftPassID}`
+        }
+            ) AND
+        (${
+            req.query.saleDate == undefined || req.query.saleDate == ""
+                ? "NULL IS NULL"
+                : `saleDate = ${req.query.saleDate}`
+        }
+            )
+    `;
     root(res, query, title, obj, idField, order, filterEnabled);
 });
 
