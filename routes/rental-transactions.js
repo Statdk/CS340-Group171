@@ -85,8 +85,35 @@ router.get("/", async (req, res) => {
     console.log("Accessing /rental-transactions");
     const filterEnabled = true;
     
+    // const query = "SELECT * FROM RentalTransactions;";
     const query = `
-        SELECT * FROM RentalTransactions;
+        SELECT *
+        FROM RentalTransactions
+        WHERE 
+            (${
+                req.query.customerID == undefined || req.query.customerID == ""
+                    ? "NULL IS NULL"
+                    : `customerID = ${req.query.customerID}`
+            }
+                ) AND
+            (${
+                req.query.discountID == undefined || req.query.discountID == ""
+                    ? "NULL IS NULL"
+                    : `discountID = ${req.query.discountID}`
+            }
+                ) AND
+            (${
+                req.query.saleDate == undefined || req.query.saleDate == ""
+                    ? "NULL IS NULL"
+                    : `saleDate = \"${formatDateToYYYYMMDD(req.query.saleDate)}\"`
+            }
+                ) AND
+            (${
+                req.query.rentalDuration == undefined || req.query.rentalDuration == ""
+                    ? "NULL IS NULL"
+                    : `saleDate = ${req.query.rentalDuration}`
+            }
+                )
     `;
     root(res, query, title, obj, idField, order, filterEnabled);    
 });
